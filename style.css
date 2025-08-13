@@ -1375,5 +1375,39 @@ section:target { scroll-margin-top: 96px; }
     width: 140px;
     height: 48px;
   }
+
+
+   /* ===== HERO alignment fix (final) ===== */
+.hero .hero-inner{
+  display: grid;                             /* use grid for precise alignment */
+  grid-template-columns: 1.1fr 0.9fr;        /* text : image ratio */
+  align-items: center;                       /* center image with text block */
+  gap: 2.5rem;
+  padding: 3.5rem 0;
+}
+
+.hero .hero-text{
+  align-self: center;
+}
+
+.hero .hero-image{
+  align-self: center;
+  justify-self: end;                         /* push image to the right edge */
+  transform: translateY(-6px);               /* micro-nudge up for better line-up */
+}
+
+.hero .hero-image img{
+  width: min(720px, 100%);                   /* slightly larger image */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 14px 32px rgba(0,0,0,.08);
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 900px){
+  .hero .hero-inner{ grid-template-columns: 1fr; }
+  .hero .hero-image{ justify-self: center; transform: none; margin-top: 1rem; }
+}
+
 }
 
