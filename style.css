@@ -1411,3 +1411,5 @@ section:target { scroll-margin-top: 96px; }
 
 }
 
+
+.hero .hero-image{ transform: translateY(-10px); }
