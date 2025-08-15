@@ -570,3 +570,44 @@ section:target{scroll-margin-top:96px}
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Responsive fix for Quality & Compliance cards */
+@media (max-width: 900px) {
+  .qc-grid {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+  .qc-card h3 {
+    font-size: 1.05rem;
+  }
+  .qc-card p {
+    font-size: 0.95rem;
+  }
+  .qc-icon svg,
+  .qc-icon img {
+    max-height: 42px;
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .qc-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+  .qc-card {
+    padding: 1.2rem;
+    width: 100%; /* full width */
+    max-width: none; /* remove card width limit */
+  }
+  .qc-card h3 {
+    font-size: 1rem;
+  }
+  .qc-card p {
+    font-size: 0.9rem;
+  }
+  .qc-icon svg,
+  .qc-icon img {
+    max-height: 36px;
+  }
+}
+
