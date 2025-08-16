@@ -786,30 +786,45 @@ html[dir="rtl"] .site-header .nav-list a {
 }
 
 
-
-/* Default (desktop) = button at top */
-.nav-cta {
-  display: inline-block;
-  margin-left: 1rem;
+.qc-download {
+  margin-top: 2rem;
+  text-align: center;
+}
+.qc-download .btn {
+  font-size: 1rem;
+  padding: .8rem 1.5rem;
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .nav-cta {
-    display: block;
-    margin: 1rem auto 0 auto; /* centers button */
-    order: 99; /* moves it after nav links */
-    text-align: center;
-    width: fit-content;
-  }
 
-  #mainNav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+#quality .btn {
+  margin: 1rem 0 2rem; /* spacing around the button */
+}
 
-  #mainNav ul li {
-    margin: 0.5rem 0;
-  }
+
+
+/* Certificate button inside QC card */
+.qc-card .btn-cert{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  margin-top:.75rem;
+  padding:.55rem 1rem;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--primary),#b21e34);
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:.95rem;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.qc-card .btn-cert:hover{
+  transform:translateY(-2px);
+  background:linear-gradient(135deg,var(--primary-hover),#95192b);
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
+}
+.qc-card .cert-meta{
+  margin-top:.35rem;
+  font-size:.85rem;
+  color:#6b7280; /* muted */
 }
