@@ -90,6 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "qc.card.trace.text": "From catch to container — complete product documentation.",
       "qc.card.sgs.title": "SGS Safety Partner",
       "qc.card.sgs.text": "Independent inspections available prior to any order.",
+	"qc.card.standards.cta": "Download Certificate",
+	"qc.card.standards.meta": "PDF • 1 page",
+
 
       // products
       "products.heading": "Main Products",
@@ -185,6 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "qc.card.trace.text": "Desde la captura hasta el contenedor — documentación completa.",
       "qc.card.sgs.title": "Socio de Seguridad SGS",
       "qc.card.sgs.text": "Inspecciones independientes disponibles antes de cualquier pedido.",
+"qc.card.standards.cta": "Descargar certificado",
+"qc.card.standards.meta": "PDF • 1 página",
+
 
       "products.heading": "Productos Principales",
       "products.intro": "Mariscos premium FAO 34, procesados con estándares de exportación.",
@@ -277,6 +283,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "qc.card.trace.text": "De la capture au conteneur — documentation complète.",
       "qc.card.sgs.title": "Partenaire Sécurité SGS",
       "qc.card.sgs.text": "Inspections indépendantes disponibles avant toute commande.",
+"qc.card.standards.cta": "Télécharger le certificat",
+"qc.card.standards.meta": "PDF • 1 page",
+
 
       "products.heading": "Produits phares",
       "products.intro": "Produits de la mer premium, FAO 34, transformés selon les standards d’exportation.",
@@ -300,6 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "shipment.docs.packing": "Liste de Colisage",
       "shipment.partners.title": "Partenaires d’Expédition",
       "shipment.partners.text": "Des transporteurs mondiaux de confiance pour des livraisons ponctuelles.",
+
 
       "contact.heading": "Nous contacter",
       "contact.intro": "Indiquez vos besoins — spécifications, volumes, destination et délais.",
@@ -369,6 +379,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "qc.card.trace.text": "Dalla cattura al container — documentazione completa.",
       "qc.card.sgs.title": "Partner SGS per la sicurezza",
       "qc.card.sgs.text": "Ispezioni indipendenti disponibili prima di qualsiasi ordine.",
+"qc.card.standards.cta": "Scarica il certificato",
+"qc.card.standards.meta": "PDF • 1 pagina",
+
 
       "products.heading": "Prodotti Principali",
       "products.intro": "Frutti di mare premium (FAO 34), lavorati secondo standard di esportazione.",
@@ -416,13 +429,13 @@ document.addEventListener("DOMContentLoaded", () => {
       "nav.home": "الرئيسية",
       "nav.about": "من نحن",
       "nav.factory": "مصنعنا",
-      "nav.compliance": "الامتثال",
+      "nav.compliance": "الجودة",
       "nav.products": "المنتجات",
       "nav.shipment": "الشحن",
       "nav.contact": "التواصل",
-      "cta.quote": "اطلب عرض سعر",
+      "cta.quote": "اطلب عرض ",
 
-      "hero.title": "مأكولات بحرية موريتانية مميزة — مباشرة من المحيط",
+      "hero.title": "منتجات بحرية موريتانية مميزة — مباشرة من المحيط",
       "hero.subtitle": "منتجات بحرية عالية الجودة ومستدامة من مياه موريتانيا الغنية، تُعالج في مصنعنا المعتمد من الاتحاد الأوروبي وتُسلم مجمدة إلى الأسواق الدولية.",
       "hero.button": "منتجاتنا",
 
@@ -434,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "about.tl.2018.li3": "خطوط تقطيع ومعالجة حديثة",
       "about.tl.2019.title": "اعتماد التصدير إلى الاتحاد الأوروبي",
       "about.tl.2019.text": "الحصول على الاتفاق الصحي؛ مطابق للمعايير الموريتانية والأوروبية.",
-      "about.tl.2023.title": "توسعة الطاقة",
+      "about.tl.2023.title": "توسعة القدرة الاستيعابية",
       "about.tl.2023.text": "ترقية البنية التحتية بتمويل دولي — تضاعفت القدرة ثلاث مرات.",
 
       "factory.heading": "مصنعنا",
@@ -453,7 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "factory.details.quality.li2": "يتضمن كل شحن <strong>شهادة صحية</strong> رسمية",
       "factory.details.quality.li3": "فحوصات <strong>SGS</strong> مستقلة قبل أي طلب",
 
-      "qc.heading": "الجودة والامتثال",
+      "qc.heading": "الجودة والسلامة",
       "qc.intro": "معتمدة ومفتشة وقابلة للتتبع بالكامل — منتجاتنا تلبي أعلى المعايير الدولية.",
       "qc.card.standards.title": "معايير دولية",
       "qc.card.standards.text": "اعتماد تصدير الاتحاد الأوروبي وضوابط HACCP صارمة في كل مرحلة.",
@@ -461,6 +474,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "qc.card.trace.text": "من الصيد إلى الحاوية — توثيق كامل للمنتج.",
       "qc.card.sgs.title": "شريك السلامة SGS",
       "qc.card.sgs.text": "فحوصات مستقلة متاحة قبل أي طلب.",
+"qc.card.standards.cta": "تحميل الشهادة",
+"qc.card.standards.meta": "PDF • صفحة واحدة",
+
 
       "products.heading": "المنتجات الرئيسية",
       "products.intro": "منتجات بحرية مميزة من منطقة FAO 34، تُعالج وفق معايير التصدير.",
