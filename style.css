@@ -854,5 +854,40 @@ html[dir="rtl"] .site-header .nav-list a {
 
   #mainNav ul li {
     margin: 0.5rem 0;
+
+
+
+
+
+     /* Keep header layout LTR even in RTL (logo, CTA, language switch stay put) */
+[dir="rtl"] .site-header .header-inner { direction: ltr; }
+
+/* ---------- Desktop (>=901px) ---------- */
+/* Only reverse the order of the nav links on desktop */
+@media (min-width: 901px) {
+  [dir="rtl"] .site-header .nav-list { 
+    flex-direction: row-reverse;
+  }
+  /* Link text reads RTL but layout stays LTR */
+  [dir="rtl"] .site-header .nav-list a {
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+/* ---------- Mobile (<=900px) ---------- */
+/* On mobile we keep the stacked column; just right-align for Arabic */
+@media (max-width: 900px) {
+  [dir="rtl"] .site-header .nav-list {
+    flex-direction: column;        /* do NOT row-reverse on mobile */
+    align-items: flex-end;         /* push items to the right edge */
+  }
+  [dir="rtl"] .site-header .nav-list a {
+    width: 100%;
+    text-align: right;
+    direction: rtl;
+  }
+}
+
   }
 }
