@@ -23,17 +23,29 @@
     <nav class="main-nav" id="mainNav">
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
       <ul class="nav-list">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#quality">Our Factory</a></li>
-        <li><a href="#quality-points">Compliance</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#shipment">Shipment</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home" data-i18n="nav.home">Home</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#quality" data-i18n="nav.factory">Our Factory</a></li>
+        <li><a href="#quality-points" data-i18n="nav.compliance">Compliance</a></li>
+        <li><a href="#products" data-i18n="nav.products">Products</a></li>
+        <li><a href="#shipment" data-i18n="nav.shipment">Shipment</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </nav>
 
-    <a class="cta" href="#contact">REQUEST FOR A QUOTE</a>
+    <a class="cta" href="#contact" data-i18n="cta.quote">Request a quote</a>
+
+    <!-- Language switcher (added) -->
+    <div class="lang-switch">
+      <label for="langSwitch" class="sr-only">Language</label>
+      <select id="langSwitch" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+        <option value="fr">FR</option>
+        <option value="it">IT</option>
+        <option value="ar">AR</option>
+      </select>
+    </div>
   </div>
 </header>
 
@@ -42,16 +54,16 @@
   <section id="home" class="hero-section section-light hero">
     <div class="container hero-inner">
       <div class="hero-text">
-        <h2 class="display">
+        <h2 class="display" data-i18n="hero.title">
           Premium Mauritanian Seafood<br />
           <span class="display__dash">—</span> direct from the ocean
         </h2>
-        <p>
+        <p data-i18n="hero.subtitle">
           High-quality, sustainably sourced seafood from the rich waters of Mauritania,
           processed in our EU-approved facility and delivered fresh-frozen to international markets.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#products">OUR PRODUCTS</a>
+          <a class="btn btn-primary" href="#products" data-i18n="hero.button">OUR PRODUCTS</a>
         </div>
       </div>
       <div class="hero-image">
@@ -63,8 +75,8 @@
   <!-- ===== ABOUT ===== -->
   <section id="about" class="section-dark-navy">
     <div class="container">
-      <h2 class="section-heading">About Our Company</h2>
-      <p class="section-intro">
+      <h2 class="section-heading" data-i18n="about.heading">About Our Company</h2>
+      <p class="section-intro" data-i18n="about.intro">
         Founded in 2017, WOMA PÊCHE is a Mauritanian seafood processor and exporter delivering premium frozen products to international markets. We combine modern processing lines with strict HACCP controls and full traceability — from catch to container.
       </p>
 
@@ -72,11 +84,11 @@
         <div class="tl-item">
           <span class="tl-year">2018</span>
           <div class="tl-box">
-            <h3>Factory Commissioned</h3>
+            <h3 data-i18n="about.tl.2018.title">Factory Commissioned</h3>
             <ul>
-              <li>Nouadhibou facility brought online</li>
-              <li>High-capacity freezing chambers</li>
-              <li>Modern processing & filleting lines</li>
+              <li data-i18n="about.tl.2018.li1">Nouadhibou facility brought online</li>
+              <li data-i18n="about.tl.2018.li2">High-capacity freezing chambers</li>
+              <li data-i18n="about.tl.2018.li3">Modern processing & filleting lines</li>
             </ul>
           </div>
         </div>
@@ -84,16 +96,16 @@
         <div class="tl-item">
           <span class="tl-year">2019</span>
           <div class="tl-box">
-            <h3>EU Export Approval</h3>
-            <p>Sanitary agreement obtained; compliant with Mauritanian and EU standards.</p>
+            <h3 data-i18n="about.tl.2019.title">EU Export Approval</h3>
+            <p data-i18n="about.tl.2019.text">Sanitary agreement obtained; compliant with Mauritanian and EU standards.</p>
           </div>
         </div>
 
         <div class="tl-item">
           <span class="tl-year">2023</span>
           <div class="tl-box">
-            <h3>Capacity Expansion</h3>
-            <p>Upgraded infrastructure with international funding — capacity tripled.</p>
+            <h3 data-i18n="about.tl.2023.title">Capacity Expansion</h3>
+            <p data-i18n="about.tl.2023.text">Upgraded infrastructure with international funding — capacity tripled.</p>
           </div>
         </div>
       </div>
@@ -104,8 +116,8 @@
   <section id="quality" class="section-light">
     <div class="container quality-layout">
       <div class="ql-head">
-        <h2 class="section-heading">Our Factory</h2>
-        <p class="section-intro">
+        <h2 class="section-heading" data-i18n="factory.heading">Our Factory</h2>
+        <p class="section-intro" data-i18n="factory.intro">
           Located in Nouadhibou, Mauritania, our EU-approved facility is equipped with advanced freezing and processing technology to ensure freshness, safety, and quality for international seafood markets.
         </p>
       </div>
@@ -122,7 +134,7 @@
               </svg>
             </span>
             <span class="fact-number">2017</span>
-            <span class="fact-label">Founded</span>
+            <span class="fact-label" data-i18n="factory.fact.founded">Founded</span>
           </div>
 
           <div class="fact-card">
@@ -135,7 +147,7 @@
               </svg>
             </span>
             <span class="fact-number">100+</span>
-            <span class="fact-label">Employees</span>
+            <span class="fact-label" data-i18n="factory.fact.employees">Employees</span>
           </div>
 
           <div class="fact-card">
@@ -148,27 +160,27 @@
             </span>
             <span class="fact-number">500</span>
             <span class="fact-unit">t/day</span>
-            <span class="fact-label">Storage Capacity</span>
+            <span class="fact-label" data-i18n="factory.fact.storage">Storage Capacity</span>
           </div>
         </div>
 
         <div class="factory-details">
           <div class="detail-card">
-            <h3>Processing & Equipment</h3>
+            <h3 data-i18n="factory.details.processing.title">Processing & Equipment</h3>
             <ul>
-              <li>Two cold rooms — <strong>250 tons each</strong></li>
-              <li>Two freezing tunnels (<strong>10 tons</strong> each) + one (<strong>5 tons</strong>)</li>
-              <li>Dedicated filleting & processing rooms</li>
-              <li><strong>0°C</strong> chill room for fresh handling</li>
-              <li>By-products & waste management area</li>
+              <li data-i18n="factory.details.processing.li1">Two cold rooms — <strong>250 tons each</strong></li>
+              <li data-i18n="factory.details.processing.li2">Two freezing tunnels (<strong>10 tons</strong> each) + one (<strong>5 tons</strong>)</li>
+              <li data-i18n="factory.details.processing.li3">Dedicated filleting & processing rooms</li>
+              <li data-i18n="factory.details.processing.li4"><strong>0°C</strong> chill room for fresh handling</li>
+              <li data-i18n="factory.details.processing.li5">By-products & waste management area</li>
             </ul>
           </div>
           <div class="detail-card">
-            <h3>Quality & Safety</h3>
+            <h3 data-i18n="factory.details.quality.title">Quality & Safety</h3>
             <ul>
-              <li>Compliant with Mauritanian & EU food standards</li>
-              <li>Each shipment includes an official <strong>health certificate</strong></li>
-              <li><strong>SGS</strong> inspections available before any order</li>
+              <li data-i18n="factory.details.quality.li1">Compliant with Mauritanian & EU food standards</li>
+              <li data-i18n="factory.details.quality.li2">Each shipment includes an official <strong>health certificate</strong></li>
+              <li data-i18n="factory.details.quality.li3"><strong>SGS</strong> inspections available before any order</li>
             </ul>
           </div>
         </div>
@@ -188,40 +200,40 @@
   <!-- ===== QUALITY & COMPLIANCE ===== -->
   <section id="quality-points" class="section-dark-navy">
     <div class="container">
-      <h2 class="section-heading">Quality & Compliance</h2>
-      <p class="section-intro">
+      <h2 class="section-heading" data-i18n="qc.heading">Quality & Compliance</h2>
+      <p class="section-intro" data-i18n="qc.intro">
         Certified, inspected, and fully traceable — our seafood meets the highest international standards.
       </p>
 
       <div class="qc-grid">
         <div class="qc-card">
-          <div class="qc-icon blue-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48" aria-hidden="true">
+          <div class="qc-icon blue-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/>
             </svg>
           </div>
-          <h3>International Standards</h3>
-          <p>EU export approval and strict HACCP food safety controls at every stage.</p>
+          <h3 data-i18n="qc.card.standards.title">International Standards</h3>
+          <p data-i18n="qc.card.standards.text">EU export approval and strict HACCP food safety controls at every stage.</p>
         </div>
 
         <div class="qc-card">
-          <div class="qc-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4B5563" viewBox="0 0 24 24" width="48" height="48" aria-hidden="true">
+          <div class="qc-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4B5563" viewBox="0 0 24 24" width="48" height="48">
               <circle cx="11" cy="11" r="8" stroke-width="2"></circle>
               <path d="M21 21l-4.35-4.35" stroke-width="2"></path>
             </svg>
           </div>
-          <h3>Full Traceability</h3>
-          <p>From catch to container — complete product documentation.</p>
+          <h3 data-i18n="qc.card.trace.title">Full Traceability</h3>
+          <p data-i18n="qc.card.trace.text">From catch to container — complete product documentation.</p>
         </div>
 
         <div class="qc-card">
           <div class="qc-icon">
             <img src="images/sgs-logo.png" alt="SGS logo">
           </div>
-          <h3>SGS Safety Partner</h3>
-          <p>Independent inspections available prior to any order.</p>
+          <h3 data-i18n="qc.card.sgs.title">SGS Safety Partner</h3>
+          <p data-i18n="qc.card.sgs.text">Independent inspections available prior to any order.</p>
         </div>
       </div>
     </div>
@@ -230,52 +242,52 @@
   <!-- ===== PRODUCTS ===== -->
   <section id="products" class="section-light">
     <div class="container">
-      <h2 class="section-heading">Main Products</h2>
-      <p class="section-intro">Premium seafood sourced in FAO 34 and processed to export standards.</p>
+      <h2 class="section-heading" data-i18n="products.heading">Main Products</h2>
+      <p class="section-intro" data-i18n="products.intro">Premium seafood sourced in FAO 34 and processed to export standards.</p>
 
       <div class="products-grid products-grid--two">
         <article class="product-card">
           <div class="product-media">
             <img src="images/Octopus.png" alt="Octopus" />
           </div>
-          <h3 class="product-title">Octopus</h3>
-          <p class="product-note">Types: TAKO 1–8; PR 1–4</p>
+          <h3 class="product-title" data-i18n="products.octopus.title">Octopus</h3>
+          <p class="product-note" data-i18n="products.octopus.types"><strong>Types:</strong>: TAKO 1–8; PR 1–4</p>
         </article>
 
         <article class="product-card">
           <div class="product-media">
             <img src="images/spiny-lobster.png" alt="Spiny Lobster" />
           </div>
-          <h3 class="product-title">Spiny Lobster</h3>
+          <h3 class="product-title" data-i18n="products.lobster.title">Spiny Lobster</h3>
         </article>
 
         <article class="product-card">
           <div class="product-media">
             <img src="images/crab.png" alt="Crab" />
           </div>
-          <h3 class="product-title">Crab</h3>
+          <h3 class="product-title" data-i18n="products.crab.title">Crab</h3>
         </article>
 
         <article class="product-card">
           <div class="product-media">
             <img src="images/Squid.jpeg" alt="Squid" />
           </div>
-          <h3 class="product-title">Squid</h3>
-          <p class="product-note">Types: GG · G · M · MIX · P · 2P · 3P · 4P</p>
+          <h3 class="product-title" data-i18n="products.squid.title">Squid</h3>
+          <p class="product-note" data-i18n="products.squid.types"><strong>Types:</strong> GG , G , M , MIX , P , 2P , 3P , 4P</p>
         </article>
 
         <article class="product-card">
           <div class="product-media">
             <img src="images/dorade.png" alt="Gilthead Seabream" />
           </div>
-          <h3 class="product-title">Gilthead Seabream</h3>
+          <h3 class="product-title" data-i18n="products.seabream.title">Gilthead Seabream</h3>
         </article>
 
         <article class="product-card">
           <div class="product-media">
             <img src="images/boutargue.jpg" alt="Boutargue / Bottarga" />
           </div>
-          <h3 class="product-title">Boutargue (Bottarga)</h3>
+          <h3 class="product-title" data-i18n="products.bottarga.title">Boutargue (Bottarga)</h3>
         </article>
       </div>
     </div>
@@ -284,30 +296,30 @@
 <!-- ===== SHIPMENT ===== -->
 <section id="shipment" class="section-dark-navy">
   <div class="container">
-    <h2 class="section-heading">Shipment</h2>
-    <p class="section-intro">
+    <h2 class="section-heading" data-i18n="shipment.heading">Shipment</h2>
+    <p class="section-intro" data-i18n="shipment.intro">
       We work with world-class shipping partners to ensure fast, secure, and traceable deliveries across the globe. 
       All our seafood products are loaded in temperature-controlled containers and shipped under strict compliance 
       with international maritime and food safety regulations.
     </p>
     <ul class="list-check">
-      <li>Transit time: 2–4 weeks depending on destination</li>
-      <li>Temperature control: Maintained at -18°C or below</li>
-      <li>Export and Safety Documentation:</li>
+      <li data-i18n="shipment.li1">Transit time: 2–4 weeks depending on destination</li>
+      <li data-i18n="shipment.li2">Temperature control: Maintained at -18°C or below</li>
+      <li data-i18n="shipment.li3">Export and Safety Documentation:</li>
     </ul>
 
     <!-- Documents (badges) -->
     <div class="badges">
-      <span class="badge">Health Certificate</span>
-      <span class="badge">Bill of Lading</span>
-      <span class="badge">Certificate of Origin</span>
-      <span class="badge">Packing List</span>
+      <span class="badge" data-i18n="shipment.docs.health">Health Certificate</span>
+      <span class="badge" data-i18n="shipment.docs.bol">Bill of Lading</span>
+      <span class="badge" data-i18n="shipment.docs.origin">Certificate of Origin</span>
+      <span class="badge" data-i18n="shipment.docs.packing">Packing List</span>
     </div>
 
     <!-- Shipping Partners -->
     <div class="shipping-partners">
-      <h3>Shipping Partners</h3>
-      <p class="partners-tagline">
+      <h3 data-i18n="shipment.partners.title">Shipping Partners</h3>
+      <p class="partners-tagline" data-i18n="shipment.partners.text">
         We work with trusted global carriers to ensure reliable, on-time deliveries worldwide.
       </p>
 
@@ -334,84 +346,78 @@
 
     <!-- Contact form (left / first on mobile) -->
     <div class="contact-card">
-      <h2 class="section-heading">Get in Touch</h2>
-      <p class="section-intro">Tell us about your needs — product specs, volumes, destination, and timelines.</p>
+      <h2 class="section-heading" data-i18n="contact.heading">Get in Touch</h2>
+      <p class="section-intro" data-i18n="contact.intro">
+        Tell us about your needs — product specs, volumes, destination, and timelines.
+      </p>
 
       <form class="contact-form" action="mailto:womapeche@gmail.com" method="post" enctype="text/plain">
-        <label>Name
+        <label>
+          <span data-i18n="form.name">Name</span>
           <input type="text" name="name" required>
         </label>
-        <label>Company
+        <label>
+          <span data-i18n="form.company">Company</span>
           <input type="text" name="company">
         </label>
-        <label>Email
+        <label>
+          <span data-i18n="form.email">Email</span>
           <input type="email" name="email" required>
         </label>
-        <label>Phone / WhatsApp
+        <label>
+          <span data-i18n="form.phone">Phone / WhatsApp</span>
           <input type="text" name="phone">
         </label>
-        <label>Product(s) of Interest
+        <label>
+          <span data-i18n="form.products">Product(s) of Interest</span>
           <textarea name="product" rows="3" placeholder="Octopus TAKO 1–8, Squid GG/G/M, etc."></textarea>
         </label>
-        <label>Message
+        <label>
+          <span data-i18n="form.message">Message</span>
           <textarea name="message" rows="4" placeholder="Quantities, Incoterms, preferred port, delivery window..."></textarea>
         </label>
 
         <div class="form-actions">
-          <button class="btn btn-primary" type="submit">Send Message</button>
-          <button class="btn btn-outline" type="reset">Reset</button>
+          <button class="btn btn-primary" type="submit" data-i18n="form.send">Send Message</button>
+          <button class="btn btn-outline" type="reset" data-i18n="form.reset">Reset</button>
         </div>
       </form>
     </div>
 
     <!-- Direct Contact (right / second on mobile) -->
     <aside class="contact-card info-card">
-      <h3 class="info-title">Direct Contact</h3>
+      <h3 class="info-title" data-i18n="contact.direct">Direct Contact</h3>
 
       <ul class="info-list">
         <li>
-          <span class="info-icon" aria-hidden="true">
-            <!-- Mail icon -->
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
-          </span>
+          <span class="info-icon" aria-hidden="true">📧</span>
           <div class="info-text">
-            <strong>Email</strong>
+            <strong data-i18n="contact.email.label">Email</strong>
             <a href="mailto:womapeche@gmail.com">womapeche@gmail.com</a>
-            <!-- Optional pro alias (edit/remove if not used) -->
-            <!-- <div class="muted">Alt: <a href="mailto:sales@womapeche.com">sales@womapeche.com</a></div> -->
           </div>
         </li>
 
         <li>
-          <span class="info-icon" aria-hidden="true">
-            <!-- Phone icon -->
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.33 1.7.62 2.5a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.58-1.13a2 2 0 0 1 2.11-.45c.8.29 1.64.5 2.5.62A2 2 0 0 1 22 16.92z"/></svg>
-          </span>
+          <span class="info-icon" aria-hidden="true">📞</span>
           <div class="info-text">
-            <strong>Phone / WhatsApp</strong>
+            <strong data-i18n="contact.phone.label">Phone / WhatsApp</strong>
             <a href="tel:+22246576705">+222 46 57 67 05</a>
           </div>
         </li>
 
         <li>
-          <span class="info-icon" aria-hidden="true">
-            <!-- Map pin -->
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
+          <span class="info-icon" aria-hidden="true">📍</span>
           <div class="info-text">
-            <strong>Address</strong>
-            <div>Industrial Zone, Nouadhibou, Mauritania</div>
+            <strong data-i18n="contact.address.label">Address</strong>
+            <div data-i18n="contact.address.value">Industrial Zone, Nouadhibou, Mauritania</div>
           </div>
         </li>
 
         <li>
-          <span class="info-icon" aria-hidden="true">
-            <!-- Clock -->
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </span>
+          <span class="info-icon" aria-hidden="true">⏰</span>
           <div class="info-text">
-            <strong>Hours</strong>
-            <div>Mon — Sat: 07:00 — 20:00 GMT</div>
+            <strong data-i18n="contact.hours.label">Hours</strong>
+            <div data-i18n="contact.hours.value">Mon — Sat: 07:00 — 20:00 GMT</div>
           </div>
         </li>
       </ul>
@@ -430,6 +436,7 @@
 
   </div>
 </section>
+
 
 
 </main>
