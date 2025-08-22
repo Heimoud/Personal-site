@@ -523,13 +523,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setDirByLang(lang) {
   document.documentElement.lang = lang;
-  
-  if (lang === "ar") {
-    document.documentElement.classList.add("rtl");
-  } else {
-    document.documentElement.classList.remove("rtl");
-  }
+  document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr"; // <- important
+  if (lang === "ar") document.documentElement.classList.add("rtl");
+  else document.documentElement.classList.remove("rtl");
 }
+
 
 
   function applyTranslations(lang) {
@@ -561,3 +559,4 @@ function setDirByLang(lang) {
 
   initLang();
 });
+
