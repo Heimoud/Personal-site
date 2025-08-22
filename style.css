@@ -409,3 +409,84 @@ section:target{ scroll-margin-top:96px; }
 
 /* ========= Utilities ========= */
 .fade-in{ opacity:1 !important; transform:none !important; }
+
+
+/* --- Stacked-card language switcher (matches the screenshot) --- */
+.lang-switch{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.45rem .65rem;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  user-select:none;
+  isolation:isolate;          /* keep pseudo elements behind */
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+
+/* stacked purple layers */
+.lang-switch::before,
+.lang-switch::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  z-index:-1;
+}
+.lang-switch::before{
+  translate: 6px 6px;          /* first layer (darker purple) */
+  background:#5b5bf7;
+  opacity:.95;
+}
+.lang-switch::after{
+  translate: 12px 12px;        /* second layer (light purple) */
+  background:#e7c2ff;
+  opacity:.95;
+}
+
+.lang-switch:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px rgba(0,0,0,.12);
+}
+
+/* the select itself – looks like a bold label */
+.lang-switch select{
+  appearance:none;
+  border:none;
+  background:transparent;
+  font-weight:800;
+  font-size:.98rem;
+  color:#111827;
+  padding:.1rem 1.4rem .1rem .2rem;   /* space for caret */
+  min-width: 120px;
+  cursor:pointer;
+}
+.lang-switch select:focus{
+  outline:none;
+}
+.lang-switch:focus-within{
+  box-shadow:0 0 0 3px rgba(91,91,247,.15), 0 8px 18px rgba(0,0,0,.12);
+}
+
+/* caret */
+.lang-caret{
+  position:absolute;
+  right:.55rem;
+  font-weight:800;
+  pointer-events:none;
+  transform: translateY(1px);
+}
+
+/* compact on phones */
+@media (max-width:900px){
+  .lang-switch{ padding:.4rem .6rem; }
+  .lang-switch select{ min-width: 96px; }
+}
+
+/* keep the switcher visually LTR even when site is Arabic */
+[dir="rtl"] .lang-switch{ direction:ltr; }
+[dir="rtl"] .lang-switch select{ text-align:left; }
+
