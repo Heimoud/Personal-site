@@ -1,5 +1,5 @@
 /* =========================================================
-   WOMA PÊCHE — Clean, consolidated stylesheet
+   WOMA PÊCHE — Consolidated stylesheet (clean)
    ========================================================= */
 
 /* ========= Theme & Base ========= */
@@ -46,8 +46,7 @@ section:target{ scroll-margin-top:96px; }
 }
 .header-inner{
   display:flex; align-items:center; gap:1rem; padding:.85rem 0;
-  /* Freeze physical layout LTR even when page dir is RTL */
-  justify-content:flex-start;
+  justify-content:flex-start;                 /* stable LTR layout */
 }
 .brand{ display:inline-flex; align-items:center; gap:.75rem; flex:0 0 auto; }
 .logo{ width:36px; height:36px; border-radius:10px; object-fit:cover; box-shadow:var(--shadow); }
@@ -60,9 +59,7 @@ section:target{ scroll-margin-top:96px; }
 .nav-list a{ color:var(--ink); text-decoration:none; padding-bottom:.2rem; }
 .nav-list a:hover{ border-bottom:2px solid var(--ink); }
 
-/* CTA + Lang switch placement */
 .cta{ margin-left:12px; }
-.lang-switch{ margin-left:8px; }
 
 /* ========= Buttons ========= */
 .cta,.btn{
@@ -145,7 +142,6 @@ section:target{ scroll-margin-top:96px; }
 .ql-left{ grid-area:left; }
 .ql-right{ grid-area:right; }
 
-/* Facts */
 .factory-facts{ display:flex; gap:1rem; flex-wrap:wrap; margin:.85rem 0 1rem; }
 .fact-card{
   background:#f7f7f7; padding:1rem 1.25rem; border-radius:12px; text-align:center;
@@ -157,7 +153,6 @@ section:target{ scroll-margin-top:96px; }
 .fact-unit{ font-size:.95rem; font-weight:700; color:#b21e34; margin-top:-.25rem; }
 .fact-label{ font-size:.9rem; color:#94a3b8; }
 
-/* Detail cards */
 .factory-details{ display:grid; grid-template-columns:1fr; gap:1rem; }
 .detail-card{
   background:#fff; border:1px solid var(--border); border-radius:12px;
@@ -165,12 +160,11 @@ section:target{ scroll-margin-top:96px; }
 }
 .detail-card h3{ margin:.25rem 0 .5rem; }
 
-/* Right collage */
+/* collage */
 .quality__grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:.5rem; }
 .tile{ border-radius:var(--radius); box-shadow:var(--shadow); object-fit:cover; height:340px; width:100%; }
 
 /* ========= Quality & Compliance ========= */
-/* Safer, auto-fitting cards: no overflow on phones */
 .qc-grid{
   display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
   gap:1.6rem; max-width:1200px; margin:0 auto; justify-items:center;
@@ -187,7 +181,7 @@ section:target{ scroll-margin-top:96px; }
 .qc-icon img{ max-height:48px; }
 .blue-icon svg{ color:var(--ocean); stroke:var(--ocean); width:48px; height:48px; }
 
-/* Certificate button inside QC card */
+/* QC certificate button */
 .qc-card .btn-cert{
   display:inline-flex; align-items:center; gap:.45rem;
   margin-top:.75rem; padding:.55rem 1rem; border-radius:999px;
@@ -209,12 +203,9 @@ section:target{ scroll-margin-top:96px; }
 
 .product-card{
   background:#fff; border:1px solid var(--border);
-  border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
+  border-radius:20px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);
   display:flex; flex-direction:column; height:100%;
   transition: transform .25s ease, box-shadow .25s ease;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 .product-card:hover{ transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
 
@@ -224,13 +215,9 @@ section:target{ scroll-margin-top:96px; }
   display:flex; align-items:center; justify-content:center;
   padding:14px; border-bottom:1px solid #eef2f7;
 }
-.product-media img{
-  width:100%; height:100%; object-fit:contain; object-position:center; border-radius:10px;
-}
+.product-media img{ width:100%; height:100%; object-fit:contain; object-position:center; border-radius:10px; }
 .product-title{ font-size:1.5rem; font-weight:800; margin:.9rem 1rem .4rem; color:#1a2738; }
-.product-note{
-  margin:.25rem 1rem 1.1rem; color:#2c3e50; font-size:1.05rem; font-weight:500; letter-spacing:.3px;
-}
+.product-note{ margin:.25rem 1rem 1.1rem; color:#2c3e50; font-size:1.05rem; font-weight:500; letter-spacing:.3px; }
 .product-note strong{ font-weight:700; color:#111827; }
 
 /* ========= Shipment ========= */
@@ -247,7 +234,7 @@ section:target{ scroll-margin-top:96px; }
   backdrop-filter:blur(1px);
 }
 
-/* Shipping Partners */
+/* Partners */
 .shipping-partners{ margin-top:2rem; text-align:left; }
 .shipping-partners h3{ font-size:1.4rem; margin:0 0 .3rem; color:#fff; }
 .partners-tagline{ font-size:1rem; color:#d1d5db; margin:0 0 1rem; max-width:520px; }
@@ -328,36 +315,85 @@ section:target{ scroll-margin-top:96px; }
   align-items:center; justify-content:space-between; gap:.75rem; color:var(--ink-weak);
 }
 
-/* ========= Language Switcher (new, clearer) ========= */
+/* ========= Language Switcher (stacked card) ========= */
 .lang-switch{
-  display:flex; align-items:center; gap:.5rem;
-  padding:.35rem .5rem; border:1px solid var(--border);
-  border-radius:999px; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.06);
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  padding:.45rem .65rem;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
   user-select:none;
+  isolation:isolate;
+  transition:transform .15s ease, box-shadow .15s ease;
+  margin-left:8px;
 }
-.lang-switch .lang-icon{
-  width:18px; height:18px; opacity:.85; flex:0 0 18px;
+.lang-switch::before,
+.lang-switch::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  z-index:-1;
 }
-.lang-switch .lang-label{ font-weight:700; font-size:.95rem; color:var(--ink); }
-.lang-switch .lang-select-wrap{ position:relative; display:flex; align-items:center; }
+.lang-switch::before{
+  translate: 6px 6px;            /* darker purple layer */
+  background:#5b5bf7;
+  opacity:.95;
+}
+.lang-switch::after{
+  translate: 12px 12px;          /* lighter purple layer */
+  background:#e7c2ff;
+  opacity:.95;
+}
+.lang-switch:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px rgba(0,0,0,.12);
+}
+/* Select: bold text, no native icons/labels */
 .lang-switch select{
-  appearance:none; border:1px solid var(--border); border-radius:10px;
-  padding:.4rem 1.6rem .4rem .6rem; font-weight:700; background:#fff; color:var(--ink);
-  cursor:pointer; min-width:110px;
+  -webkit-appearance:none !important;
+  -moz-appearance:none !important;
+  appearance:none !important;
+  border:none;
+  background:transparent !important;
+  background-image:none !important;
+  font-weight:800;
+  font-size:.98rem;
+  color:#111827;
+  padding:.1rem 1.4rem .1rem .2rem;   /* room for caret */
+  min-width:120px;
+  cursor:pointer;
 }
-.lang-switch .lang-caret{
-  position:absolute; right:.5rem; pointer-events:none; font-size:.9rem; opacity:.7;
+.lang-switch select:focus{ outline:none; }
+.lang-switch:focus-within{
+  box-shadow:0 0 0 3px rgba(91,91,247,.15), 0 8px 18px rgba(0,0,0,.12);
 }
-.lang-switch select:focus{ outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(229,69,85,.12); }
-.lang-switch:hover{ box-shadow:0 4px 10px rgba(0,0,0,.10); }
-/* Keep switcher LTR in Arabic so it looks consistent */
+/* caret */
+.lang-caret{
+  position:absolute;
+  right:.55rem;
+  font-weight:800;
+  pointer-events:none;
+  transform: translateY(1px);
+}
+/* Compact on phones */
+@media (max-width:900px){
+  .lang-switch{ padding:.4rem .6rem; }
+  .lang-switch select{ min-width:96px; }
+}
+/* Keep switcher visually LTR even on RTL pages */
 [dir="rtl"] .lang-switch{ direction:ltr; }
 [dir="rtl"] .lang-switch select{ text-align:left; }
+/* Hide any stray label/icon styles from older markup */
+.lang-switch .lang-label, .lang-switch .lang-icon{ display:none !important; }
 
 /* ========= Mobile Nav ========= */
 @media (max-width:900px){
   .nav-toggle{ display:block; }
-  .main-nav{ width:100%; order:3; } /* sit after brand and cta/lang */
+  .main-nav{ width:100%; order:3; }
   .nav-list{
     flex-direction:column; background:#fff;
     position:absolute; top:60px; left:0; right:0;
@@ -368,7 +404,7 @@ section:target{ scroll-margin-top:96px; }
   .nav-list li{ padding:.8rem 1rem; border-top:1px solid #eee; }
   .nav-list a{ display:block; width:100%; color:#333; }
 
-  /* Header stable order on mobile */
+  /* fixed order so brand stays first, then CTA/lang, then nav below */
   .site-header .brand{ order:1; }
   .site-header .cta, .site-header .lang-switch{ order:2; }
 }
@@ -393,134 +429,14 @@ section:target{ scroll-margin-top:96px; }
   .partner-box img{ max-height:32px; }
 }
 
-/* ========= RTL support (layout stays stable) ========= */
-/* Keep header layout LTR even when page dir is RTL (Arabic) */
+/* ========= RTL support (header stays LTR) ========= */
+/* Freeze header layout LTR even when page is RTL */
 [dir="rtl"] .site-header .header-inner{ direction:ltr; }
-
-/* Desktop (>=901px): reverse only the nav links for RTL reading order */
+/* Desktop: reverse only nav links for RTL reading order */
 @media (min-width:901px){
   [dir="rtl"] .site-header .nav-list{ flex-direction:row-reverse; }
   [dir="rtl"] .site-header .nav-list a{ direction:rtl; text-align:right; }
 }
 
-/* Optional text alignment helpers when .rtl class is present */
-.rtl body { direction: rtl; text-align: right; }
-.rtl h1,.rtl h2,.rtl h3,.rtl p,.rtl li,.rtl label,.rtl input,.rtl textarea{ text-align:right; }
-
 /* ========= Utilities ========= */
 .fade-in{ opacity:1 !important; transform:none !important; }
-
-
-/* --- Stacked-card language switcher (matches the screenshot) --- */
-.lang-switch{
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-  gap:.35rem;
-  padding:.45rem .65rem;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:12px;
-  box-shadow:0 2px 8px rgba(0,0,0,.06);
-  user-select:none;
-  isolation:isolate;          /* keep pseudo elements behind */
-  transition:transform .15s ease, box-shadow .15s ease;
-}
-
-/* stacked purple layers */
-.lang-switch::before,
-.lang-switch::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:12px;
-  z-index:-1;
-}
-.lang-switch::before{
-  translate: 6px 6px;          /* first layer (darker purple) */
-  background:#5b5bf7;
-  opacity:.95;
-}
-.lang-switch::after{
-  translate: 12px 12px;        /* second layer (light purple) */
-  background:#e7c2ff;
-  opacity:.95;
-}
-
-.lang-switch:hover{
-  transform:translateY(-1px);
-  box-shadow:0 6px 16px rgba(0,0,0,.12);
-}
-
-/* the select itself – looks like a bold label */
-.lang-switch select{
-  appearance:none;
-  border:none;
-  background:transparent;
-  font-weight:800;
-  font-size:.98rem;
-  color:#111827;
-  padding:.1rem 1.4rem .1rem .2rem;   /* space for caret */
-  min-width: 120px;
-  cursor:pointer;
-}
-.lang-switch select:focus{
-  outline:none;
-}
-.lang-switch:focus-within{
-  box-shadow:0 0 0 3px rgba(91,91,247,.15), 0 8px 18px rgba(0,0,0,.12);
-}
-
-/* caret */
-.lang-caret{
-  position:absolute;
-  right:.55rem;
-  font-weight:800;
-  pointer-events:none;
-  transform: translateY(1px);
-}
-
-/* compact on phones */
-@media (max-width:900px){
-  .lang-switch{ padding:.4rem .6rem; }
-  .lang-switch select{ min-width: 96px; }
-}
-
-/* keep the switcher visually LTR even when site is Arabic */
-[dir="rtl"] .lang-switch{ direction:ltr; }
-
-
-/* Remove globe/label decoration from <select> (especially Chrome/Edge) */
-.lang-switch select {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  background: transparent !important;
-  padding-left: .4rem !important; /* clean spacing */
-}
-
-/* Hide built-in icon on Edge/IE */
-.lang-switch select::-ms-expand {
-  display: none;
-}
-
-
-/* Kill any leftover label/icon in the switcher */
-.lang-switch .lang-label,
-.lang-switch .lang-icon { display: none !important; }
-
-/* Make sure the select shows ONLY the chosen option text */
-.lang-switch select {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  background: transparent !important;
-  background-image: none !important;   /* strip any injected icon */
-  padding-left: .4rem !important;
-}
-
-/* Hide old Edge dropdown arrow */
-.lang-switch select::-ms-expand { display: none; }
-
-[dir="rtl"] .lang-switch select{ text-align:left; }
-
