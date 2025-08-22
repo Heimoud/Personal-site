@@ -679,3 +679,62 @@ section:target{ scroll-margin-top:96px; }
 @media (max-width: 360px) {
   .site-header .brand-text small { display: none !important; }
 }
+
+
+/* === MOBILE NAV: keep toggle on first row; slide menu under header === */
+@media (max-width:900px){
+  /* Keep the <nav> small so its button stays on the same row as the logo */
+  .site-header .main-nav{
+    width:auto !important;            /* override old width:100% */
+    order:2;                          /* sits after brand */
+    margin-left:auto;                 /* push to right edge */
+  }
+
+  .site-header .nav-toggle{
+    display:block;
+    background:none;
+    border:0;
+    font-size:1.9rem;
+    line-height:1;
+    cursor:pointer;
+    padding:.25rem .35rem;
+  }
+
+  /* The dropdown menu panel */
+  .site-header .nav-list{
+    position:fixed;                   /* escape header flow */
+    top:56px;                         /* header height on mobile (tweak if needed) */
+    left:0; right:0;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    border-bottom:1px solid #eee;
+    box-shadow:0 12px 24px rgba(0,0,0,.08);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+    z-index:9999;                     /* above everything */
+  }
+  .site-header .main-nav.nav-open .nav-list{
+    max-height:70vh;                  /* reveal menu */
+  }
+  .site-header .nav-list li{
+    padding:1rem;
+    border-top:1px solid #f1f1f1;
+  }
+  .site-header .nav-list a{
+    display:block;
+    width:100%;
+    color:#111827;
+  }
+}
+
+/* If Arabic, keep menu items right-aligned but same behavior */
+@media (max-width:900px){
+  [dir="rtl"] .site-header .nav-list{
+    align-items:flex-end;
+    text-align:right;
+  }
+}
+
