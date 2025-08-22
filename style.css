@@ -889,5 +889,33 @@ html[dir="rtl"] .site-header .nav-list a {
   }
 }
 
+
+     /* Keep header layout LTR even when site is RTL (Arabic) */
+[dir="rtl"] .site-header .header-inner { direction: ltr; }
+
+/* Use auto-margins instead of space-between so order is stable */
+.site-header .header-inner {
+  justify-content: flex-start;       /* overrides space-between */
+}
+.site-header .brand { flex: 0 0 auto; }
+.site-header .main-nav { margin-left: auto; }      /* pushes nav to the right side */
+.site-header .cta { margin-left: 12px; }
+.site-header .lang-switch { margin-left: 8px; }
+
+/* Mobile: keep brand first, CTA/lang second, nav third (full-width below) */
+@media (max-width: 900px){
+  .site-header .brand { order: 1; }
+  .site-header .cta,
+  .site-header .lang-switch { order: 2; }
+  .site-header .main-nav { order: 3; width:100%; }  /* your menu still expands below */
+}
+
+/* Desktop (>=901px): only reverse the nav links’ order in RTL */
+@media (min-width: 901px){
+  [dir="rtl"] .site-header .nav-list { flex-direction: row-reverse; }
+  [dir="rtl"] .site-header .nav-list a { direction: rtl; text-align: right; }
+}
+
+
   }
 }
