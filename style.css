@@ -635,3 +635,47 @@ section:target{ scroll-margin-top:96px; }
   }
 }
 
+
+/* === Mobile header compact overrides === */
+@media (max-width: 600px) {
+  /* tighter header spacing */
+  .site-header .header-inner { gap:.4rem; padding:.6rem 0; }
+  .site-header .brand { gap:.35rem; }
+
+  /* shrink logo (override fixed size) */
+  .site-header .brand .logo {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 8px;
+  }
+
+  /* shrink company name + tagline */
+  .site-header .brand-text h1 {
+    font-size: .95rem !important;
+    line-height: 1.15;
+    letter-spacing: .01em;
+  }
+  .site-header .brand-text small {
+    font-size: .70rem !important;
+    line-height: 1.1;
+  }
+
+  /* smaller language switcher */
+  .lang-switch {
+    padding: .28rem .46rem !important;
+    border-radius: 10px !important;
+  }
+  .lang-switch::before { translate: 4px 4px !important; }
+  .lang-switch::after  { translate: 8px 8px !important; }
+  .lang-switch select {
+    min-width: 70px !important;      /* enough for EN/AR */
+    font-size: .80rem !important;
+    padding: .1rem 1rem .1rem .2rem !important;
+  }
+  .lang-caret { right: .4rem !important; transform: translateY(1px) scale(.9); }
+}
+
+/* ultra-narrow phones: hide tagline to save space */
+@media (max-width: 360px) {
+  .site-header .brand-text small { display: none !important; }
+}
