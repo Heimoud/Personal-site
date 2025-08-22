@@ -1672,3 +1672,116 @@ ul {
   [dir="rtl"] .site-header .nav-list{ text-align:right; align-items:flex-end; }
 }
 
+/* === FINAL MOBILE HEADER + LANGUAGE SWITCHER OVERRIDES === */
+@media (max-width: 600px){
+
+  /* --- header row: reserve right gutter for the two controls --- */
+  body .site-header .header-inner{
+    position:relative !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    gap:.35rem !important;
+    padding:.55rem .75rem !important;
+    padding-right:6rem !important; /* space for switcher + hamburger */
+    flex-wrap:nowrap !important;
+  }
+
+  /* brand can shrink; text ellipses (never wraps) */
+  body .site-header .brand{ flex:1 1 auto !important; min-width:0 !important; gap:.35rem !important; }
+  body .site-header .brand .logo{ width:26px !important; height:26px !important; border-radius:8px !important; }
+  body .site-header .brand-text{ min-width:0 !important; overflow:hidden !important; }
+  body .site-header .brand-text h1,
+  body .site-header .brand-text small{
+    white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; max-width:100% !important;
+  }
+  body .site-header .brand-text h1{ font-size:.9rem !important; line-height:1.1 !important; }
+  body .site-header .brand-text small{ font-size:.65rem !important; line-height:1.1 !important; }
+
+  /* --- controls pinned in the reserved gutter --- */
+  body .site-header .nav-toggle,
+  body .lang-switch{
+    position:absolute !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+    z-index:5 !important;
+  }
+
+  /* hamburger at far right */
+  body .site-header .nav-toggle{
+    right:.5rem !important;
+    display:block !important;
+    font-size:1.6rem !important;
+    background:none !important; border:0 !important;
+    line-height:1 !important;
+  }
+
+  /* ultra-compact language pill just left of hamburger */
+  body .lang-switch{
+    right:2.8rem !important;          /* sits just before the hamburger */
+    height:22px !important;
+    padding:0 .28rem !important;
+    border:1px solid #cfd4da !important;
+    border-radius:6px !important;
+    background:#fff !important;
+    box-shadow:0 1px 2px rgba(0,0,0,.05) !important;
+    gap:.25rem !important;
+  }
+  /* remove any fancy layered backgrounds from earlier blocks */
+  body .lang-switch::before,
+  body .lang-switch::after{ display:none !important; }
+
+  /* select text small but >=16px to avoid iOS zoom */
+  body .lang-switch select{
+    -webkit-appearance:none !important; appearance:none !important;
+    border:0 !important; background:transparent !important;
+    font-weight:700 !important;
+    font-size:16px !important;            /* iOS friendly */
+    line-height:20px !important;
+    min-width:56px !important;            /* fits EN/AR */
+    height:20px !important;
+    padding:0 .9rem 0 .2rem !important;   /* space for caret */
+    cursor:pointer !important;
+  }
+  body .lang-switch::after{
+    content:"▾"; position:absolute; right:.3rem; font-size:.75rem; pointer-events:none;
+  }
+
+  /* hide big CTA to keep the row tight */
+  body .site-header .cta{ display:none !important; }
+
+  /* --- dropdown panel: no line when closed; appears below header when open --- */
+  body .site-header .nav-list{
+    position:fixed !important;
+    top:56px !important;                 /* header height on mobile */
+    left:0 !important; right:0 !important;
+    background:#fff !important;
+    flex-direction:column !important;
+    max-height:0 !important;
+    overflow:hidden !important;
+    transition:max-height .35s ease !important;
+    z-index:9999 !important;
+    border-bottom:0 !important;          /* prevent faint line when closed */
+    box-shadow:none !important;
+    pointer-events:none !important;
+    display:flex !important;
+  }
+  body .site-header .main-nav.nav-open .nav-list{
+    max-height:70vh !important;
+    border-bottom:1px solid #eee !important;
+    box-shadow:0 12px 24px rgba(0,0,0,.08) !important;
+    pointer-events:auto !important;
+  }
+  body .site-header .nav-list li{ padding:1rem !important; border-top:1px solid #f1f1f1 !important; }
+  body .site-header .nav-list a{ display:block !important; color:#111827 !important; }
+}
+
+/* Arabic: header stays visually LTR; menu content right-aligned */
+@media (max-width:600px){
+  [dir="rtl"] .site-header .header-inner{ direction:ltr !important; }
+  [dir="rtl"] .lang-switch{ direction:ltr !important; }
+  [dir="rtl"] .lang-switch select{ text-align:left !important; }
+  [dir="rtl"] .site-header .nav-list{ text-align:right !important; align-items:flex-end !important; }
+}
+
+
