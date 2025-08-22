@@ -590,3 +590,31 @@ section:target{ scroll-margin-top:96px; }
   .lang-switch{ order: 2; }
   .main-nav{ order: 3; width: 100%; }
 }
+
+
+/* === Mobile header compact === */
+@media (max-width: 600px) {
+  /* shrink logo image */
+  .site-header .brand img {
+    max-height: 32px;   /* was likely ~50px+ */
+    width: auto;
+  }
+
+  /* shrink company name */
+  .site-header .brand h1,
+  .site-header .brand .site-title {
+    font-size: 0.95rem;   /* was ~1.2rem */
+    line-height: 1.2;
+  }
+
+  /* shrink tagline */
+  .site-header .brand .site-tagline {
+    font-size: 0.7rem;    /* was ~0.9rem */
+    line-height: 1.2;
+  }
+
+  /* tighter spacing */
+  .site-header .brand {
+    gap: 0.25rem;
+  }
+}
