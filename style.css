@@ -504,5 +504,23 @@ section:target{ scroll-margin-top:96px; }
   display: none;
 }
 
+
+/* Kill any leftover label/icon in the switcher */
+.lang-switch .lang-label,
+.lang-switch .lang-icon { display: none !important; }
+
+/* Make sure the select shows ONLY the chosen option text */
+.lang-switch select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  background-image: none !important;   /* strip any injected icon */
+  padding-left: .4rem !important;
+}
+
+/* Hide old Edge dropdown arrow */
+.lang-switch select::-ms-expand { display: none; }
+
 [dir="rtl"] .lang-switch select{ text-align:left; }
 
