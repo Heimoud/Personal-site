@@ -542,7 +542,6 @@ function setDirByLang(lang) {
     });
   }
 
-	<script>
 (function(){
   const sel = document.getElementById('langSwitch');
   if (!sel) return;
@@ -565,7 +564,6 @@ function setDirByLang(lang) {
   adapt();
   window.addEventListener('resize', adapt);
 })();
-</script>
 
 
   function initLang() {
@@ -585,5 +583,6 @@ function setDirByLang(lang) {
 
   initLang();
 });
+
 
 
