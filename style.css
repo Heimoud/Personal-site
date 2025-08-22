@@ -1559,3 +1559,116 @@ ul {
   [dir="rtl"] .lang-switch{ direction: ltr; }
   [dir="rtl"] .lang-switch select{ text-align: left; }
 }
+
+
+/* === MOBILE HEADER: precise alignment + no gap under header === */
+@media (max-width: 600px){
+  /* Keep one tight row and reserve space for controls on the right */
+  .site-header .header-inner{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:.35rem;
+    padding:.48rem .75rem;
+    padding-right:6.25rem; /* reserve space for lang + hamburger */
+  }
+
+  /* Brand compaction + remove any stray margins */
+  .site-header .brand{ flex:1 1 auto; min-width:0; gap:.35rem; }
+  .site-header .brand .logo{ width:26px !important; height:26px !important; border-radius:8px; }
+  .site-header .brand-text{ min-width:0; overflow:hidden; }
+  .site-header .brand-text h1{ margin:0 !important; font-size:.90rem !important; line-height:1.1; white-space:nowrap; text-overflow:ellipsis; }
+  .site-header .brand-text small{ margin:0 !important; font-size:.65rem !important; line-height:1.1; white-space:nowrap; text-overflow:ellipsis; }
+
+  /* Controls pinned on the same vertical center */
+  .site-header .nav-toggle,
+  .lang-switch{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+  }
+
+  /* Hamburger at far right */
+  .site-header .nav-toggle{
+    right:.56rem;
+    font-size:1.6rem;
+    line-height:1;
+    background:none;
+    border:0;
+    display:block;
+    z-index:3;
+  }
+
+  /* Ultra-compact language pill just left of hamburger */
+  .lang-switch{
+    right:2.8rem;                   /* ~2.8rem = space before hamburger */
+    height:22px;
+    padding:0 .26rem !important;
+    border:1px solid #cfd4da;
+    border-radius:6px;
+    background:#fff;
+    display:inline-flex;
+    align-items:center;
+    z-index:3;
+  }
+  .lang-switch select{
+    -webkit-appearance:none !important;
+    appearance:none !important;
+    font-size:.70rem !important;
+    font-weight:600;
+    min-width:46px !important;     /* fits EN/AR */
+    height:20px !important;
+    border:0;
+    background:transparent;
+    padding:0 .85rem 0 .2rem !important; /* space for caret */
+    line-height:20px;
+    cursor:pointer;
+  }
+  .lang-switch::after{
+    content:"▾";
+    position:absolute;
+    right:.25rem;
+    font-size:.65rem;
+    line-height:1;
+    pointer-events:none;
+  }
+
+  /* Mobile dropdown: show borders/shadow ONLY when open to avoid 1px line */
+  .site-header .nav-list{
+    position:fixed;
+    top:54px;                        /* header height; tweak 52–58 if needed */
+    left:0; right:0;
+    background:#fff;
+    flex-direction:column;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+    z-index:9999;
+    display:flex;
+
+    /* prevent the faint line when closed */
+    border-bottom:0 !important;
+    box-shadow:none !important;
+    pointer-events:none;
+  }
+  .site-header .main-nav.nav-open .nav-list{
+    max-height:70vh;
+    border-bottom:1px solid #eee !important;
+    box-shadow:0 12px 24px rgba(0,0,0,.08) !important;
+    pointer-events:auto;
+  }
+  .site-header .nav-list li{ padding:1rem; border-top:1px solid #f1f1f1; }
+  .site-header .nav-list a{ display:block; color:#111827; }
+
+  /* Hide the large header CTA on phones to keep row tight */
+  .site-header .cta{ display:none !important; }
+}
+
+/* Arabic: keep header visually LTR; right-align menu items only */
+@media (max-width:600px){
+  [dir="rtl"] .site-header .header-inner{ direction:ltr; }
+  [dir="rtl"] .lang-switch{ direction:ltr; }
+  [dir="rtl"] .lang-switch select{ text-align:left; }
+  [dir="rtl"] .site-header .nav-list{ text-align:right; align-items:flex-end; }
+}
+
