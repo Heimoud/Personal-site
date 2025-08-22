@@ -738,3 +738,83 @@ section:target{ scroll-margin-top:96px; }
   }
 }
 
+
+/* ——— Compact language switcher ——— */
+.lang-switch{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.22rem .48rem;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:8px;
+  box-shadow:0 1px 2px rgba(0,0,0,.05);
+  line-height:1;
+  /* kill any older layered style */
+  box-sizing:border-box;
+}
+.lang-switch::before,
+.lang-switch::after{ display:none !important; } /* remove old purple layers */
+
+/* tiny globe */
+.ls-globe{
+  font-size: .9rem;
+  line-height: 1;
+}
+.ls-globe::before{
+  content:"🌐";
+  display:block;
+}
+
+/* clean select */
+.lang-switch select{
+  -webkit-appearance:none !important;
+  -moz-appearance:none !important;
+  appearance:none !important;
+  border:0;
+  background:transparent !important;
+  background-image:none !important;
+  font-weight:700;
+  font-size:.9rem;        /* desktop base */
+  color:#111827;
+  padding:0 1rem 0 .1rem; /* room for caret */
+  min-width: 90px;
+  cursor:pointer;
+}
+
+/* caret */
+.lang-switch::after{
+  content:"▾";
+  position:absolute;
+  right:.4rem;
+  font-size:.85rem;
+  pointer-events:none;
+  transform: translateY(1px);
+}
+
+/* keep visually LTR even on RTL pages */
+[dir="rtl"] .lang-switch{ direction:ltr; }
+[dir="rtl"] .lang-switch select{ text-align:left; }
+
+/* ——— Phone: even smaller ——— */
+@media (max-width:600px){
+  .lang-switch{
+    padding:.16rem .38rem;
+    border-radius:7px;
+    gap:.25rem;
+  }
+  .ls-globe{ font-size:.8rem; }
+  .lang-switch select{
+    font-size:.8rem;      /* >= 13px; still comfortable */
+    min-width: 60px;      /* enough for EN/AR */
+    padding:0 .8rem 0 .1rem;
+  }
+  .lang-switch::after{
+    right:.3rem;
+    font-size:.75rem;
+    transform: translateY(1px);
+  }
+}
+
+
