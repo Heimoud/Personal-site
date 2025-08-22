@@ -1435,3 +1435,127 @@ ul {
     font-size:.65rem;
   }
 }
+
+
+/* === FORCE ONE-LINE MOBILE HEADER (no wrap) === */
+@media (max-width: 600px){
+  /* 1) Single row + reserve right gutter for switcher + hamburger */
+  .site-header .header-inner{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap !important;
+    gap: .35rem;
+    padding: .5rem .75rem;
+    padding-right: 6.25rem; /* <-- reserves ~100px for switcher + hamburger */
+  }
+
+  /* 2) Brand can shrink and ellipsis (no wrapping) */
+  .site-header .brand{
+    flex: 1 1 auto;
+    min-width: 0;           /* allow shrink */
+    gap: .35rem;
+  }
+  .site-header .brand .logo{
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 8px;
+  }
+  .site-header .brand-text{
+    min-width: 0;           /* allow text to shrink */
+    overflow: hidden;
+  }
+  .site-header .brand-text h1,
+  .site-header .brand-text small{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  .site-header .brand-text h1{ font-size: .90rem !important; line-height: 1.1; }
+  .site-header .brand-text small{ font-size: .65rem !important; line-height: 1.1; }
+
+  /* Optional: hide tagline on very narrow screens */
+  @media (max-width: 360px){
+    .site-header .brand-text small{ display:none !important; }
+  }
+
+  /* 3) Pin language switcher + hamburger in the reserved right gutter */
+  .site-header .nav-toggle,
+  .lang-switch{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .site-header .nav-toggle{
+    right: .5rem;
+    font-size: 1.6rem;
+    line-height: 1;
+    display: block;
+    background: none;
+    border: 0;
+    z-index: 3;
+  }
+  .lang-switch{
+    right: 2.7rem;                  /* sits just left of hamburger */
+    height: 22px;
+    padding: 0 .25rem !important;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    z-index: 3;
+  }
+  .lang-switch select{
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    font-size: .70rem !important;
+    font-weight: 600;
+    min-width: 46px !important;     /* fits EN/AR */
+    height: 20px !important;
+    border: 0;
+    background: transparent;
+    padding: 0 .85rem 0 .2rem !important;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  .lang-switch::after{
+    content: "▾";
+    position: absolute;
+    right: .25rem;
+    font-size: .65rem;
+    pointer-events: none;
+  }
+
+  /* Free space: hide header CTA on phones */
+  .site-header .cta{ display: none !important; }
+
+  /* Mobile dropdown menu: fixed below header, no overlap with brand */
+  .site-header .nav-list{
+    position: fixed;
+    top: 54px;                       /* header height on mobile; adjust 52–58 if needed */
+    left: 0; right: 0;
+    background: #fff;
+    flex-direction: column;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 12px 24px rgba(0,0,0,.08);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+    z-index: 9999;
+    display: flex;
+  }
+  .site-header .main-nav.nav-open .nav-list{ max-height: 70vh; }
+  .site-header .nav-list li{ padding: 1rem; border-top: 1px solid #f1f1f1; }
+  .site-header .nav-list a{ display: block; color: #111827; }
+}
+
+/* Keep header visually LTR even when Arabic is active; right-align menu items only */
+@media (max-width: 600px){
+  [dir="rtl"] .site-header .header-inner{ direction: ltr; }
+  [dir="rtl"] .site-header .nav-list{ text-align: right; align-items: flex-end; }
+  [dir="rtl"] .lang-switch{ direction: ltr; }
+  [dir="rtl"] .lang-switch select{ text-align: left; }
+}
