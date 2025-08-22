@@ -536,3 +536,57 @@ section:target{ scroll-margin-top:96px; }
     font-size: 1.05rem;
   }
 }
+
+
+/* === Compact language switcher tweaks === */
+:root{
+  /* desktop defaults */
+  --ls-pad-y: .42rem;
+  --ls-pad-x: .66rem;
+  --ls-radius: 12px;
+  --ls-layer1: 6px;     /* first shadow offset */
+  --ls-layer2: 12px;    /* second shadow offset */
+}
+
+/* use the variables */
+.lang-switch{
+  padding: var(--ls-pad-y) var(--ls-pad-x);
+  border-radius: var(--ls-radius);
+}
+.lang-switch::before{ translate: var(--ls-layer1) var(--ls-layer1); }
+.lang-switch::after { translate: var(--ls-layer2) var(--ls-layer2); }
+
+/* select + caret spacing */
+.lang-switch select{
+  min-width: 112px;
+  padding: .05rem 1.2rem .05rem .2rem;
+  /* keep at least 16px to avoid iOS zoom */
+  font-size: 16px;
+}
+.lang-caret{ right: .45rem; }
+
+/* ===== Phones: compact style ===== */
+@media (max-width: 480px){
+  :root{
+    --ls-pad-y: .30rem;
+    --ls-pad-x: .50rem;
+    --ls-radius: 10px;
+    --ls-layer1: 4px;
+    --ls-layer2: 8px;
+  }
+  .lang-switch select{
+    min-width: 84px;   /* narrower */
+    font-size: 16px;   /* keeps iOS happy */
+    letter-spacing: .1px;
+  }
+  .lang-caret{ right: .35rem; transform: translateY(2px) scale(.9); }
+}
+
+/* Just in case: prevent header wrapping weirdness on tiny widths */
+@media (max-width: 480px){
+  .site-header .header-inner{ flex-wrap: wrap; }
+  .site-header .brand{ flex: 1 1 auto; min-width: 0; }
+  .site-header .cta{ order: 2; }
+  .lang-switch{ order: 2; }
+  .main-nav{ order: 3; width: 100%; }
+}
