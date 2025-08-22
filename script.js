@@ -542,6 +542,32 @@ function setDirByLang(lang) {
     });
   }
 
+	<script>
+(function(){
+  const sel = document.getElementById('langSwitch');
+  if (!sel) return;
+
+  const FULL = { en: "English", es: "Español", fr: "Français", it: "Italiano", ar: "العربية" };
+  const SHORT = { en: "EN", es: "ES", fr: "FR", it: "IT", ar: "AR" };
+
+  function setLabels(short){
+    const map = short ? SHORT : FULL;
+    Array.from(sel.options).forEach(opt => {
+      if (map[opt.value]) opt.text = map[opt.value];
+    });
+  }
+
+  function adapt(){
+    const isPhone = window.matchMedia('(max-width: 480px)').matches;
+    setLabels(isPhone);
+  }
+
+  adapt();
+  window.addEventListener('resize', adapt);
+})();
+</script>
+
+
   function initLang() {
     const saved = localStorage.getItem('woma_lang') || 'en';
     if (langSelect) {
@@ -559,4 +585,5 @@ function setDirByLang(lang) {
 
   initLang();
 });
+
 
