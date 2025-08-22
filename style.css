@@ -818,3 +818,82 @@ section:target{ scroll-margin-top:96px; }
 }
 
 
+/* === MOBILE HEADER LAYOUT FIX === */
+@media (max-width: 600px){
+  /* keep one-line header and allow absolute children */
+  .site-header .header-inner{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .4rem;
+    flex-wrap: nowrap;
+    padding: .6rem 0;
+  }
+
+  /* brand compact (from earlier) */
+  .site-header .brand { gap:.35rem; }
+  .site-header .brand .logo{ width:28px !important; height:28px !important; border-radius:8px; }
+  .site-header .brand-text h1{ font-size:.95rem !important; line-height:1.15; }
+  .site-header .brand-text small{ font-size:.70rem !important; line-height:1.1; }
+
+  /* put the hamburger in the top-right corner */
+  .site-header .nav-toggle{
+    display:block;
+    position:absolute;
+    right:.5rem;
+    top:.45rem;
+    font-size:1.9rem;
+    padding:.25rem .35rem;
+    border:0;
+    background:none;
+  }
+
+  /* put the language switcher just left of the hamburger */
+  .lang-switch{
+    position:absolute;
+    right:2.8rem;          /* space for the hamburger at far right */
+    top:.55rem;
+    padding:.16rem .38rem !important;
+    border-radius:7px !important;
+    gap:.25rem;
+    z-index:5;             /* above header background */
+  }
+  .lang-switch select{
+    font-size:.8rem !important;
+    min-width:60px !important;   /* enough for EN/AR */
+    padding:0 .8rem 0 .1rem !important;
+  }
+  .lang-switch::after{ right:.3rem; font-size:.75rem; transform:translateY(1px); }
+
+  /* free space: hide header CTA on phones */
+  .site-header .cta{ display:none !important; }
+
+  /* the dropdown panel: fixed below the header, visible when open */
+  .site-header .nav-list{
+    position:fixed;
+    top:56px;              /* header height; tweak 52–60 if needed */
+    left:0; right:0;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    max-height:0;
+    overflow:hidden;
+    border-bottom:1px solid #eee;
+    box-shadow:0 12px 24px rgba(0,0,0,.08);
+    transition:max-height .35s ease;
+    z-index:9999;
+  }
+  .site-header .main-nav.nav-open .nav-list{ max-height:70vh; }
+  .site-header .nav-list li{ padding:1rem; border-top:1px solid #f1f1f1; }
+  .site-header .nav-list a{ display:block; color:#111827; }
+}
+
+/* RTL: right-align menu items on mobile, switcher stays visually LTR */
+@media (max-width:600px){
+  [dir="rtl"] .site-header .nav-list{ align-items:flex-end; text-align:right; }
+  [dir="rtl"] .lang-switch{ direction:ltr; }
+  [dir="rtl"] .lang-switch select{ text-align:left; }
+}
+
+
