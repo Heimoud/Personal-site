@@ -618,3 +618,20 @@ section:target{ scroll-margin-top:96px; }
     gap: 0.25rem;
   }
 }
+
+/* === Mobile language switcher compact === */
+@media (max-width: 600px) {
+  .lang-switch select {
+    font-size: 0.75rem;    /* smaller text */
+    padding: 0.2rem 0.6rem;
+    height: auto;
+    min-width: 58px;       /* enough for "AR" */
+    border-radius: 6px;
+  }
+
+  .lang-switch .lang-caret {
+    font-size: 0.65rem;
+    right: 6px;
+  }
+}
+
