@@ -488,5 +488,21 @@ section:target{ scroll-margin-top:96px; }
 
 /* keep the switcher visually LTR even when site is Arabic */
 [dir="rtl"] .lang-switch{ direction:ltr; }
+
+
+/* Remove globe/label decoration from <select> (especially Chrome/Edge) */
+.lang-switch select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  padding-left: .4rem !important; /* clean spacing */
+}
+
+/* Hide built-in icon on Edge/IE */
+.lang-switch select::-ms-expand {
+  display: none;
+}
+
 [dir="rtl"] .lang-switch select{ text-align:left; }
 
