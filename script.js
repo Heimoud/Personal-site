@@ -1,4 +1,4 @@
-// ===== WOMA PÊCHE – Script (menu, year, smooth scroll, i18n) =====
+// ===== WOMA PÊCHE – Script (menu, year, smooth scroll, i18n, Formspree) =====
 document.addEventListener("DOMContentLoaded", () => {
   // --- Mobile menu toggle ---
   const navToggle = document.getElementById("navToggle");
@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetId = href.substring(1);
         const target = document.getElementById(targetId);
         if (target) {
-          window.scrollTo({ top: target.offsetTop - 70, behavior: "smooth" });
+          const top = target.getBoundingClientRect().top + window.scrollY - 70;
+          window.scrollTo({ top, behavior: "smooth" });
         }
         if (mainNav) mainNav.classList.remove("nav-open");
       }
@@ -33,12 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- i18n setup ---
   const $ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  // Build iOS-style segmented switch from the <select> and fall back on small screens
-const langSelect = document.getElementById("langSwitch");
+  const langSelect = document.getElementById("langSwitch");
 
   const translations = {
     en: {
-      // nav & cta
+      // nav
       "nav.home": "Home",
       "nav.about": "About",
       "nav.factory": "Our Factory",
@@ -46,7 +46,6 @@ const langSelect = document.getElementById("langSwitch");
       "nav.products": "Products",
       "nav.shipment": "Shipment",
       "nav.contact": "Contact",
-   
 
       // hero
       "hero.title": "Premium Mauritanian Seafood — direct from the ocean",
@@ -87,13 +86,12 @@ const langSelect = document.getElementById("langSwitch");
       "qc.intro": "Certified, inspected, and fully traceable — our seafood meets the highest international standards.",
       "qc.card.standards.title": "International Standards",
       "qc.card.standards.text": "EU export approval and strict HACCP food safety controls at every stage.",
+      "qc.card.standards.cta": "Download Certificate",
+      "qc.card.standards.meta": "PDF • 1 page",
       "qc.card.trace.title": "Full Traceability",
       "qc.card.trace.text": "From catch to container — complete product documentation.",
       "qc.card.sgs.title": "SGS Safety Partner",
       "qc.card.sgs.text": "Independent inspections available prior to any order.",
-	"qc.card.standards.cta": "Download Certificate",
-	"qc.card.standards.meta": "PDF • 1 page",
-
 
       // products
       "products.heading": "Main Products",
@@ -137,7 +135,19 @@ const langSelect = document.getElementById("langSwitch");
       "contact.address.label": "Address",
       "contact.address.value": "Industrial Zone, Nouadhibou, Mauritania",
       "contact.hours.label": "Hours",
-      "contact.hours.value": "Mon — Sat: 07:00 — 20:00 GMT"
+      "contact.hours.value": "Mon — Sat: 07:00 — 20:00 GMT",
+
+      // form feedback
+      "form.sending": "Sending…",
+      "form.success": "Thanks! Your message has been sent.",
+      "form.error.required": "Please fill the required fields (Company, Email, Message).",
+      "form.error.generic": "Something went wrong. Please try again.",
+      "form.error.network": "Network error. Please try again.",
+"factory.fact.storage": "Storage Capacity",
+"factory.fact.storage.unit": "t/day",
+"form.responseNote": "We will respond within 24 hours.",
+
+
     },
 
     es: {
@@ -148,7 +158,6 @@ const langSelect = document.getElementById("langSwitch");
       "nav.products": "Productos",
       "nav.shipment": "Envíos",
       "nav.contact": "Contacto",
-
 
       "hero.title": "Mariscos premium de Mauritania — directo del océano",
       "hero.subtitle": "Productos de mar de alta calidad y origen sostenible de las ricas aguas de Mauritania, procesados en nuestra planta aprobada por la UE y entregados ultracongelados a mercados internacionales.",
@@ -185,13 +194,12 @@ const langSelect = document.getElementById("langSwitch");
       "qc.intro": "Certificados, inspeccionados y totalmente trazables — nuestros productos cumplen los estándares internacionales más altos.",
       "qc.card.standards.title": "Normas Internacionales",
       "qc.card.standards.text": "Aprobación de exportación UE y estrictos controles HACCP en todas las etapas.",
+      "qc.card.standards.cta": "Descargar certificado",
+      "qc.card.standards.meta": "PDF • 1 página",
       "qc.card.trace.title": "Trazabilidad Total",
       "qc.card.trace.text": "Desde la captura hasta el contenedor — documentación completa.",
       "qc.card.sgs.title": "Socio de Seguridad SGS",
       "qc.card.sgs.text": "Inspecciones independientes disponibles antes de cualquier pedido.",
-"qc.card.standards.cta": "Descargar certificado",
-"qc.card.standards.meta": "PDF • 1 página",
-
 
       "products.heading": "Productos Principales",
       "products.intro": "Mariscos premium FAO 34, procesados con estándares de exportación.",
@@ -232,7 +240,18 @@ const langSelect = document.getElementById("langSwitch");
       "contact.address.label": "Dirección",
       "contact.address.value": "Zona Industrial, Nuadibú, Mauritania",
       "contact.hours.label": "Horario",
-      "contact.hours.value": "Lun — Sáb: 07:00 — 20:00 GMT"
+      "contact.hours.value": "Lun — Sáb: 07:00 — 20:00 GMT",
+
+      "form.sending": "Enviando…",
+      "form.success": "¡Gracias! Tu mensaje ha sido enviado.",
+      "form.error.required": "Completa los campos obligatorios (Empresa, Correo, Mensaje).",
+      "form.error.generic": "Algo salió mal. Inténtalo de nuevo.",
+      "form.error.network": "Error de red. Inténtalo de nuevo.",
+"factory.fact.storage": "Capacidad de Almacenamiento",
+"factory.fact.storage.unit": "t/día",
+"form.responseNote": "Responderemos en un plazo de 24 horas.",
+
+
     },
 
     fr: {
@@ -243,7 +262,6 @@ const langSelect = document.getElementById("langSwitch");
       "nav.products": "Produits",
       "nav.shipment": "Expédition",
       "nav.contact": "Contact",
-   
 
       "hero.title": "Produits de la mer mauritaniens premium — directement de l’océan",
       "hero.subtitle": "Des produits de la mer de haute qualité et durables des riches eaux de Mauritanie, transformés dans notre usine agréée UE et livrés surgelés aux marchés internationaux.",
@@ -280,13 +298,12 @@ const langSelect = document.getElementById("langSwitch");
       "qc.intro": "Certifiés, inspectés et entièrement traçables — nos produits répondent aux normes internationales les plus élevées.",
       "qc.card.standards.title": "Normes internationales",
       "qc.card.standards.text": "Approbation d’exportation UE et contrôles HACCP stricts à chaque étape.",
+      "qc.card.standards.cta": "Télécharger le certificat",
+      "qc.card.standards.meta": "PDF • 1 page",
       "qc.card.trace.title": "Traçabilité complète",
       "qc.card.trace.text": "De la capture au conteneur — documentation complète.",
       "qc.card.sgs.title": "Partenaire Sécurité SGS",
       "qc.card.sgs.text": "Inspections indépendantes disponibles avant toute commande.",
-"qc.card.standards.cta": "Télécharger le certificat",
-"qc.card.standards.meta": "PDF • 1 page",
-
 
       "products.heading": "Produits phares",
       "products.intro": "Produits de la mer premium, FAO 34, transformés selon les standards d’exportation.",
@@ -311,7 +328,6 @@ const langSelect = document.getElementById("langSwitch");
       "shipment.partners.title": "Partenaires d’Expédition",
       "shipment.partners.text": "Des transporteurs mondiaux de confiance pour des livraisons ponctuelles.",
 
-
       "contact.heading": "Nous contacter",
       "contact.intro": "Indiquez vos besoins — spécifications, volumes, destination et délais.",
       "form.name": "Nom",
@@ -328,7 +344,18 @@ const langSelect = document.getElementById("langSwitch");
       "contact.address.label": "Adresse",
       "contact.address.value": "Zone industrielle, Nouadhibou, Mauritanie",
       "contact.hours.label": "Horaires",
-      "contact.hours.value": "Lun — Sam : 07:00 — 20:00 GMT"
+      "contact.hours.value": "Lun — Sam : 07:00 — 20:00 GMT",
+
+      "form.sending": "Envoi…",
+      "form.success": "Merci ! Votre message a été envoyé.",
+      "form.error.required": "Veuillez remplir les champs obligatoires (Société, Email, Message).",
+      "form.error.generic": "Une erreur s’est produite. Réessayez.",
+      "form.error.network": "Erreur réseau. Réessayez.",
+"factory.fact.storage": "Capacité de stockage",
+"factory.fact.storage.unit": "t/jour",
+"form.responseNote": "Nous vous répondrons sous 24 heures.",
+
+
     },
 
     it: {
@@ -339,7 +366,6 @@ const langSelect = document.getElementById("langSwitch");
       "nav.products": "Prodotti",
       "nav.shipment": "Spedizioni",
       "nav.contact": "Contatti",
-      "cta.quote": "Richiedi un preventivo",
 
       "hero.title": "Frutti di mare premium mauritani — direttamente dall’oceano",
       "hero.subtitle": "Prodotti ittici di alta qualità e sostenibili dalle ricche acque della Mauritania, lavorati nel nostro impianto approvato UE e consegnati surgelati ai mercati internazionali.",
@@ -376,13 +402,12 @@ const langSelect = document.getElementById("langSwitch");
       "qc.intro": "Certificati, ispezionati e pienamente tracciabili — i nostri prodotti rispettano i massimi standard internazionali.",
       "qc.card.standards.title": "Standard internazionali",
       "qc.card.standards.text": "Approvazione export UE e severi controlli HACCP a ogni fase.",
+      "qc.card.standards.cta": "Scarica il certificato",
+      "qc.card.standards.meta": "PDF • 1 pagina",
       "qc.card.trace.title": "Piena tracciabilità",
       "qc.card.trace.text": "Dalla cattura al container — documentazione completa.",
       "qc.card.sgs.title": "Partner SGS per la sicurezza",
       "qc.card.sgs.text": "Ispezioni indipendenti disponibili prima di qualsiasi ordine.",
-"qc.card.standards.cta": "Scarica il certificato",
-"qc.card.standards.meta": "PDF • 1 pagina",
-
 
       "products.heading": "Prodotti Principali",
       "products.intro": "Frutti di mare premium (FAO 34), lavorati secondo standard di esportazione.",
@@ -423,7 +448,18 @@ const langSelect = document.getElementById("langSwitch");
       "contact.address.label": "Indirizzo",
       "contact.address.value": "Zona Industriale, Nouadhibou, Mauritania",
       "contact.hours.label": "Orari",
-      "contact.hours.value": "Lun — Sab: 07:00 — 20:00 GMT"
+      "contact.hours.value": "Lun — Sab: 07:00 — 20:00 GMT",
+
+      "form.sending": "Invio…",
+      "form.success": "Grazie! Il tuo messaggio è stato inviato.",
+      "form.error.required": "Compila i campi obbligatori (Azienda, Email, Messaggio).",
+      "form.error.generic": "Qualcosa è andato storto. Riprova.",
+      "form.error.network": "Errore di rete. Riprova.",
+"factory.fact.storage": "Capacità di stoccaggio",
+"factory.fact.storage.unit": "t/giorno",
+"form.responseNote": "Risponderemo entro 24 ore.",
+
+
     },
 
     ar: {
@@ -434,7 +470,6 @@ const langSelect = document.getElementById("langSwitch");
       "nav.products": "المنتجات",
       "nav.shipment": "الشحن",
       "nav.contact": "التواصل",
-      "cta.quote": "اطلب عرض ",
 
       "hero.title": "منتجات بحرية موريتانية مميزة — مباشرة من المحيط",
       "hero.subtitle": "منتجات بحرية عالية الجودة ومستدامة من مياه موريتانيا الغنية، تُعالج في مصنعنا المعتمد من الاتحاد الأوروبي وتُسلم مجمدة إلى الأسواق الدولية.",
@@ -471,13 +506,12 @@ const langSelect = document.getElementById("langSwitch");
       "qc.intro": "معتمدة ومفتشة وقابلة للتتبع بالكامل — منتجاتنا تلبي أعلى المعايير الدولية.",
       "qc.card.standards.title": "معايير دولية",
       "qc.card.standards.text": "اعتماد تصدير الاتحاد الأوروبي وضوابط HACCP صارمة في كل مرحلة.",
+      "qc.card.standards.cta": "تحميل الشهادة",
+      "qc.card.standards.meta": "PDF • صفحة واحدة",
       "qc.card.trace.title": "تتبع كامل",
       "qc.card.trace.text": "من الصيد إلى الحاوية — توثيق كامل للمنتج.",
       "qc.card.sgs.title": "شريك السلامة SGS",
       "qc.card.sgs.text": "فحوصات مستقلة متاحة قبل أي طلب.",
-"qc.card.standards.cta": "تحميل الشهادة",
-"qc.card.standards.meta": "PDF • صفحة واحدة",
-
 
       "products.heading": "المنتجات الرئيسية",
       "products.intro": "منتجات بحرية مميزة من منطقة FAO 34، تُعالج وفق معايير التصدير.",
@@ -518,116 +552,136 @@ const langSelect = document.getElementById("langSwitch");
       "contact.address.label": "العنوان",
       "contact.address.value": "المنطقة الصناعية، نواذيبو، موريتانيا",
       "contact.hours.label": "ساعات العمل",
-      "contact.hours.value": "الاثنين — السبت: 07:00 — 20:00 بتوقيت غرينتش"
+      "contact.hours.value": "الاثنين — السبت: 07:00 — 20:00 بتوقيت غرينتش",
+
+      "form.sending": "جارٍ الإرسال…",
+      "form.success": "شكرًا! تم إرسال رسالتك.",
+      "form.error.required": "يرجى تعبئة الحقول الإلزامية (الشركة، البريد الإلكتروني، الرسالة).",
+      "form.error.generic": "حدث خطأ ما. حاول مرة أخرى.",
+      "form.error.network": "خطأ في الشبكة. حاول مرة أخرى.",
+
+"factory.fact.storage": "سعة التخزين",
+"factory.fact.storage.unit": "طن/اليوم",
+"form.responseNote": "سنرد خلال 24 ساعة.",
+
     }
   };
 
-function setDirByLang(lang) {
-  document.documentElement.lang = lang;
-  
-  if (lang === "ar") {
-    document.documentElement.classList.add("rtl");
-  } else {
-    document.documentElement.classList.remove("rtl");
-  }
-}
-
-
   function applyTranslations(lang) {
     const dict = translations[lang] || translations.en;
-    $('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
       const val = dict[key];
-      if (typeof val === 'string') {
-        // Use innerHTML to allow <strong> in some strings
-        el.innerHTML = val;
-      }
+      if (typeof val === "string") el.innerHTML = val;
     });
   }
 
-  function initLang() {
-    const saved = localStorage.getItem('woma_lang') || 'en';
-    if (langSelect) {
-      langSelect.value = saved;
-      langSelect.addEventListener('change', () => {
-        const lang = langSelect.value;
-        setDirByLang(lang);
-        applyTranslations(lang);
-        localStorage.setItem('woma_lang', lang);
-      });
-    }
-    setDirByLang(saved);
-    applyTranslations(saved);
+  function setDirByLang(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir  = (lang === "ar" ? "rtl" : "ltr");
+    if (lang === "ar") document.documentElement.classList.add("rtl");
+    else document.documentElement.classList.remove("rtl");
+
+    // keep hidden _language in sync for native fallback
+    const formLangInput = document.getElementById("formLang");
+    if (formLangInput) formLangInput.value = lang;
   }
 
-  initLang();
-});
+  // --- Language init (robust) ---
+  (function initLang() {
+    const saved   = localStorage.getItem("woma_lang");
+    const initial = saved || (langSelect && langSelect.value) || "en";
 
+    setDirByLang(initial);
+    applyTranslations(initial);
 
-// --- Contact form submission via Formspree ---
-const contactForm   = document.getElementById("contactForm");
-const contactSubmit = document.getElementById("contactSubmit");
-const formStatus    = document.getElementById("formStatus");
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mldlqqlk"; // your endpoint
-
-function t(key, fallback){
-  const lang = localStorage.getItem("woma_lang") || "en";
-  const dict = (translations && translations[lang]) || translations.en || {};
-  return dict[key] || fallback || key;
-}
-
-if (contactForm && contactSubmit && formStatus){
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const fd = new FormData(contactForm);
-    const company = (fd.get("company") || "").toString().trim();
-    const email   = (fd.get("email")   || "").toString().trim();
-    const message = (fd.get("message") || "").toString().trim();
-    const trap    = (fd.get("_gotcha") || "").toString().trim();
-
-    if (trap) return; // bot
-
-    if (!company || !email || !message){
-      formStatus.textContent = t("form.error.required", "Please fill the required fields (Company, Email, Message).");
-      formStatus.style.color = "#e11d48";
-      return;
-    }
-
-    // set reply-to & language for your inbox
-    fd.set("_replyto", email);
-    fd.set("_language", document.documentElement.lang || "en");
-
-    // UI: loading
-    const originalText = contactSubmit.textContent;
-    contactSubmit.disabled = true;
-    contactSubmit.textContent = t("form.sending", "Sending…");
-    formStatus.textContent = "";
-
-    try{
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: fd
+    if (langSelect) {
+      langSelect.value = initial;
+      langSelect.addEventListener("change", () => {
+        const lang = langSelect.value || "en";
+        localStorage.setItem("woma_lang", lang);
+        setDirByLang(lang);
+        applyTranslations(lang);
       });
-
-      if (res.ok){
-        contactForm.reset();
-        formStatus.textContent = t("form.success", "Thanks! Your message has been sent.");
-        formStatus.style.color = "#065f46";
-      }else{
-        const data = await res.json().catch(() => ({}));
-        const msg = data?.errors?.[0]?.message || t("form.error.generic", "Something went wrong. Please try again.");
-        formStatus.textContent = msg;
-        formStatus.style.color = "#e11d48";
-      }
-    }catch(err){
-      formStatus.textContent = t("form.error.network", "Network error. Please try again.");
-      formStatus.style.color = "#e11d48";
-    }finally{
-      contactSubmit.disabled = false;
-      contactSubmit.textContent = originalText;
     }
-  });
-}
+  })();
 
+  // --- Contact form submission via Formspree (AJAX on web, native fallback locally) ---
+  const contactForm   = document.getElementById("contactForm");
+  const contactSubmit = document.getElementById("contactSubmit");
+  const formStatus    = document.getElementById("formStatus");
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mldlqqlk";
+
+  function t(key, fallback){
+    const lang = localStorage.getItem("woma_lang") || "en";
+    const dict = (translations && translations[lang]) || translations.en || {};
+    return dict[key] || fallback || key;
+  }
+
+  if (contactForm && contactSubmit && formStatus){
+    const isLocalFile = window.location.protocol === "file:";
+
+    const onSubmit = async (e) => {
+      e.preventDefault();
+
+      if (!contactForm.checkValidity()){
+        contactForm.reportValidity();
+        return;
+      }
+
+      const fd = new FormData(contactForm);
+      const company = (fd.get("company") || "").toString().trim();
+      const email   = (fd.get("email")   || "").toString().trim();
+      const message = (fd.get("message") || "").toString().trim();
+      const trap    = (fd.get("_gotcha") || "").toString().trim();
+
+      if (trap) return;
+
+      if (!company || !email || !message){
+        formStatus.textContent = t("form.error.required", "Please fill the required fields (Company, Email, Message).");
+        formStatus.style.color = "#e11d48";
+        return;
+      }
+
+      fd.set("_replyto", email);
+      fd.set("_language", document.documentElement.lang || "en");
+
+      if (isLocalFile){
+        contactForm.removeEventListener("submit", onSubmit);
+        contactForm.submit();
+        return;
+      }
+
+      const originalText = contactSubmit.textContent;
+      contactSubmit.disabled = true;
+      contactSubmit.textContent = t("form.sending", "Sending…");
+      formStatus.textContent = "";
+
+      try{
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          body: fd,
+          mode: "cors",
+        });
+
+        if (res.ok){
+          contactForm.reset();
+          formStatus.textContent = t("form.success", "Thanks! Your message has been sent.");
+          formStatus.style.color = "#065f46";
+        }else{
+          contactForm.removeEventListener("submit", onSubmit);
+          contactForm.submit();
+        }
+      }catch(err){
+        contactForm.removeEventListener("submit", onSubmit);
+        contactForm.submit();
+      }finally{
+        contactSubmit.disabled = false;
+        contactSubmit.textContent = originalText;
+      }
+    };
+
+    contactForm.addEventListener("submit", onSubmit);
+  }
+});
