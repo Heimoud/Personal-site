@@ -1185,3 +1185,24 @@ html[dir="rtl"] .site-header .brand-text{
   box-shadow: 0 2px 6px rgba(0,0,0,.04); /* faint shadow */
 }
 
+/* --- Fix hairline seam under sticky header --- */
+.site-header{
+  border-bottom: 0 !important;       /* ensure no border draws */
+  box-shadow: none;                   /* or keep a soft shadow if you like */
+  transform: translateZ(0);           /* new compositing layer */
+  backface-visibility: hidden;
+}
+
+/* On iOS Safari specifically, disable backdrop-filter to kill the seam */
+@supports (-webkit-touch-callout: none) {
+  .site-header{
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-color: #fff !important;  /* opaque to replace the blur */
+  }
+}
+
+/* If you still want a subtle separation without a line, add a faint shadow */
+.site-header.seamless {
+  box-shadow: 0 2px 6px rgba(0,0,0,.04);
+}
