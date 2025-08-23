@@ -828,3 +828,285 @@ html[dir="rtl"] .site-header .nav-list a {
   font-size:.85rem;
   color:#6b7280; /* muted */
 }
+
+
+@media (max-width: 600px) {
+  .brand-text h1 {
+    font-size: 0.95rem;   /* smaller title */
+  }
+  .brand-text small {
+    font-size: 0.7rem;    /* smaller tagline */
+  }
+  .logo {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+html[dir="rtl"] .brand {
+  flex-direction: row; /* keep logo left, text right */
+}
+html[dir="rtl"] .brand-text {
+  text-align: right; /* only align the text to the right */
+}
+
+
+/* Keep logo + brand text LTR always */
+html[dir="rtl"] .brand {
+  flex-direction: row !important;   /* logo left, text right */
+}
+html[dir="rtl"] .brand-text {
+  text-align: left !important;      /* keep company name/tagline left aligned */
+}
+
+
+/* Keep brand tight and left-aligned in all languages */
+.brand{
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0 !important;            /* no space between logo and text */
+}
+
+/* Ensure brand text stays left-aligned even in Arabic */
+html[dir="rtl"] .brand{
+  flex-direction: row !important;  /* logo left, text right (unchanged) */
+}
+html[dir="rtl"] .brand-text{
+  text-align: left !important;     /* keep text left-aligned */
+}
+
+/* Mobile sizing so it doesn’t feel oversized */
+@media (max-width: 600px){
+  .logo{ width: 28px; height: 28px; }
+  .brand-text h1{ font-size: 1rem; line-height: 1.1; }
+  .brand-text small{ font-size: .75rem; }
+}
+
+
+
+
+/* --- Fix brand block across all languages --- */
+.site-header .brand{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;                 /* tight spacing next to the logo */
+}
+.site-header .brand-text{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;     /* keep text left-aligned */
+  text-align:left;            /* force left alignment */
+}
+.site-header .brand-text h1{
+  margin:0;                   /* remove default gaps */
+  line-height:1.1;
+}
+.site-header .brand-text small{
+  margin:0;
+}
+
+/* --- Stop RTL from flipping/centering the brand --- */
+html[dir="rtl"] .site-header .brand{
+  direction:ltr;              /* keep logo left, text to its right */
+}
+html[dir="rtl"] .site-header .brand-text{
+  text-align:left !important; /* override any global RTL text-align */
+  align-items:flex-start;
+}
+
+/* Optional: smaller on phones */
+@media (max-width:600px){
+  .logo{ width:28px; height:28px; }
+  .brand-text h1{ font-size:1rem; }
+  .brand-text small{ font-size:.75rem; }
+}
+
+
+/* Language switch styled like a toggle */
+.lang-switch {
+  display: inline-flex;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.lang-btn {
+  flex: 1;
+  padding: .35rem .8rem;
+  font-size: .85rem;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(0,0,0,.05);
+}
+
+.lang-btn.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+
+/* Turn the language <select> into a pill-style switch */
+.lang-switch select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  padding: .4rem 1.8rem .4rem .9rem;
+  font-weight: 700;
+  font-size: .85rem;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  transition: all .25s ease;
+}
+
+/* little dropdown arrow styled like a knob */
+.lang-switch select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: .6rem;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 2px #fff;
+  pointer-events: none;
+}
+
+/* On focus */
+.lang-switch select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(229,69,85,0.25);
+}
+
+
+/* Segmented (iOS-like) language switcher */
+.lang-switch { position: relative; display: inline-block; }
+
+/* Hide native select but keep it accessible to screen readers */
+.lang-switch select.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+
+/* Pill container */
+.lang-switch .segmented {
+  --count: 5;               /* number of languages */
+  --pad: 4px;
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 999px;
+  padding: var(--pad);
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  user-select: none;
+}
+
+/* Moving thumb */
+.lang-switch .seg-thumb{
+  position: absolute;
+  left: var(--pad);
+  top: var(--pad);
+  width: calc((100% - (var(--pad) * 2)) / var(--count));
+  height: calc(100% - (var(--pad) * 2));
+  background: linear-gradient(135deg, var(--primary), #b21e34);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  transform: translateX(calc(var(--i, 0) * 100%));
+  transition: transform .25s ease;
+  pointer-events: none;
+}
+
+/* Buttons */
+.lang-switch .seg-btn{
+  position: relative;
+  z-index: 1;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: .42rem .9rem;
+  font-weight: 800;
+  font-size: .85rem;
+  letter-spacing: .2px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--ink);
+  transition: color .2s ease;
+}
+.lang-switch .seg-btn.active { color: #fff; }
+
+/* Compact on small screens */
+@media (max-width: 420px){
+  .lang-switch .seg-btn { padding: .36rem .6rem; font-size: .8rem; }
+}
+
+
+/* Hide native select only when we want segmented (JS adds .sr-only) */
+.lang-switch select.sr-only {
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); border:0;
+}
+
+/* Segmented (iOS-like) */
+.lang-switch .segmented{
+  --count: 5;
+  --pad: 4px;
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:var(--pad);
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  user-select:none;
+}
+.lang-switch .seg-thumb{
+  position:absolute; left:var(--pad); top:var(--pad);
+  width:calc((100% - (var(--pad) * 2)) / var(--count));
+  height:calc(100% - (var(--pad) * 2));
+  background:linear-gradient(135deg, var(--primary), #b21e34);
+  border-radius:999px;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  transform:translateX(calc(var(--i, 0) * 100%));
+  transition:transform .25s ease;
+  pointer-events:none;
+}
+.lang-switch .seg-btn{
+  position:relative; z-index:1;
+  appearance:none; border:0; background:transparent;
+  padding:.42rem .9rem; font-weight:800; font-size:.85rem;
+  letter-spacing:.2px; border-radius:999px; cursor:pointer; color:var(--ink);
+  transition:color .2s ease;
+}
+.lang-switch .seg-btn.active{ color:#fff; }
+
+/* Native select style for small screens (fallback) */
+@media (max-width:420px){
+  .lang-switch select{
+    appearance:none; -webkit-appearance:none; -moz-appearance:none;
+    background:#fff;
+    border:2px solid var(--border);
+    border-radius:999px;
+    padding:.5rem 1rem;
+    font-weight:800; font-size:.9rem;
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+  }
+}
+
