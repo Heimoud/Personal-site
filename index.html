@@ -367,36 +367,32 @@
             <h2 class="section-heading" data-i18n="contact.heading">Get in Touch</h2>
             <p class="section-intro" data-i18n="contact.intro">Tell us about your needs — product specs, volumes, destination, and timelines.</p>
 
-            <form class="contact-form" action="mailto:womapeche@gmail.com" method="post" enctype="text/plain">
-              <label>
-                <span data-i18n="form.name">Name</span>
-                <input type="text" name="name" required />
-              </label>
-              <label>
-                <span data-i18n="form.company">Company</span>
-                <input type="text" name="company" />
-              </label>
-              <label>
-                <span data-i18n="form.email">Email</span>
-                <input type="email" name="email" required />
-              </label>
-              <label>
-                <span data-i18n="form.phone">Phone / WhatsApp</span>
-                <input type="text" name="phone" />
-              </label>
-              <label>
-                <span data-i18n="form.products">Product(s) of Interest</span>
-                <textarea name="product" rows="3" placeholder="Octopus TAKO 1–8, Squid GG/G/M, etc."></textarea>
-              </label>
-              <label>
-                <span data-i18n="form.message">Message</span>
-                <textarea name="message" rows="4" placeholder="Quantities, Incoterms, preferred port, delivery window..."></textarea>
-              </label>
-              <div class="form-actions">
-                <button class="btn btn-primary" type="submit" data-i18n="form.send">Send Message</button>
-                <button class="btn btn-outline" type="reset" data-i18n="form.reset">Reset</button>
-              </div>
-            </form>
+           <form class="contact-form" action="mailto:womapeche@gmail.com" method="post" enctype="text/plain">
+  <label>
+    <span data-i18n="form.name">Name</span>
+    <input type="text" name="name" required />
+  </label>
+  <label>
+    <span data-i18n="form.email">Email</span>
+    <input type="email" name="email" required />
+  </label>
+  <label>
+    <span data-i18n="form.products">Product(s) of Interest</span>
+    <textarea name="product" rows="2" placeholder="Octopus, Squid, etc."></textarea>
+  </label>
+  <label>
+    <span data-i18n="form.message">Message</span>
+    <textarea name="message" rows="4" placeholder="Volume, Incoterms, preferred port, timelines..."></textarea>
+  </label>
+
+  <p class="muted" data-i18n="form.note">We’ll respond within 24 hours.</p>
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit" data-i18n="form.send">Send Message</button>
+    <button class="btn btn-outline" type="reset" data-i18n="form.reset">Reset</button>
+  </div>
+</form>
+
           </div>
 
           <!-- Direct Contact (right / second on mobile) -->
@@ -461,6 +457,7 @@
     <script src="script.js" defer></script>
   </body>
 </html>
+
 
 
 
