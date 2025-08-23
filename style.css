@@ -1219,3 +1219,13 @@ html[dir="rtl"] .site-header .brand-text{
   backface-visibility: hidden;
   will-change: transform;
 }
+
+/* Remove the phantom line from the collapsed mobile menu */
+@media (max-width:900px){
+  .main-nav .nav-list{
+    border-bottom: 0 !important;            /* no line when menu is closed */
+  }
+  .main-nav.nav-open .nav-list{
+    border-bottom: 1px solid #eee !important; /* show it only when menu is open */
+  }
+}
