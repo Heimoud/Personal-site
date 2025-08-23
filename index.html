@@ -84,7 +84,7 @@
 
       <div class="timeline--map">
         <div class="tl-item">
-          <span class="tl-year">2018</span>
+          <span class="tl-year">2017</span>
           <div class="tl-box">
             <h3 data-i18n="about.tl.2018.title">Factory Commissioned</h3>
             <ul>
@@ -96,7 +96,7 @@
         </div>
 
         <div class="tl-item">
-          <span class="tl-year">2019</span>
+          <span class="tl-year">2018</span>
           <div class="tl-box">
             <h3 data-i18n="about.tl.2019.title">EU Export Approval</h3>
             <p data-i18n="about.tl.2019.text">Sanitary agreement obtained; compliant with Mauritanian and EU standards.</p>
@@ -104,7 +104,7 @@
         </div>
 
         <div class="tl-item">
-          <span class="tl-year">2023</span>
+          <span class="tl-year">2025</span>
           <div class="tl-box">
             <h3 data-i18n="about.tl.2023.title">Capacity Expansion</h3>
             <p data-i18n="about.tl.2023.text">Upgraded infrastructure with international funding — capacity tripled.</p>
@@ -160,9 +160,10 @@
                 <rect x="13" y="13" width="4" height="4"></rect>
               </svg>
             </span>
-            <span class="fact-number">500</span>
-            <span class="fact-unit">t/day</span>
-            <span class="fact-label" data-i18n="factory.fact.storage">Storage Capacity</span>
+<span class="fact-number">500</span> 
+<span class="fact-unit" data-i18n="factory.fact.storage.unit">t/day</span>
+<span class="fact-label" data-i18n="factory.fact.storage">Storage Capacity</span>
+
           </div>
         </div>
 
@@ -363,34 +364,40 @@
         Tell us about your needs — product specs, volumes, destination, and timelines.
       </p>
 
-<form id="contactForm" class="contact-form" method="POST" novalidate>
-  <!-- Honeypot (spam trap) -->
-  <input type="text" name="_gotcha" autocomplete="off" tabindex="-1"
-         style="position:absolute;left:-9999px;opacity:0;">
+<form id="contactForm"
+      class="contact-form"
+      action="https://formspree.io/f/mldlqqlk"
+      method="POST">
+  <!-- Honeypot -->
+  <input type="text" name="_gotcha" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;">
 
-  <label>
-    <span data-i18n="form.company">Company</span>
-    <input type="text" name="company" required>
-  </label>
+ <label>
+  <span data-i18n="form.company" data-required="*">Company</span>
+  <input type="text" name="company" required autocomplete="organization">
+</label>
 
-  <label>
-    <span data-i18n="form.email">Email</span>
-    <input type="email" name="email" required>
-  </label>
+<label>
+  <span data-i18n="form.email" data-required="*">Email</span>
+  <input type="email" name="email" required autocomplete="email">
+</label>
 
-  <label>
-    <span data-i18n="form.products">Product(s) of Interest</span>
-    <textarea name="product" rows="3" placeholder="Octopus TAKO 1–8, Squid GG/G/M, etc."></textarea>
-  </label>
+<label>
+  <span data-i18n="form.products">Product(s) of Interest</span>
+  <textarea name="product" rows="3" placeholder="Octopus TAKO 1–8, Squid GG/G/M, etc."></textarea>
+</label>
 
-  <label>
-    <span data-i18n="form.message">Message</span>
-    <textarea name="message" rows="4" placeholder="Quantities, Incoterms, preferred port, delivery window..." required></textarea>
-  </label>
+<label>
+  <span data-i18n="form.message" data-required="*">Message</span>
+  <textarea name="message" rows="4" placeholder="Quantities, Incoterms, preferred port, delivery window..." required></textarea>
+</label>
+
+  <div class="form-response-note">
+    <span data-i18n="form.responseNote">We will respond within 24 hours.</span>
+  </div>
 
   <!-- Helpful meta -->
-  <input type="hidden" name="_subject" value="New enquiry from WOMA PÊCHE website">
-  <input type="hidden" name="_replyto" value="">
+  <input type="hidden" name="_subject"  value="New enquiry from WOMA PÊCHE website">
+  <input type="hidden" name="_replyto"  value="">
   <input type="hidden" name="_language" value="en">
 
   <div class="form-actions">
@@ -399,6 +406,8 @@
   </div>
 
   <div id="formStatus" class="muted" role="status" aria-live="polite" style="margin-top:.75rem"></div>
+
+
 </form>
 
 
@@ -417,13 +426,14 @@
           </div>
         </li>
 
-        <li>
-          <span class="info-icon" aria-hidden="true">📞</span>
-          <div class="info-text">
-            <strong data-i18n="contact.phone.label">Phone / WhatsApp</strong>
-            <a href="tel:+22246576705">+222 46 57 67 05</a>
-          </div>
-        </li>
+<li>
+  <div class="info-icon">📞</div>
+  <div class="info-text">
+    <strong data-i18n="contact.phone.label">Phone / WhatsApp</strong>
+    <a href="tel:+22246576705" dir="ltr">+222 46 57 67 05</a>
+  </div>
+</li>
+
 
         <li>
           <span class="info-icon" aria-hidden="true">📍</span>
