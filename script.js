@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- i18n setup ---
   const $ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const langSelect = document.getElementById("langSwitch");
+  // Build iOS-style segmented switch from the <select> and fall back on small screens
+const langSelect = document.getElementById("langSwitch");
 
   const translations = {
     en: {
@@ -45,12 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "nav.products": "Products",
       "nav.shipment": "Shipment",
       "nav.contact": "Contact",
-      "cta.quote": "Request a quote",
+   
 
       // hero
       "hero.title": "Premium Mauritanian Seafood — direct from the ocean",
       "hero.subtitle": "High-quality, sustainably sourced seafood from the rich waters of Mauritania, processed in our EU-approved facility and delivered fresh-frozen to international markets.",
-      "hero.button": "OUR PRODUCTS",
+      "hero.button": "Request a quote",
 
       // about
       "about.heading": "About Our Company",
@@ -147,11 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "nav.products": "Productos",
       "nav.shipment": "Envíos",
       "nav.contact": "Contacto",
-      "cta.quote": "Solicitar cotización",
+
 
       "hero.title": "Mariscos premium de Mauritania — directo del océano",
       "hero.subtitle": "Productos de mar de alta calidad y origen sostenible de las ricas aguas de Mauritania, procesados en nuestra planta aprobada por la UE y entregados ultracongelados a mercados internacionales.",
-      "hero.button": "NUESTROS PRODUCTOS",
+      "hero.button": "Solicitar cotización",
 
       "about.heading": "Sobre Nuestra Empresa",
       "about.intro": "Fundada en 2017, WOMA PÊCHE es una procesadora y exportadora mauritana de mariscos premium. Combinamos líneas modernas con estrictos controles HACCP y trazabilidad total — desde la captura hasta el contenedor.",
@@ -242,11 +243,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "nav.products": "Produits",
       "nav.shipment": "Expédition",
       "nav.contact": "Contact",
-      "cta.quote": "Demander un devis",
+   
 
       "hero.title": "Produits de la mer mauritaniens premium — directement de l’océan",
       "hero.subtitle": "Des produits de la mer de haute qualité et durables des riches eaux de Mauritanie, transformés dans notre usine agréée UE et livrés surgelés aux marchés internationaux.",
-      "hero.button": "NOS PRODUITS",
+      "hero.button": "Demander un devis",
 
       "about.heading": "À propos de notre entreprise",
       "about.intro": "Fondée en 2017, WOMA PÊCHE est une entreprise mauritanienne de transformation et d’exportation de produits de la mer premium. Nous combinons des lignes modernes avec des contrôles HACCP stricts et une traçabilité complète — de la capture au conteneur.",
@@ -342,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       "hero.title": "Frutti di mare premium mauritani — direttamente dall’oceano",
       "hero.subtitle": "Prodotti ittici di alta qualità e sostenibili dalle ricche acque della Mauritania, lavorati nel nostro impianto approvato UE e consegnati surgelati ai mercati internazionali.",
-      "hero.button": "I NOSTRI PRODOTTI",
+      "hero.button": "Richiedi un preventivo",
 
       "about.heading": "Chi siamo",
       "about.intro": "Fondata nel 2017, WOMA PÊCHE è un’azienda mauritana che trasforma ed esporta frutti di mare premium. Uniamo linee moderne a rigorosi controlli HACCP e piena tracciabilità — dalla cattura al container.",
@@ -437,7 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       "hero.title": "منتجات بحرية موريتانية مميزة — مباشرة من المحيط",
       "hero.subtitle": "منتجات بحرية عالية الجودة ومستدامة من مياه موريتانيا الغنية، تُعالج في مصنعنا المعتمد من الاتحاد الأوروبي وتُسلم مجمدة إلى الأسواق الدولية.",
-      "hero.button": "منتجاتنا",
+      "hero.button": "اطلب عرض ",
 
       "about.heading": "نبذة عن شركتنا",
       "about.intro": "تأسست WOMA PÊCHE عام 2017، وهي شركة موريتانية لمعالجة وتصدير المأكولات البحرية المميزة. نجمع بين خطوط حديثة وضوابط HACCP صارمة وتتبع كامل — من الصيد إلى الحاوية.",
@@ -486,7 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "products.crab.title": "السلطعون",
       "products.squid.title": "الحبار",
       "products.squid.types": "<strong>الأنواع:</strong> GG ، G ، M ، MIX ، P ، 2P ، 3P ، 4P",
-      "products.seabream.title": "الدنيس (Gilthead Seabream)",
+      "products.seabream.title": "الدنيس ",
       "products.bottarga.title": "البوتارغا",
 
       "shipment.heading": "الشحن",
@@ -561,4 +562,72 @@ function setDirByLang(lang) {
 
   initLang();
 });
+
+
+// --- Contact form submission via Formspree ---
+const contactForm   = document.getElementById("contactForm");
+const contactSubmit = document.getElementById("contactSubmit");
+const formStatus    = document.getElementById("formStatus");
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mldlqqlk"; // your endpoint
+
+function t(key, fallback){
+  const lang = localStorage.getItem("woma_lang") || "en";
+  const dict = (translations && translations[lang]) || translations.en || {};
+  return dict[key] || fallback || key;
+}
+
+if (contactForm && contactSubmit && formStatus){
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const fd = new FormData(contactForm);
+    const company = (fd.get("company") || "").toString().trim();
+    const email   = (fd.get("email")   || "").toString().trim();
+    const message = (fd.get("message") || "").toString().trim();
+    const trap    = (fd.get("_gotcha") || "").toString().trim();
+
+    if (trap) return; // bot
+
+    if (!company || !email || !message){
+      formStatus.textContent = t("form.error.required", "Please fill the required fields (Company, Email, Message).");
+      formStatus.style.color = "#e11d48";
+      return;
+    }
+
+    // set reply-to & language for your inbox
+    fd.set("_replyto", email);
+    fd.set("_language", document.documentElement.lang || "en");
+
+    // UI: loading
+    const originalText = contactSubmit.textContent;
+    contactSubmit.disabled = true;
+    contactSubmit.textContent = t("form.sending", "Sending…");
+    formStatus.textContent = "";
+
+    try{
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: fd
+      });
+
+      if (res.ok){
+        contactForm.reset();
+        formStatus.textContent = t("form.success", "Thanks! Your message has been sent.");
+        formStatus.style.color = "#065f46";
+      }else{
+        const data = await res.json().catch(() => ({}));
+        const msg = data?.errors?.[0]?.message || t("form.error.generic", "Something went wrong. Please try again.");
+        formStatus.textContent = msg;
+        formStatus.style.color = "#e11d48";
+      }
+    }catch(err){
+      formStatus.textContent = t("form.error.network", "Network error. Please try again.");
+      formStatus.style.color = "#e11d48";
+    }finally{
+      contactSubmit.disabled = false;
+      contactSubmit.textContent = originalText;
+    }
+  });
+}
 
