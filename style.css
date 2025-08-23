@@ -1110,3 +1110,74 @@ html[dir="rtl"] .site-header .brand-text{
   }
 }
 
+
+/* --- Compact header & language switch on small screens --- */
+@media (max-width: 480px){
+  .site-header { /* ensure nothing gets clipped */
+    overflow: visible;
+  }
+  .header-inner{
+    flex-wrap: wrap;           /* allow a second row if needed */
+    gap: .4rem;
+    padding: .6rem 0;
+  }
+  .brand{
+    gap: .5rem;
+  }
+  .logo{
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+  }
+  .brand-text h1{
+    font-size: .95rem;
+    line-height: 1.1;
+  }
+  .brand-text small{
+    font-size: .72rem;
+  }
+
+  /* Make the switch compact and prevent clipping */
+  .lang-switch{
+    order: 3;                  /* drop below brand/nav if space is tight */
+    flex: 0 0 auto;
+    margin-left: 0;
+    margin-top: .35rem;
+  }
+  .lang-switch select{
+    font-size: .85rem;
+    padding: .34rem .6rem;
+    border-radius: 8px;
+    max-width: 100%;
+  }
+
+  /* Keep hamburger and nav behaving nicely */
+  .nav-toggle{ order: 2; }
+  .main-nav{ order: 4; width: 100%; }
+}
+
+
+.contact-form label span::after {
+  content: attr(data-required);
+  margin-left: .25rem;
+  color: #e11d48; /* red */
+  font-weight: bold;
+}
+
+/* Show red * for required fields */
+.contact-form label span[data-required]::after {
+  content: attr(data-required);
+  margin-left: .25rem;
+  color: #e11d48; /* brand red */
+  font-weight: bold;
+}
+
+
+.form-response-note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #5a6b7a; /* muted ink */
+  font-style: italic;
+}
+
+
