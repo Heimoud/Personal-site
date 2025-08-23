@@ -1180,4 +1180,8 @@ html[dir="rtl"] .site-header .brand-text{
   font-style: italic;
 }
 
+.site-header {
+  border-bottom: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,.04); /* faint shadow */
+}
 
