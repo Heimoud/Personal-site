@@ -1206,3 +1206,16 @@ html[dir="rtl"] .site-header .brand-text{
 .site-header.seamless {
   box-shadow: 0 2px 6px rgba(0,0,0,.04);
 }
+
+
+/* --- FINAL fix: no seam under sticky header --- */
+.site-header{
+  background: #fff !important;           /* solid background (no translucency) */
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;       /* kill the blur that causes the hairline */
+  border-bottom: 0 !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,.04);  /* optional subtle depth; remove if you want flat */
+  transform: translateZ(0);               /* avoid subpixel seams during scroll */
+  backface-visibility: hidden;
+  will-change: transform;
+}
