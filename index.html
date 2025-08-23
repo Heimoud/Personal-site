@@ -33,19 +33,21 @@
       </ul>
     </nav>
 
-    <a class="cta" href="#contact" data-i18n="cta.quote">Request a quote</a>
 
     <!-- Language switcher (added) -->
-    <div class="lang-switch">
-      <label for="langSwitch" class="sr-only">Language</label>
-      <select id="langSwitch" aria-label="Language">
-        <option value="en">EN</option>
-        <option value="es">ES</option>
-        <option value="fr">FR</option>
-        <option value="it">IT</option>
-        <option value="ar">AR</option>
-      </select>
-    </div>
+<div class="lang-switch">
+  <label for="langSwitch" class="sr-only">Language</label>
+  <select id="langSwitch" aria-label="Language">
+    <option value="en">EN</option>
+    <option value="es">ES</option>
+    <option value="fr">FR</option>
+    <option value="it">IT</option>
+    <option value="ar">AR</option>
+  </select>
+</div>
+
+
+
   </div>
 </header>
 
@@ -63,7 +65,7 @@
           processed in our EU-approved facility and delivered fresh-frozen to international markets.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#products" data-i18n="hero.button">OUR PRODUCTS</a>
+          <a class="btn btn-primary" href="#contact" data-i18n="hero.button">Request a quote</a>
         </div>
       </div>
       <div class="hero-image">
@@ -361,37 +363,45 @@
         Tell us about your needs — product specs, volumes, destination, and timelines.
       </p>
 
-      <form class="contact-form" action="mailto:womapeche@gmail.com" method="post" enctype="text/plain">
-        <label>
-          <span data-i18n="form.name">Name</span>
-          <input type="text" name="name" required>
-        </label>
-        <label>
-          <span data-i18n="form.company">Company</span>
-          <input type="text" name="company">
-        </label>
-        <label>
-          <span data-i18n="form.email">Email</span>
-          <input type="email" name="email" required>
-        </label>
-        <label>
-          <span data-i18n="form.phone">Phone / WhatsApp</span>
-          <input type="text" name="phone">
-        </label>
-        <label>
-          <span data-i18n="form.products">Product(s) of Interest</span>
-          <textarea name="product" rows="3" placeholder="Octopus TAKO 1–8, Squid GG/G/M, etc."></textarea>
-        </label>
-        <label>
-          <span data-i18n="form.message">Message</span>
-          <textarea name="message" rows="4" placeholder="Quantities, Incoterms, preferred port, delivery window..."></textarea>
-        </label>
+<form id="contactForm" class="contact-form" method="POST" novalidate>
+  <!-- Honeypot (spam trap) -->
+  <input type="text" name="_gotcha" autocomplete="off" tabindex="-1"
+         style="position:absolute;left:-9999px;opacity:0;">
 
-        <div class="form-actions">
-          <button class="btn btn-primary" type="submit" data-i18n="form.send">Send Message</button>
-          <button class="btn btn-outline" type="reset" data-i18n="form.reset">Reset</button>
-        </div>
-      </form>
+  <label>
+    <span data-i18n="form.company">Company</span>
+    <input type="text" name="company" required>
+  </label>
+
+  <label>
+    <span data-i18n="form.email">Email</span>
+    <input type="email" name="email" required>
+  </label>
+
+  <label>
+    <span data-i18n="form.products">Product(s) of Interest</span>
+    <textarea name="product" rows="3" placeholder="Octopus TAKO 1–8, Squid GG/G/M, etc."></textarea>
+  </label>
+
+  <label>
+    <span data-i18n="form.message">Message</span>
+    <textarea name="message" rows="4" placeholder="Quantities, Incoterms, preferred port, delivery window..." required></textarea>
+  </label>
+
+  <!-- Helpful meta -->
+  <input type="hidden" name="_subject" value="New enquiry from WOMA PÊCHE website">
+  <input type="hidden" name="_replyto" value="">
+  <input type="hidden" name="_language" value="en">
+
+  <div class="form-actions">
+    <button id="contactSubmit" class="btn btn-primary" type="submit" data-i18n="form.send">Send Message</button>
+    <button class="btn btn-outline" type="reset" data-i18n="form.reset">Reset</button>
+  </div>
+
+  <div id="formStatus" class="muted" role="status" aria-live="polite" style="margin-top:.75rem"></div>
+</form>
+
+
     </div>
 
     <!-- Direct Contact (right / second on mobile) -->
