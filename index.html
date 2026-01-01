@@ -752,110 +752,117 @@ footer .border-secondary:hover {
     </div>
 </section>
 
-    <section id="contact" class="py-5" style="background-color: #f8f9fa;">
+<style>
+    /* 1. Premium Form Styling */
+    .form-control {
+        padding: 15px; /* Taller, luxury feel */
+        border: 1px solid #e0e0e0;
+        border-radius: 0; /* Square, industrial corners */
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #D4AF37; /* Gold border on click */
+        background-color: #fff;
+    }
+    
+    /* 2. Gold Button */
+    .btn-gold {
+        background-color: #D4AF37;
+        color: white;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border: none;
+        transition: 0.3s;
+    }
+    .btn-gold:hover {
+        background-color: #b5952f; /* Darker gold */
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    /* 3. Footer Links Hover */
+    footer a.text-decoration-none:hover {
+        color: #D4AF37 !important;
+        padding-left: 5px;
+        transition: all 0.3s;
+    }
+</style>
+
+<section id="contact" class="py-5" style="background-color: #f8f9fa;">
     <div class="container">
         <div class="row">
             
             <div class="col-lg-5 mb-5 mb-lg-0">
-                <h5 class="text-warning text-uppercase letter-spacing-2">Get in Touch</h5>
-                <h2 class="display-5 fw-bold text-dark mb-4">Request a <br>Container Quote</h2>
+                <h5 class="text-uppercase" style="color: #D4AF37; letter-spacing: 2px;">Get in Touch</h5>
+                <h2 class="display-5 fw-bold text-dark mb-4">Request a <br>Commercial Quote</h2>
                 <p class="lead text-muted mb-5">
-                    Our sales team responds within 24 hours. Please specify your port of destination for CIF pricing.
+                    We supply wholesalers and distributors worldwide. Contact our export team directly for CIF/FOB pricing.
                 </p>
 
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="d-flex align-items-start">
-                            <div class="bg-white p-3 shadow-sm rounded me-3 text-center" style="width: 50px;">
-                                <i class="fas fa-map-marker-alt text-warning"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold text-dark">Headquarters (Mauritania)</h5>
-                                <p class="text-muted small mb-0">Nouadhibou Port Area, Zone 1<br>Nouadhibou, Mauritania</p>
-                                <p class="small text-primary mb-0 fw-bold">+222 XX XX XX XX</p>
-                            </div>
-                        </div>
+                <div class="d-flex align-items-start mb-4">
+                    <div class="bg-white p-3 shadow-sm me-3 text-center" style="width: 50px;">
+                        <i class="fas fa-map-marker-alt text-warning"></i>
                     </div>
-                    
-                    <div class="col-12">
-                        <div class="d-flex align-items-start">
-                            <div class="bg-white p-3 shadow-sm rounded me-3 text-center" style="width: 50px;">
-                                <i class="fas fa-landmark text-warning"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold text-dark">Europe Sales (Monaco)</h5>
-                                <p class="text-muted small mb-0">7 Avenue de Grande Bretagne<br>98000 Monaco</p>
-                                <p class="small text-primary mb-0 fw-bold">+33 6 XX XX XX XX</p>
-                            </div>
-                        </div>
+                    <div>
+                        <h5 class="fw-bold text-dark">Headquarters & Factory</h5>
+                        <p class="text-muted small mb-0">Nouadhibou Port Area (Zone Franche)<br>Nouadhibou, Mauritania</p>
                     </div>
+                </div>
 
-                    <div class="col-12">
-                        <div class="d-flex align-items-start">
-                            <div class="bg-white p-3 shadow-sm rounded me-3 text-center" style="width: 50px;">
-                                <i class="fas fa-building text-warning"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold text-dark">Middle East (Abu Dhabi)</h5>
-                                <p class="text-muted small mb-0">Global Market Square<br>Abu Dhabi, UAE</p>
-                                <p class="small text-primary mb-0 fw-bold">+971 50 XX XX XX</p>
-                            </div>
-                        </div>
+                <div class="d-flex align-items-start mb-4">
+                    <div class="bg-white p-3 shadow-sm me-3 text-center" style="width: 50px;">
+                        <i class="fas fa-envelope text-warning"></i>
                     </div>
+                    <div>
+                        <h5 class="fw-bold text-dark">Export Department</h5>
+                        <p class="text-muted small mb-0">sales@womapeche.com</p>
+                        <p class="small text-primary mb-0 fw-bold">Response time: &lt; 24h</p>
+                    </div>
+                </div>
 
-                    <div class="col-12 mt-4">
-                        <div class="d-flex align-items-center bg-white p-3 rounded shadow-sm border-start border-5 border-warning">
-                            <i class="fas fa-envelope fa-2x text-dark me-3"></i>
-                            <div>
-                                <p class="text-muted small mb-0 text-uppercase">Export Department</p>
-                                <h5 class="mb-0 text-dark fw-bold">sales@womapeche.com</h5>
-                            </div>
-                        </div>
+                <div class="d-flex align-items-start mb-4">
+                    <div class="bg-white p-3 shadow-sm me-3 text-center" style="width: 50px;">
+                        <i class="fab fa-whatsapp text-warning"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold text-dark">Phone / WhatsApp</h5>
+                        <p class="text-muted small mb-0">+222 XX XX XX XX</p>
+                        <p class="small text-muted mb-0">Available 8:00 - 18:00 GMT</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-7">
-                <div class="bg-white p-5 rounded shadow-lg h-100">
+                <div class="bg-white p-5 shadow-lg h-100">
                     <form>
-                        <div class="row g-3">
+                        <div class="row g-4">
                             <div class="col-md-6">
-                                <label class="form-label text-muted small fw-bold">Full Name</label>
-                                <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="John Doe">
+                                <label class="form-label text-muted small fw-bold">FULL NAME</label>
+                                <input type="text" class="form-control bg-light" placeholder="Your Name">
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label text-muted small fw-bold">Company Name</label>
-                                <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="Seafood Import Ltd">
+                                <label class="form-label text-muted small fw-bold">COMPANY NAME</label>
+                                <input type="text" class="form-control bg-light" placeholder="Company Ltd">
                             </div>
                             
                             <div class="col-md-6">
-                                <label class="form-label text-muted small fw-bold">Email Address</label>
-                                <input type="email" class="form-control form-control-lg bg-light border-0" placeholder="name@company.com">
+                                <label class="form-label text-muted small fw-bold">EMAIL ADDRESS</label>
+                                <input type="email" class="form-control bg-light" placeholder="name@company.com">
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label text-muted small fw-bold">Phone / WhatsApp</label>
-                                <input type="tel" class="form-control form-control-lg bg-light border-0" placeholder="+1 (555) 000-0000">
+                                <label class="form-label text-muted small fw-bold">PHONE / WHATSAPP</label>
+                                <input type="tel" class="form-control bg-light" placeholder="+222...">
                             </div>
 
                             <div class="col-12">
-                                <label class="form-label text-muted small fw-bold">Interested Products</label>
-                                <select class="form-select form-select-lg bg-light border-0">
-                                    <option selected>Select Species...</option>
-                                    <option value="Octopus">Octopus Vulgaris</option>
-                                    <option value="Squid">Squid (Loligo)</option>
-                                    <option value="Cuttlefish">Cuttlefish (Sepia)</option>
-                                    <option value="Demersal">Demersal Fish (Dorade/Grouper)</option>
-                                    <option value="FishMeal">Fish Meal & Oil</option>
-                                </select>
+                                <label class="form-label text-muted small fw-bold">MESSAGE & PRODUCTS OF INTEREST</label>
+                                <textarea class="form-control bg-light" rows="5" placeholder="Please include species, grading, and destination port.&#10;Example: I am looking for 1 container of Octopus T1 and T2, CIF Valencia."></textarea>
                             </div>
 
-                            <div class="col-12">
-                                <label class="form-label text-muted small fw-bold">Message / Port of Destination</label>
-                                <textarea class="form-control form-control-lg bg-light border-0" rows="4" placeholder="I need a quote for 2 containers of T1 Octopus to Port of Valencia..."></textarea>
-                            </div>
-
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn btn-gold btn-lg w-100 py-3">SEND REQUEST</button>
+                            <div class="col-12 mt-2">
+                                <button type="submit" class="btn btn-gold w-100 py-3 text-uppercase">Send Request</button>
                             </div>
                         </div>
                     </form>
@@ -872,11 +879,10 @@ footer .border-secondary:hover {
             <div class="col-md-4 mb-4">
                 <h3 class="fw-bold" style="font-family: 'Playfair Display', serif;"><i class="fas fa-anchor text-warning me-2"></i>WOMAPECHE</h3>
                 <p class="text-white-50 small mt-3">
-                    Premium Mauritanian seafood exporter. Dedicated to sustainable fishing, strict quality control, and global logistics excellence.
+                    Premium Mauritanian seafood exporter. Dedicated to sustainable fishing (FAO 34), strict quality control, and global logistics excellence.
                 </p>
                 <div class="mt-4">
                     <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-lg"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
                     <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
                 </div>
             </div>
@@ -887,7 +893,6 @@ footer .border-secondary:hover {
                     <li class="mb-2"><a href="#home" class="text-white-50 text-decoration-none">Home</a></li>
                     <li class="mb-2"><a href="#products" class="text-white-50 text-decoration-none">Our Catch</a></li>
                     <li class="mb-2"><a href="#logistics" class="text-white-50 text-decoration-none">Logistics</a></li>
-                    <li class="mb-2"><a href="#contact" class="text-white-50 text-decoration-none">Contact</a></li>
                 </ul>
             </div>
 
@@ -906,12 +911,28 @@ footer .border-secondary:hover {
                 <div class="d-flex gap-2 flex-wrap">
                     <span class="border border-secondary rounded px-2 py-1 small text-white-50">HACCP</span>
                     <span class="border border-secondary rounded px-2 py-1 small text-white-50">EU Approved</span>
-                    <span class="border border-secondary rounded px-2 py-1 small text-white-50">FDA Registered</span>
-                    <span class="border
+                    <span class="border border-secondary rounded px-2 py-1 small text-white-50">ONISPA</span>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="border-secondary my-4">
+        
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="small text-white-50 mb-0">&copy; 2024 Womapeche SARL. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="small text-white-50 mb-0">Nouadhibou, Mauritania</p>
+            </div>
+        </div>
+    </div>
+</footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
+
 
 
 
