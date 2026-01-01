@@ -152,7 +152,52 @@
     border-color: var(--accent-gold);
     background-color: white;
 }
-        
+
+        /* 7. HOVER GRADING TABLE STYLING */
+.card-img-wrapper {
+    position: relative; /* Needed to trap the overlay inside */
+}
+
+/* The Overlay Layer */
+.grading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 35, 66, 0.95); /* Deep Blue with 95% opacity */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Show on Hover */
+.product-card:hover .grading-overlay {
+    opacity: 1; /* Visible on hover */
+}
+
+/* The Grading Table inside the overlay */
+.grading-table {
+    width: 100%;
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+.grading-table td {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.grading-title {
+    color: var(--accent-gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
     </style>
 </head>
 <body>
@@ -357,6 +402,7 @@
 
 </body>
 </html>
+
 
 
 
