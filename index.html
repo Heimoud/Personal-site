@@ -238,156 +238,114 @@
     </div>
 </section>
 
-    <section id="products" class="product-section">
+<section id="products" class="product-section">
     <div class="container">
         
         <div class="text-center mb-5">
             <h2 class="section-title">Our Premium Catch</h2>
-            <p class="text-muted lead">Select a category to view specifications</p>
+            <p class="text-muted lead">Hover over image to view size grading</p>
             <div style="width: 60px; height: 3px; background-color: var(--accent-gold); margin: 20px auto;"></div>
         </div>
 
         <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-ceph-tab" data-bs-toggle="pill" data-bs-target="#pills-ceph" type="button" role="tab">
-                    <i class="fas fa-octopus-deploy me-2"></i>Cephalopods
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-pelagic-tab" data-bs-toggle="pill" data-bs-target="#pills-pelagic" type="button" role="tab">
-                    <i class="fas fa-fish me-2"></i>Pelagic
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-demersal-tab" data-bs-toggle="pill" data-bs-target="#pills-demersal" type="button" role="tab">
-                    <i class="fas fa-water me-2"></i>Demersal
-                </button>
-            </li>
+            <li class="nav-item"><button class="nav-link active" id="pills-ceph-tab" data-bs-toggle="pill" data-bs-target="#pills-ceph">Cephalopods</button></li>
+            <li class="nav-item"><button class="nav-link" id="pills-pelagic-tab" data-bs-toggle="pill" data-bs-target="#pills-pelagic">Pelagic</button></li>
+            <li class="nav-item"><button class="nav-link" id="pills-demersal-tab" data-bs-toggle="pill" data-bs-target="#pills-demersal">Demersal</button></li>
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
             
-            <div class="tab-pane fade show active" id="pills-ceph" role="tabpanel">
+            <div class="tab-pane fade show active" id="pills-ceph">
                 <div class="row">
+                    
                     <div class="col-md-4 mb-4">
                         <div class="card product-card">
                             <div class="card-img-wrapper">
-                                <span class="badge-custom">Star Product</span>
-                                <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Octopus">
-                            </div>
+                                <span class="badge-custom">High Demand</span>
+                                <img src="https://images.unsplash.com/photo-1560782352-736f1c4df1ba?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Calamar">
+                                
+                                <div class="grading-overlay">
+                                    <h5 class="grading-title">Grading Specs</h5>
+                                    <table class="grading-table">
+                                        <tr><td><strong>Size GG</strong></td><td>8000+ gr</td></tr>
+                                        <tr><td><strong>Size G</strong></td><td>5000 - 8000 gr</td></tr>
+                                        <tr><td><strong>Size M</strong></td><td>3000 - 5000 gr</td></tr>
+                                        <tr><td><strong>Size P</strong></td><td>2000 - 3000 gr</td></tr>
+                                        <tr><td><strong>Size 2P</strong></td><td>1300 - 2000 gr</td></tr>
+                                        <tr><td><strong>Size 3P</strong></td><td>900 - 1300 gr</td></tr>
+                                    </table>
+                                </div>
+                                </div>
                             <div class="card-body p-4">
-                                <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Octopus Vulgaris</h4>
-                                <ul class="list-unstyled mb-4 text-muted small">
-                                    <li><i class="fas fa-check text-warning me-2"></i>Grades T1 - T8</li>
-                                    <li><i class="fas fa-check text-warning me-2"></i>Flower / Ball Style</li>
-                                </ul>
+                                <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Calamar (Pota)</h4>
+                                <p class="text-muted small">Ommastrephes bartrami</p>
+                                <hr>
                                 <a href="#contact" class="btn btn-outline-dark w-100">Request Quote</a>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card product-card">
+                            <div class="card-img-wrapper">
+                                <span class="badge-custom">Best Seller</span>
+                                <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Octopus">
+                                
+                                <div class="grading-overlay">
+                                    <h5 class="grading-title">Japanese Grading</h5>
+                                    <table class="grading-table">
+                                        <tr><td><strong>T1</strong></td><td>4000+ gr</td></tr>
+                                        <tr><td><strong>T2</strong></td><td>3000 - 4000 gr</td></tr>
+                                        <tr><td><strong>T3</strong></td><td>2000 - 3000 gr</td></tr>
+                                        <tr><td><strong>T4</strong></td><td>1500 - 2000 gr</td></tr>
+                                        <tr><td><strong>T5</strong></td><td>1200 - 1500 gr</td></tr>
+                                        <tr><td><strong>T6</strong></td><td>800 - 1200 gr</td></tr>
+                                    </table>
+                                </div>
+                                </div>
+                            <div class="card-body p-4">
+                                <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Octopus Vulgaris</h4>
+                                <p class="text-muted small">Common Octopus</p>
+                                <hr>
+                                <a href="#contact" class="btn btn-outline-dark w-100">Request Quote</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-4 mb-4">
                         <div class="card product-card">
                             <div class="card-img-wrapper">
                                 <img src="https://images.unsplash.com/photo-1599505963785-2c8c2573679f?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Cuttlefish">
+                                
+                                <div class="grading-overlay">
+                                    <h5 class="grading-title">Industrial Grading</h5>
+                                    <table class="grading-table">
+                                        <tr><td><strong>MIX</strong></td><td>100g - 2000g</td></tr>
+                                        <tr><td><strong>Size 1</strong></td><td>1000g +</td></tr>
+                                        <tr><td><strong>Size 2</strong></td><td>500g - 1000g</td></tr>
+                                        <tr><td><strong>Size 3</strong></td><td>300g - 500g</td></tr>
+                                        <tr><td><strong>Size 4</strong></td><td>150g - 300g</td></tr>
+                                    </table>
+                                </div>
+
                             </div>
                             <div class="card-body p-4">
                                 <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Cuttlefish (Sepia)</h4>
-                                <ul class="list-unstyled mb-4 text-muted small">
-                                    <li><i class="fas fa-check text-warning me-2"></i>Whole Cleaned</li>
-                                    <li><i class="fas fa-check text-warning me-2"></i>Ocean Run / Block</li>
-                                </ul>
+                                <p class="text-muted small">Sepia Officinalis</p>
+                                <hr>
                                 <a href="#contact" class="btn btn-outline-dark w-100">Request Quote</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1560782352-736f1c4df1ba?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Squid">
-                            </div>
-                            <div class="card-body p-4">
-                                <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Squid (Loligo)</h4>
-                                <ul class="list-unstyled mb-4 text-muted small">
-                                    <li><i class="fas fa-check text-warning me-2"></i>Whole Round / Tubes</li>
-                                    <li><i class="fas fa-check text-warning me-2"></i>Various Sizes (2P-4P)</li>
-                                </ul>
-                                <a href="#contact" class="btn btn-outline-dark w-100">Request Quote</a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-
-            <div class="tab-pane fade" id="pills-pelagic" role="tabpanel">
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card">
-                            <div class="card-img-wrapper">
-                                <span class="badge-custom">Volume</span>
-                                <img src="https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Sardines">
-                            </div>
-                            <div class="card-body p-4">
-                                <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Sardines</h4>
-                                <ul class="list-unstyled mb-4 text-muted small">
-                                    <li><i class="fas fa-check text-warning me-2"></i>Sardina Pilchardus</li>
-                                    <li><i class="fas fa-check text-warning me-2"></i>Whole Round (WR)</li>
-                                </ul>
-                                <a href="#contact" class="btn btn-outline-dark w-100">Request Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card">
-                            <div class="card-img-wrapper">
-                                <img src="https://plus.unsplash.com/premium_photo-1673100898517-5d5b74052328?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Mackerel">
-                            </div>
-                            <div class="card-body p-4">
-                                <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Horse Mackerel</h4>
-                                <ul class="list-unstyled mb-4 text-muted small">
-                                    <li><i class="fas fa-check text-warning me-2"></i>Trachurus Trachurus</li>
-                                    <li><i class="fas fa-check text-warning me-2"></i>Flash Frozen Block</li>
-                                </ul>
-                                <a href="#contact" class="btn btn-outline-dark w-100">Request Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="tab-pane fade" id="pills-pelagic">
+                <div class="text-center py-5 text-muted">Pelagic products go here (Sardines, Mackerel)...</div>
             </div>
-
-            <div class="tab-pane fade" id="pills-demersal" role="tabpanel">
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card">
-                            <div class="card-img-wrapper">
-                                <span class="badge-custom">Premium</span>
-                                <img src="https://images.unsplash.com/photo-1596560548464-f010549b84d7?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Sea Bream">
-                            </div>
-                            <div class="card-body p-4">
-                                <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Sea Bream (Dorade)</h4>
-                                <ul class="list-unstyled mb-4 text-muted small">
-                                    <li><i class="fas fa-check text-warning me-2"></i>Royal / Pink / Gray</li>
-                                    <li><i class="fas fa-check text-warning me-2"></i>Gutted or Whole</li>
-                                </ul>
-                                <a href="#contact" class="btn btn-outline-dark w-100">Request Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1580476262798-bddd9ddf5136?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Grouper">
-                            </div>
-                            <div class="card-body p-4">
-                                <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Grouper (Merou)</h4>
-                                <ul class="list-unstyled mb-4 text-muted small">
-                                    <li><i class="fas fa-check text-warning me-2"></i>Epinephelus</li>
-                                    <li><i class="fas fa-check text-warning me-2"></i>High Value Export</li>
-                                </ul>
-                                <a href="#contact" class="btn btn-outline-dark w-100">Request Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             <div class="tab-pane fade" id="pills-demersal">
+                <div class="text-center py-5 text-muted">Demersal products go here (Dorade, Grouper)...</div>
             </div>
 
         </div>
@@ -399,6 +357,7 @@
 
 </body>
 </html>
+
 
 
 
