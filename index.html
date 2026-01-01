@@ -82,6 +82,56 @@
     margin-bottom: 1rem;
     color: var(--primary-blue);
 }
+
+        /* 5. PRODUCT SECTION STYLING */
+.product-section {
+    background-color: white;
+    padding: 80px 0;
+}
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-blue);
+}
+.product-card {
+    border: none;
+    border-radius: 8px; /* Soft corners */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Light shadow */
+    transition: all 0.3s ease;
+    height: 100%; /* Makes all cards same height */
+    overflow: hidden;
+}
+.product-card:hover {
+    transform: translateY(-10px); /* Lifts up on hover */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Stronger shadow */
+}
+.card-img-wrapper {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers area without stretching */
+    transition: transform 0.5s;
+}
+.product-card:hover .card-img-top {
+    transform: scale(1.05); /* Zooms in slightly on hover */
+}
+.badge-custom {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--accent-gold);
+    color: white;
+    padding: 5px 12px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
     </style>
 </head>
 <body>
@@ -166,8 +216,83 @@
         </div>
     </div>
 </section>
+
+    <section id="products" class="product-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Our Premium Catch</h2>
+            <p class="text-muted lead">Processed to EU & Japanese Standards</p>
+            <div style="width: 60px; height: 3px; background-color: var(--accent-gold); margin: 20px auto;"></div>
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <div class="card-img-wrapper">
+                        <span class="badge-custom">Best Seller</span>
+                        <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Mauritanian Octopus">
+                    </div>
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Octopus Vulgaris</h4>
+                        <p class="text-muted small">Scientific Name: Octopus Vulgaris</p>
+                        <hr>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Grades: T1 - T8</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Flower / Ball Style</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> 100% Net Weight Guaranteed</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-dark w-100">Request Specification</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <div class="card-img-wrapper">
+                        <span class="badge-custom">High Demand</span>
+                        <img src="https://images.unsplash.com/photo-1599505963785-2c8c2573679f?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Cuttlefish Sepia">
+                    </div>
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Cuttlefish (Sepia)</h4>
+                        <p class="text-muted small">Scientific Name: Sepia Officinalis</p>
+                        <hr>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Whole Cleaned / Whole Round</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Ocean Run / Industrial Block</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Flash Frozen on Board</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-dark w-100">Request Specification</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <div class="card-img-wrapper">
+                        <span class="badge-custom">Seasonal</span>
+                        <img src="https://images.unsplash.com/photo-1560782352-736f1c4df1ba?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Squid Loligo">
+                    </div>
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-2" style="color: var(--primary-blue);">Squid (Loligo)</h4>
+                        <p class="text-muted small">Scientific Name: Loligo Vulgaris</p>
+                        <hr>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Various Sizes (2P, 3P, 4P)</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Cleaned Tubes / Rings</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Premium Glazing Options</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-dark w-100">Request Specification</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
+
 
