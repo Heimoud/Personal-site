@@ -30,7 +30,7 @@
 
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.6)), url('YOUR-HERO-IMAGE-URL.jpg');
+            background: linear-gradient(rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.6)), url('https://images.unsplash.com/photo-1543621980-60b73c43494e?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             height: 85vh;
@@ -66,22 +66,50 @@
       </div>
     </div>
 
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">WOMAPECHE</a>
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-anchor text-warning me-2"></i>WOMAPECHE
+        </a>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#products">Our Catch</a></li>
-                <li class="nav-item"><a class="nav-link" href="#quality">Quality</a></li>
-                <li class="nav-item"><a class="btn btn-gold ms-3" href="#contact">Request Quote</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#products">Our Catch</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#quality">Quality</a></li>
+                <li class="nav-item ms-lg-3">
+                    <a class="btn btn-gold" href="#contact">Request Quote</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<header id="home" class="hero-section text-white text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="hero-title display-3 fw-bold mb-4">
+                    Premium Mauritanian <span style="color: var(--accent-gold);">Octopus</span>
+                </h1>
+                
+                <p class="hero-subtitle lead mb-5 fs-4">
+                    Direct from the Atlantic (FAO 34). <br>
+                    EU Certified. Flash Frozen. Global Export.
+                </p>
+                
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="#products" class="btn btn-gold btn-lg px-5">View Catalog</a>
+                    <a href="#contact" class="btn btn-outline-light btn-lg px-5">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 
     <!-- Language switcher (added) -->
@@ -531,6 +559,7 @@
 <script src="script.js" defer></script>
 </body>
 </html>
+
 
 
 
