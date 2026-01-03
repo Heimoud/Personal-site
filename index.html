@@ -6,1079 +6,586 @@
     <title>Womapeche | Premium Mauritanian Seafood</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* 1. BRANDING COLORS */
+        /* --- 1. CORE THEME --- */
         :root {
-            --primary-blue: #0A2342; /* Deep Navy */
-            --accent-gold: #D4AF37;  /* Premium Gold */
+            --primary-blue: #0A2342;
+            --secondary-blue: #153255;
+            --accent-gold: #D4AF37;
+            --light-gold: #f9f5e6;
+            --light-gray: #f8f9fa;
         }
         
-        body { font-family: 'Open Sans', sans-serif; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Open Sans', sans-serif; color: #333; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        
+        /* Responsive Typography */
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
 
-        /* 2. NAVBAR STYLING */
-        .navbar {
-            background-color: var(--primary-blue);
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
+        /* --- 2. COMPONENTS --- */
         .btn-gold {
             background-color: var(--accent-gold);
             color: white;
-            font-weight: bold;
-            border-radius: 0; /* Square corners look more industrial */
-            padding: 10px 25px;
-            transition: 0.3s;
+            font-weight: 600;
+            border-radius: 2px;
+            padding: 12px 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            transition: all 0.3s ease;
         }
         .btn-gold:hover {
             background-color: #b5952f;
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
         }
 
-        /* 3. HERO SECTION (THE FIX) */
+        .section-separator {
+            width: 100%;
+            height: auto;
+            display: block;
+            line-height: 0;
+            margin-top: -1px; /* Fix for sub-pixel rendering gaps */
+        }
+
+        /* --- 3. NAVBAR --- */
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 15px 0;
+            transition: 0.3s;
+        }
+        .navbar-brand { font-size: 1.5rem; letter-spacing: 2px; }
+        .nav-link { font-weight: 500; font-size: 0.95rem; }
+
+        /* --- 4. HERO SECTION --- */
         .hero-section {
-            /* This URL is a placeholder. You can replace it with your own factory image later */
-            background: linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.7)), url('https://images.unsplash.com/photo-1543621980-60b73c43494e?q=80&w=2000&auto=format&fit=crop');
+            background: linear-gradient(rgba(10, 35, 66, 0.75), rgba(10, 35, 66, 0.75)), url('https://images.unsplash.com/photo-1543621980-60b73c43494e?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            height: 85vh; /* Takes up 85% of the screen height */
+            min-height: 90vh; /* Taller hero */
             display: flex;
-            align-items: center; /* Centers text vertically */
+            align-items: center;
             justify-content: center;
             color: white;
             position: relative;
+            padding-top: 60px;
+        }
+        /* Wave Separator at bottom of Hero */
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
         }
 
-        /* 4. TRUST SECTION STYLING */
-.trust-section {
-    background-color: #f8f9fa; /* Light clean gray */
-    padding: 80px 0;
-}
-.feature-box {
-    padding: 20px;
-    transition: transform 0.3s;
-}
-.feature-box:hover {
-    transform: translateY(-5px); /* Subtle lift effect */
-}
-.feature-icon {
-    font-size: 3rem;
-    color: var(--primary-blue);
-    margin-bottom: 1.5rem;
-}
-.feature-title {
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--primary-blue);
-}
+        /* --- 5. TRUST/QUALITY SECTION --- */
+        .trust-section { background-color: var(--light-gray); padding: 80px 0; }
+        .feature-box {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        .feature-box:hover { transform: translateY(-10px); }
+        .feature-icon { font-size: 3rem; color: var(--accent-gold); margin-bottom: 20px; }
 
-        /* 5. PRODUCT SECTION STYLING */
-.product-section {
-    background-color: white;
-    padding: 80px 0;
-}
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--primary-blue);
-}
-.product-card {
-    border: none;
-    border-radius: 8px; /* Soft corners */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Light shadow */
-    transition: all 0.3s ease;
-    height: 100%; /* Makes all cards same height */
-    overflow: hidden;
-}
-.product-card:hover {
-    transform: translateY(-10px); /* Lifts up on hover */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Stronger shadow */
-}
-.card-img-wrapper {
-    height: 250px;
-    overflow: hidden;
-    position: relative;
-}
-.card-img-top {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures image covers area without stretching */
-    transition: transform 0.5s;
-}
-.product-card:hover .card-img-top {
-    transform: scale(1.05); /* Zooms in slightly on hover */
-}
-.badge-custom {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: var(--accent-gold);
-    color: white;
-    padding: 5px 12px;
-    font-weight: 600;
-    font-size: 0.8rem;
-    border-radius: 4px;
-    text-transform: uppercase;
-}
-/* 6. TABBED NAVIGATION STYLING */
-.nav-pills .nav-link {
-    color: var(--primary-blue);
-    font-weight: 600;
-    margin: 0 10px;
-    border-radius: 50px; /* Rounded pill shape */
-    padding: 10px 30px;
-    border: 2px solid transparent;
-    transition: all 0.3s;
-    background-color: #f1f1f1;
-}
-.nav-pills .nav-link.active {
-    background-color: var(--accent-gold);
-    color: white;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); /* Gold glow */
-}
-.nav-pills .nav-link:hover:not(.active) {
-    border-color: var(--accent-gold);
-    background-color: white;
-}
+        /* --- 6. PRODUCT SECTION --- */
+        .product-section { background-color: white; padding: 100px 0; }
+        
+        /* Tabs */
+        .nav-pills .nav-link {
+            color: var(--primary-blue);
+            margin: 5px;
+            border-radius: 50px;
+            padding: 10px 25px;
+            border: 1px solid #e0e0e0;
+            background: #fff;
+        }
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+            box-shadow: 0 5px 15px rgba(10, 35, 66, 0.3);
+        }
 
-        /* 7. HOVER GRADING TABLE STYLING */
-.card-img-wrapper {
-    position: relative; /* Needed to trap the overlay inside */
-}
+        /* Product Cards */
+        .product-card {
+            border: none;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .card-img-wrapper {
+            height: 250px;
+            position: relative;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            overflow: hidden;
+        }
+        .card-img-top {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+        .product-card:hover .card-img-top { transform: scale(1.08); }
+        
+        .badge-custom {
+            position: absolute; top: 15px; right: 15px;
+            background-color: var(--accent-gold); color: white;
+            padding: 4px 10px; font-weight: 700; font-size: 0.7rem;
+            border-radius: 4px; text-transform: uppercase; z-index: 2;
+        }
 
-/* The Overlay Layer */
-.grading-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(10, 35, 66, 0.95); /* Deep Blue with 95% opacity */
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; /* Hidden by default */
-    transition: opacity 0.3s ease-in-out;
-    padding: 20px;
-    text-align: center;
-}
+        /* Mobile Tap Hint */
+        .mobile-tap-hint {
+            position: absolute; bottom: 10px; right: 10px;
+            color: var(--primary-blue); opacity: 0.5; font-size: 1.2rem;
+            display: none; /* Hidden on desktop */
+            z-index: 2;
+        }
+        @media (hover: none) {
+            .mobile-tap-hint { display: block; }
+        }
 
-/* Show on Hover */
-.product-card:hover .grading-overlay {
-    opacity: 1; /* Visible on hover */
-}
+        /* Grading Overlay */
+        .grading-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(10, 35, 66, 0.96); color: white;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s; padding: 15px; text-align: center; z-index: 3;
+            backdrop-filter: blur(3px);
+        }
+        .product-card:hover .grading-overlay,
+        .product-card:active .grading-overlay { opacity: 1; } /* Active for mobile touch */
 
-/* The Grading Table inside the overlay */
-.grading-table {
-    width: 100%;
-    font-size: 0.85rem;
-    margin-top: 10px;
-}
-.grading-table td {
-    padding: 4px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-}
-.grading-title {
-    color: var(--accent-gold);
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
+        .grading-table { width: 100%; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.2); margin-top: 10px; }
+        .grading-table td { padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .grading-title { color: var(--accent-gold); font-family: 'Playfair Display', serif; font-size: 1.1rem; }
 
-        /* 8. LOGISTICS SECTION STYLING */
-.logistics-section {
-    background-color: var(--primary-blue);
-    color: white;
-    padding: 80px 0;
-    position: relative;
-    overflow: hidden;
-}
-/* Background map effect */
-.logistics-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/2000px-World_map_blank_without_borders.svg.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.05; /* Very subtle map texture */
-    pointer-events: none;
-}
-.stat-box {
-    border-left: 3px solid var(--accent-gold);
-    padding-left: 20px;
-    margin-bottom: 30px;
-}
-.stat-number {
-    font-size: 3rem;
-    font-weight: 700;
-    font-family: 'Playfair Display', serif;
-    color: var(--accent-gold);
-    line-height: 1;
-}
-.stat-label {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
-}
-.shipping-logo-box {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    text-align: center;
-    opacity: 0.9;
-    transition: 0.3s;
-}
-.shipping-logo-box:hover {
-    opacity: 1;
-    transform: scale(1.05);
-}
+        /* --- 7. FACTORY SECTION --- */
+        .factory-section { background-color: var(--light-gold); padding: 100px 0; }
+        .factory-img-wrapper { border-radius: 8px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .factory-img { width: 100%; object-fit: cover; transition: transform 0.5s; }
+        .factory-img-wrapper:hover .factory-img { transform: scale(1.05); }
+        
+        .factory-icon-box {
+            width: 50px; height: 50px;
+            background: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary-blue);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .factory-spec-item:hover .factory-icon-box { background: var(--accent-gold); color: white; }
 
+        /* --- 8. LOGISTICS SECTION --- */
+        .logistics-section {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+        }
+        .stat-box { border-left: 4px solid var(--accent-gold); padding-left: 20px; margin-bottom: 30px; }
+        .stat-number { font-size: 3.5rem; color: var(--accent-gold); font-weight: 700; line-height: 1; font-family: 'Playfair Display', serif; }
 
-        /* 9. CONTACT & FOOTER STYLING */
+        /* --- 9. CONTACT SECTION --- */
+        .contact-section { background-color: var(--light-gray); padding: 100px 0; }
+        .form-control { padding: 15px; border-radius: 0; border: 1px solid #ddd; }
+        .form-control:focus { border-color: var(--accent-gold); box-shadow: none; }
 
-/* Custom Form Inputs (Removes the default blue border, adds Gold) */
-.form-control, .form-select {
-    padding: 15px; /* Taller, more premium inputs */
-    font-size: 0.95rem;
-}
+        /* --- 10. WHATSAPP FLOAT --- */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 60px; height: 60px;
+            background-color: #25d366; color: white;
+            border-radius: 50%; text-align: center; font-size: 32px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000; transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20b85a; color: white; }
 
-.form-control:focus, .form-select:focus {
-    background-color: #fff !important; /* Stays white on focus */
-    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25); /* Gold Glow */
-    border: 1px solid var(--accent-gold);
-}
-
-/* Typography Helpers */
-.letter-spacing-2 {
-    letter-spacing: 2px;
-}
-
-/* Icon Boxes in Contact Section */
-.bg-white.shadow-sm.rounded {
-    transition: transform 0.3s ease;
-}
-.bg-white.shadow-sm.rounded:hover {
-    transform: translateY(-5px); /* Subtle lift on hover */
-}
-
-/* Footer Link Hover Effects */
-footer a.text-white-50:hover {
-    color: var(--accent-gold) !important;
-    padding-left: 5px; /* Slide effect */
-    transition: all 0.3s ease;
-}
-
-/* Social Icons Hover */
-footer .fab:hover {
-    color: var(--accent-gold) !important;
-    transform: scale(1.2);
-    transition: all 0.3s ease;
-}
-
-/* Certification Badges in Footer */
-footer .border-secondary {
-    border-color: rgba(255,255,255,0.1) !important;
-    transition: 0.3s;
-}
-footer .border-secondary:hover {
-    border-color: var(--accent-gold) !important;
-    color: white !important;
-}
-
-        /* 10. FACTORY SECTION STYLING */
-.factory-img-wrapper {
-    overflow: hidden; /* Keeps the zoom inside the box */
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-.factory-img {
-    transition: transform 0.6s ease;
-    width: 100%;
-    object-fit: cover;
-}
-.factory-img:hover {
-    transform: scale(1.05); /* Slow, premium zoom effect */
-}
-
-.factory-icon-box i {
-    color: var(--primary-blue);
-    transition: 0.3s;
-}
-.factory-spec-item:hover .factory-icon-box i {
-    color: var(--accent-gold); /* Icons turn gold on hover */
-    transform: translateY(-3px);
-}
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/22241412008" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<style>
-    .whatsapp-float {
-        position: fixed;
-        width: 60px;
-        height: 60px;
-        bottom: 30px;
-        right: 30px;
-        background-color: #25d366;
-        color: #FFF;
-        border-radius: 50px;
-        text-align: center;
-        font-size: 30px;
-        box-shadow: 2px 2px 3px #999;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s;
-    }
-    .whatsapp-float:hover {
-        background-color: #128C7E;
-        transform: scale(1.1);
-        color: white;
-    }
-</style>
+    <a href="https://wa.me/22241412008" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-anchor text-warning me-2"></i>WOMAPECHE
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
+            <a class="navbar-brand" href="#"><i class="fas fa-anchor text-warning me-2"></i>WOMAPECHE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link text-white mx-2" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link text-white mx-2" href="#products">Our Catch</a></li>
-                    <li class="nav-item"><a class="nav-link text-white mx-2" href="#quality">Quality</a></li>
-                    <li class="nav-item ms-3">
-                        <a class="btn btn-gold" href="#contact">Request Quote</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link text-white mx-2" href="#factory">Factory</a></li>
+                    <li class="nav-item"><a class="nav-link text-white mx-2" href="#logistics">Logistics</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0"><a class="btn btn-gold" href="#contact">Request Quote</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header id="home" class="hero-section text-center">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h1 class="display-3 fw-bold mb-4">
-                        Premium Mauritanian <span style="color: var(--accent-gold);">Seafood</span>
-                    </h1>
-                    <p class="lead mb-5 fs-4 text-white-50">
-                        Direct from the Atlantic (FAO 34) to Global Markets.<br>
-                        EU Approved & Flash Frozen.
-                    </p>
-                    <div class="d-flex gap-3 justify-content-center">
-                        <a href="#products" class="btn btn-gold btn-lg px-5">View Our Catalog</a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg px-5">Contact Us</a>
-                    </div>
-                </div>
+    <header id="home" class="hero-section">
+        <div class="container text-center position-relative z-1">
+            <h1 class="fw-bold mb-4">Premium Mauritanian <span style="color: var(--accent-gold);">Seafood</span></h1>
+            <p class="lead mb-5 fs-4 text-white-50 mx-auto" style="max-width: 700px;">
+                Direct from the Atlantic (FAO 34) to Global Markets.<br>
+                EU Approved & Flash Frozen.
+            </p>
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                <a href="#products" class="btn btn-gold btn-lg">View Catalog</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg rounded-0 px-4">Contact Us</a>
             </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 30L60 35C120 40 240 50 360 58.3C480 66.7 600 73.3 720 68.3C840 63.3 960 46.7 1080 38.3C1200 30 1320 30 1380 30L1440 30V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V30Z" fill="#f8f9fa"/>
+            </svg>
         </div>
     </header>
 
     <section id="quality" class="trust-section">
-    <div class="container">
-        <div class="row text-center">
-            
-            <div class="col-md-4 mb-4">
-                <div class="feature-box">
-                    <i class="fas fa-ship feature-icon"></i>
-                    <h3 class="feature-title">Direct Source</h3>
-                    <p class="text-muted">
-                        We operate our own fleet in Mauritanian waters (FAO 34). No middlemen, just fresh catch.
-                    </p>
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-ship feature-icon"></i>
+                        <h3 class="h4 fw-bold">Direct Source</h3>
+                        <p class="text-muted mb-0">We operate our own fleet in Mauritanian waters (FAO 34). No middlemen, just fresh catch.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-snowflake feature-icon"></i>
+                        <h3 class="h4 fw-bold">Flash Frozen</h3>
+                        <p class="text-muted mb-0">Processed immediately in our EU-approved facility to maintain T1 freshness and texture.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-globe-europe feature-icon"></i>
+                        <h3 class="h4 fw-bold">Global Export</h3>
+                        <p class="text-muted mb-0">Fully certified (HACCP, FDA, ISO) for export to Europe, Japan, and the USA.</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="feature-box">
-                    <i class="fas fa-snowflake feature-icon"></i>
-                    <h3 class="feature-title">Flash Frozen</h3>
-                    <p class="text-muted">
-                        Processed immediately in our EU-approved facility to maintain T1 freshness and texture.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="feature-box">
-                    <i class="fas fa-globe-europe feature-icon"></i>
-                    <h3 class="feature-title">Global Export</h3>
-                    <p class="text-muted">
-                        Fully certified (HACCP, FDA, ISO) for export to Europe, Japan, and the USA.
-                    </p>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="products" class="product-section py-5">
-    <div class="container">
-        
-        <div class="text-center mb-5">
-            <h2 class="section-title">Our Premium Catch</h2>
-            <p class="text-muted lead">Sourced from Mauritania (FAO 34) | Flash Frozen on Board or Land</p>
-            <div style="width: 80px; height: 3px; background-color: #D4AF37; margin: 20px auto;"></div>
-        </div>
-
-        <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
-            <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-ceph">Cephalopods</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-crust">Crustaceans</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-pelagic">Pelagic</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-demersal">Demersal</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-special">Specialty</button></li>
-        </ul>
-
-        <div class="tab-content" id="pills-tabContent">
-            
-            <div class="tab-pane fade show active" id="pills-ceph">
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <span class="badge-custom">Best Seller</span>
-                                <img src="https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?q=80&w=800" class="card-img-top" alt="Octopus Vulgaris">
-                                <div class="grading-overlay">
-                                    <h5 class="grading-title">Japanese Grading</h5>
-                                    <table class="grading-table">
-                                        <tr><td>T1</td><td>4kg +</td></tr>
-                                        <tr><td>T2</td><td>3-4 kg</td></tr>
-                                        <tr><td>T3</td><td>2-3 kg</td></tr>
-                                        <tr><td>T4</td><td>1.5-2 kg</td></tr>
-                                        <tr><td>T5-T8</td><td>0.3-1.5 kg</td></tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Octopus Vulgaris</h4>
-                                <p class="text-muted small">Family: Octopodidae</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1590403337920-569a473489e2?q=80&w=800" class="card-img-top" alt="Squid Loligo">
-                                <div class="grading-overlay">
-                                    <h5 class="grading-title">Loligo Grading</h5>
-                                    <table class="grading-table">
-                                        <tr><td>GG</td><td>800g +</td></tr>
-                                        <tr><td>G</td><td>500-800g</td></tr>
-                                        <tr><td>M</td><td>300-500g</td></tr>
-                                        <tr><td>P</td><td>200-300g</td></tr>
-                                        <tr><td>2P-4P</td><td>90-200g</td></tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Squid (Loligo)</h4>
-                                <p class="text-muted small">Scientific: Loligo forbesi</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1534043464124-38324297c726?q=80&w=800" class="card-img-top" alt="Cuttlefish Sepia">
-                                <div class="grading-overlay">
-                                    <h5 class="grading-title">Sepia Grading</h5>
-                                    <table class="grading-table">
-                                        <tr><td>No. 1</td><td>1000g +</td></tr>
-                                        <tr><td>No. 2</td><td>500-1000g</td></tr>
-                                        <tr><td>No. 3</td><td>300-500g</td></tr>
-                                        <tr><td>No. 4</td><td>150-300g</td></tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Cuttlefish (Sepia)</h4>
-                                <p class="text-muted small">Scientific: Sepia officinalis</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section id="products" class="product-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: var(--primary-blue);">Our Premium Catch</h2>
+                <p class="text-muted lead">Sourced from FAO 34 | 17 Export-Grade Species</p>
+                <div class="mx-auto mt-3" style="width: 60px; height: 3px; background-color: var(--accent-gold);"></div>
             </div>
 
-            <div class="tab-pane fade" id="pills-crust">
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <span class="badge-custom">Premium</span>
-                                <img src="https://images.unsplash.com/photo-1559740038-9cb558580004?q=80&w=800" class="card-img-top" alt="Pink Shrimp">
-                                <div class="grading-overlay">
-                                    <h5 class="grading-title">Head-On (pcs/kg)</h5>
-                                    <table class="grading-table">
-                                        <tr><td>L1</td><td>10/20</td></tr>
-                                        <tr><td>L2</td><td>20/30</td></tr>
-                                        <tr><td>L3</td><td>30/40</td></tr>
-                                        <tr><td>L4</td><td>40/60</td></tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Pink Shrimp</h4>
-                                <p class="text-muted small">Penaeus notialis</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1559304822-9eb2813c9844?q=80&w=800" class="card-img-top" alt="Spiny Lobster">
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Spiny Lobster</h4>
-                                <p class="text-muted small">Panulirus regius</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1594910617300-3490df1da182?q=80&w=800" class="card-img-top" alt="Crab">
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Crab</h4>
-                                <p class="text-muted small">Cancer Pagurus</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-ceph">Cephalopods (3)</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-pelagic">Pelagic (4)</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-demersal">Demersal (10)</button></li>
+            </ul>
 
-            <div class="tab-pane fade" id="pills-pelagic">
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?q=80&w=800" class="card-img-top" alt="Sardinella">
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Round Sardinella</h4>
-                                <p class="text-muted small">Sardinella Aurita</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.pexels.com/photos/10398642/pexels-photo-10398642.jpeg?w=800" class="card-img-top" alt="Mackerel">
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Horse Mackerel</h4>
-                                <p class="text-muted small">Trachurus Trachurus</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.pexels.com/photos/18413184/pexels-photo-18413184.jpeg?w=800" class="card-img-top" alt="Mullet">
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Grey Mullet</h4>
-                                <p class="text-muted small">Mugil Cephalus</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="pills-demersal">
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.pexels.com/photos/17958043/pexels-photo-17958043.jpeg?w=800" class="card-img-top" alt="Dorade Royale">
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Gilt-head Sea Bream</h4>
-                                <p class="text-muted small">Sparus Aurata</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.pexels.com/photos/16834948/pexels-photo-16834948.jpeg?w=800" class="card-img-top" alt="Grouper">
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">White Grouper</h4>
-                                <p class="text-muted small">Epinephelus aeneus</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.pexels.com/photos/10756774/pexels-photo-10756774.jpeg?w=800" class="card-img-top" alt="Sole Fish">
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Sole</h4>
-                                <p class="text-muted small">Solea Solea</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="pills-special">
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <span class="badge-custom">Luxury</span>
-                                <img src="https://images.pexels.com/photos/10184478/pexels-photo-10184478.jpeg?w=800" class="card-img-top" alt="Bottarga">
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Bottarga</h4>
-                                <p class="text-muted small">Cured Mullet Roe</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card h-100">
-                            <div class="card-img-wrapper">
-                                <img src="https://images.pexels.com/photos/7004456/pexels-photo-7004456.jpeg?w=800" class="card-img-top" alt="Fish Meal">
-                                <div class="grading-overlay">
-                                    <h5 class="grading-title">Feed Specs</h5>
-                                    <table class="grading-table">
-                                        <tr><td>Protein</td><td>66% Min</td></tr>
-                                        <tr><td>Fat</td><td>10% Max</td></tr>
-                                        <tr><td>Histamine</td><td>500 ppm</td></tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="card-body text-center p-4">
-                                <h4 class="fw-bold">Fish Meal & Oil</h4>
-                                <p class="text-muted small">Industrial Feed Grade</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-<section id="factory" class="py-5" style="background-color: #fff;">
-    <div class="container">
-        <div class="row align-items-center">
-            
-            <div class="col-lg-6 mb-5 mb-lg-0">
-                <div class="row g-3">
-                    <div class="col-12">
-                        <div class="factory-img-wrapper">
-                            <img src="https://images.pexels.com/photos/19677271/pexels-photo-19677271/free-photo-of-fish-processing-plant.jpeg?auto=compress&cs=tinysrgb&w=800" class="factory-img" style="height: 350px;" alt="Processing Facility">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="factory-img-wrapper">
-                            <img src="https://plus.unsplash.com/premium_photo-1661852448375-9c927c3e7465?q=80&w=800" class="factory-img" style="height: 200px;" alt="Quality Control">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="factory-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1580982327559-c1202864eb05?q=80&w=800" class="factory-img" style="height: 200px;" alt="Cold Storage">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 ps-lg-5">
-                <h5 class="text-uppercase" style="color: #D4AF37; letter-spacing: 2px;">Our Facility</h5>
-                <h2 class="display-5 fw-bold text-dark mb-4" style="font-family: 'Playfair Display', serif;">Modern Processing <br>in Nouadhibou</h2>
-                <p class="lead text-muted mb-4">
-                    Located minutes from the fishing grounds in the <strong>Nouadhibou Free Zone</strong>, our facility ensures that the catch is processed at peak freshness.
-                </p>
-                <p class="text-muted mb-5">
-                    We operate under strict EU & HACCP guidelines. Our plant is equipped with modern plate freezers and blast tunnels to lock in texture and quality immediately upon arrival.
-                </p>
-
-                <div class="row g-4">
-                    <div class="col-md-6 factory-spec-item">
-                        <div class="d-flex align-items-start">
-                            <div class="factory-icon-box me-3">
-                                <i class="fas fa-snowflake fa-2x"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold mb-1 text-dark">-40°C Freezing</h5>
-                                <p class="small text-muted">Blast & Plate Freezing Technology</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 factory-spec-item">
-                        <div class="d-flex align-items-start">
-                            <div class="factory-icon-box me-3">
-                                <i class="fas fa-shield-alt fa-2x"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold mb-1 text-dark">EU Approved</h5>
-                                <p class="small text-muted">HACCP Compliant Facility</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 factory-spec-item">
-                        <div class="d-flex align-items-start">
-                            <div class="factory-icon-box me-3">
-                                <i class="fas fa-warehouse fa-2x"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold mb-1 text-dark">Storage Capacity</h5>
-                                <p class="small text-muted">500+ Tons Cold Storage</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 factory-spec-item">
-                        <div class="d-flex align-items-start">
-                            <div class="factory-icon-box me-3">
-                                <i class="fas fa-microscope fa-2x"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold mb-1 text-dark">Quality Lab</h5>
-                                <p class="small text-muted">Daily Organoleptic Testing</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-5">
-                    <a href="#contact" class="btn btn-outline-dark px-4 py-2 text-uppercase fw-bold" style="border-width: 2px;">Schedule a Factory Visit</a>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section id="logistics" class="logistics-section">
-    <div class="container position-relative">
-        
-        <div class="row align-items-center">
-            
-            <div class="col-lg-6 mb-5 mb-lg-0">
-                <h5 class="text-warning text-uppercase letter-spacing-2">Global Operations</h5>
-                <h2 class="display-4 fw-bold mb-4">From Mauritania <br>to Africa & The World</h2>
-                <p class="lead text-white-50 mb-4">
-                    Our strategic presence in Nouakchott ensures seamless cold-chain logistics from the rich Atlantic waters (FAO 34) directly to markets across Africa and around the globe.
-                </p>
-                <p class="text-white-50">
-                    We maintain strict control over our supply chain, ensuring that our premium catch reaches our partners in Mali, Burkina Faso, Côte d'Ivoire, and international destinations with 100% freshness guaranteed.
-                </p>
-            </div>
-
-            <div class="col-lg-6">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop" class="img-fluid rounded shadow-lg mb-5" alt="Global Shipping Logistics">
+            <div class="tab-content" id="pills-tabContent">
                 
-                <div class="row">
-                    <div class="col-md-4 col-6">
-                        <div class="stat-box">
-                            <div class="stat-number">20+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="stat-box">
-                            <div class="stat-number">FAO 34</div>
-                            <div class="stat-label">Fishing Zone</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-12">
-                        <div class="stat-box">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Cold Chain Integrity</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row mt-5 pt-4 border-top border-secondary justify-content-center">
-            <p class="text-center text-white-50 small mb-4">LOGISTICS PARTNERS</p>
-            
-            <div class="col-6 col-md-3 mb-3">
-                <a href="https://www.maersk.com" target="_blank" class="text-decoration-none">
-                    <div class="shipping-logo-box text-dark fw-bold">
-                        MAERSK <i class="fas fa-external-link-alt small ms-2 text-muted"></i>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-6 col-md-3 mb-3">
-                <a href="https://www.msc.com" target="_blank" class="text-decoration-none">
-                    <div class="shipping-logo-box text-dark fw-bold">
-                        MSC <i class="fas fa-external-link-alt small ms-2 text-muted"></i>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-6 col-md-3 mb-3">
-                <a href="https://www.cma-cgm.com" target="_blank" class="text-decoration-none">
-                    <div class="shipping-logo-box text-dark fw-bold">
-                        CMA CGM <i class="fas fa-external-link-alt small ms-2 text-muted"></i>
-                    </div>
-                </a>
-            </div>
-            
-        </div>
-
-    </div>
-</section>
-
-  
-<style>
-    /* 1. Premium Form Styling */
-    .form-control {
-        padding: 15px; /* Taller, luxury feel */
-        border: 1px solid #e0e0e0;
-        border-radius: 0; /* Square, industrial corners */
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-    }
-    .form-control:focus {
-        box-shadow: none;
-        border-color: #D4AF37; /* Gold border on click */
-        background-color: #fff;
-    }
-    
-    /* 2. Gold Button */
-    .btn-gold {
-        background-color: #D4AF37;
-        color: white;
-        font-weight: 700;
-        letter-spacing: 1px;
-        border: none;
-        transition: 0.3s;
-    }
-    .btn-gold:hover {
-        background-color: #b5952f; /* Darker gold */
-        color: white;
-        transform: translateY(-2px);
-    }
-
-    /* 3. Footer Links Hover */
-    footer a.text-decoration-none:hover {
-        color: #D4AF37 !important;
-        padding-left: 5px;
-        transition: all 0.3s;
-    }
-</style>
-
-<section id="contact" class="py-5" style="background-color: #f8f9fa;">
-    <div class="container">
-        <div class="row">
-            
-            <div class="col-lg-5 mb-5 mb-lg-0">
-                <h5 class="text-uppercase" style="color: #D4AF37; letter-spacing: 2px;">Get in Touch</h5>
-                <h2 class="display-5 fw-bold text-dark mb-4">Request a <br>Commercial Quote</h2>
-                <p class="lead text-muted mb-5">
-                    We supply wholesalers and distributors worldwide. Contact our export team directly for CIF/FOB pricing.
-                </p>
-
-                <div class="d-flex align-items-start mb-4">
-                    <div class="bg-white p-3 shadow-sm me-3 text-center" style="width: 50px;">
-                        <i class="fas fa-map-marker-alt text-warning"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold text-dark">Headquarters & Factory</h5>
-                        <p class="text-muted small mb-0">Nouadhibou Port Area (Zone Franche)<br>Nouadhibou, Mauritania</p>
-                    </div>
-                </div>
-
-                <div class="d-flex align-items-start mb-4">
-                    <div class="bg-white p-3 shadow-sm me-3 text-center" style="width: 50px;">
-                        <i class="fas fa-envelope text-warning"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold text-dark">Export Department</h5>
-                        <p class="text-muted small mb-0">sales@womapeche.com</p>
-                        <p class="small text-primary mb-0 fw-bold">Response time: &lt; 24h</p>
-                    </div>
-                </div>
-
-                <div class="d-flex align-items-start mb-4">
-                    <div class="bg-white p-3 shadow-sm me-3 text-center" style="width: 50px;">
-                        <i class="fab fa-whatsapp text-warning"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold text-dark">Phone / WhatsApp</h5>
-                        <p class="text-muted small mb-0">+222 XX XX XX XX</p>
-                        <p class="small text-muted mb-0">Available 8:00 - 18:00 GMT</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-7">
-                <div class="bg-white p-5 shadow-lg h-100">
-                    <form>
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <label class="form-label text-muted small fw-bold">FULL NAME</label>
-                                <input type="text" class="form-control bg-light" placeholder="Your Name">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label text-muted small fw-bold">COMPANY NAME</label>
-                                <input type="text" class="form-control bg-light" placeholder="Company Ltd">
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <label class="form-label text-muted small fw-bold">EMAIL ADDRESS</label>
-                                <input type="email" class="form-control bg-light" placeholder="name@company.com">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label text-muted small fw-bold">PHONE / WHATSAPP</label>
-                                <input type="tel" class="form-control bg-light" placeholder="+222...">
-                            </div>
-
-                            <div class="col-12">
-                                <label class="form-label text-muted small fw-bold">MESSAGE & PRODUCTS OF INTEREST</label>
-                                <textarea class="form-control bg-light" rows="5" placeholder="Please include species, grading, and destination port.&#10;Example: I am looking for 1 container of Octopus T1 and T2, CIF Valencia."></textarea>
-                            </div>
-
-                            <div class="col-12 mt-2">
-                                <button type="submit" class="btn btn-gold w-100 py-3 text-uppercase">Send Request</button>
+                <div class="tab-pane fade show active" id="pills-ceph">
+                    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+                        <div class="col">
+                            <div class="card product-card">
+                                <div class="card-img-wrapper">
+                                    <span class="badge-custom">T1 - T7</span>
+                                    <img src="images/Octopus vulgaris.jfif" class="card-img-top" alt="Octopus">
+                                    <i class="fas fa-info-circle mobile-tap-hint"></i>
+                                    <div class="grading-overlay">
+                                        <h5 class="grading-title">Grading</h5>
+                                        <table class="grading-table text-start">
+                                            <tr><td>T1 (4.5kg+)</td><td>T2 (3-4.5kg)</td></tr>
+                                            <tr><td>T3 (2-3kg)</td><td>T4 (1.5-2kg)</td></tr>
+                                            <tr><td>T5 (1.2-1.5kg)</td><td>T6 (0.8-1.2kg)</td></tr>
+                                            <tr><td colspan="2" class="text-center">T7 (0.5-0.8kg)</td></tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h4 class="h5 fw-bold">Common Octopus</h4>
+                                    <p class="text-muted small mb-0"><i>Octopus vulgaris</i></p>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                        <div class="col">
+                            <div class="card product-card">
+                                <div class="card-img-wrapper">
+                                    <img src="images/Loligo vulgaris.jfif" class="card-img-top" alt="Squid">
+                                    <i class="fas fa-info-circle mobile-tap-hint"></i>
+                                    <div class="grading-overlay">
+                                        <h5 class="grading-title">Grading</h5>
+                                        <table class="grading-table">
+                                            <tr><td>GG (800g+)</td></tr>
+                                            <tr><td>G (500-800g)</td></tr>
+                                            <tr><td>M (300-500g)</td></tr>
+                                            <tr><td>P (200-300g)</td></tr>
+                                            <tr><td>2P (130-200g) | 3P (90-130g)</td></tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h4 class="h5 fw-bold">Common Squid</h4>
+                                    <p class="text-muted small mb-0"><i>Loligo vulgaris</i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card product-card">
+                                <div class="card-img-wrapper">
+                                    <img src="images/Sepia officinalis.jfif" class="card-img-top" alt="Cuttlefish">
+                                    <i class="fas fa-info-circle mobile-tap-hint"></i>
+                                    <div class="grading-overlay">
+                                        <h5 class="grading-title">Grading</h5>
+                                        <table class="grading-table">
+                                            <tr><td>G (800g+)</td></tr>
+                                            <tr><td>M (500-800g)</td></tr>
+                                            <tr><td>P (300-500g)</td></tr>
+                                            <tr><td>2P (200-300g)</td></tr>
+                                            <tr><td>3P (130-200g) | 4P (30-130g)</td></tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h4 class="h5 fw-bold">Cuttlefish</h4>
+                                    <p class="text-muted small mb-0"><i>Sepia officinalis</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-pelagic">
+                    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
+                        <div class="col">
+                            <div class="card product-card h-100">
+                                <div class="card-img-wrapper"><img src="images/Sardinella aurita.jpg" class="card-img-top"></div>
+                                <div class="card-body text-center"><h4 class="h6 fw-bold">Round Sardinella</h4><p class="text-muted small mb-0"><i>Sardinella aurita</i></p></div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card product-card h-100">
+                                <div class="card-img-wrapper"><img src="images/Sardinella maderensis.jpg" class="card-img-top"></div>
+                                <div class="card-body text-center"><h4 class="h6 fw-bold">Flat Sardinella</h4><p class="text-muted small mb-0"><i>Sardinella maderensis</i></p></div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card product-card h-100">
+                                <div class="card-img-wrapper"><img src="images/Scomber colias.jpg" class="card-img-top"></div>
+                                <div class="card-body text-center"><h4 class="h6 fw-bold">Chub Mackerel</h4><p class="text-muted small mb-0"><i>Scomber colias</i></p></div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card product-card h-100">
+                                <div class="card-img-wrapper"><img src="images/Trachurus spp.jpg" class="card-img-top"></div>
+                                <div class="card-body text-center"><h4 class="h6 fw-bold">Horse Mackerel</h4><p class="text-muted small mb-0"><i>Trachurus spp.</i></p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-demersal">
+                    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Dicentrarchus punctatus.jpg" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">Spotted Seabass</h4><p class="text-muted small mb-0"><i>Dicentrarchus punctatus</i></p></div></div></div>
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Dicologlossa cuneata.jfif" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">Wedge Sole</h4><p class="text-muted small mb-0"><i>Dicologlossa cuneata</i></p></div></div></div>
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Lichia amia.jpg" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">Leerfish</h4><p class="text-muted small mb-0"><i>Lichia amia</i></p></div></div></div>
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Merluccius merluccius.jpg" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">European Hake</h4><p class="text-muted small mb-0"><i>Merluccius merluccius</i></p></div></div></div>
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Mugil cephalus.jfif" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">Grey Mullet</h4><p class="text-muted small mb-0"><i>Mugil cephalus</i></p></div></div></div>
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Pagrus pagrus.jpg" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">Red Porgy</h4><p class="text-muted small mb-0"><i>Pagrus pagrus</i></p></div></div></div>
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Plectorhinchus mediterraneus.jpg" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">Rubberlip Grunt</h4><p class="text-muted small mb-0"><i>Plectorhinchus mediterraneus</i></p></div></div></div>
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Pomadasys perotaei.jpg" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">Parrot Grunt</h4><p class="text-muted small mb-0"><i>Pomadasys perotaei</i></p></div></div></div>
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Pseudupeneus prayensis.jpg" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">Red Mullet</h4><p class="text-muted small mb-0"><i>Pseudupeneus prayensis</i></p></div></div></div>
+                        <div class="col"><div class="card product-card h-100"><div class="card-img-wrapper"><img src="images/Spondyliosoma cantharus.jpg" class="card-img-top"></div><div class="card-body text-center"><h4 class="h6 fw-bold">Black Seabream</h4><p class="text-muted small mb-0"><i>Spondyliosoma cantharus</i></p></div></div></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="factory" class="factory-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="row g-3">
+                        <div class="col-12"><div class="factory-img-wrapper"><img src="https://images.pexels.com/photos/19677271/pexels-photo-19677271/free-photo-of-fish-processing-plant.jpeg?auto=compress&cs=tinysrgb&w=800" class="factory-img" style="height: 350px;" alt="Factory"></div></div>
+                        <div class="col-6"><div class="factory-img-wrapper"><img src="https://plus.unsplash.com/premium_photo-1661852448375-9c927c3e7465?q=80&w=800" class="factory-img" style="height: 200px;" alt="Lab"></div></div>
+                        <div class="col-6"><div class="factory-img-wrapper"><img src="https://images.unsplash.com/photo-1580982327559-c1202864eb05?q=80&w=800" class="factory-img" style="height: 200px;" alt="Cold Storage"></div></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <h5 class="text-uppercase text-warning letter-spacing-2">Our Facility</h5>
+                    <h2 class="display-5 fw-bold mb-4">Modern Processing <br>in Nouadhibou</h2>
+                    <p class="lead text-muted mb-4">Located minutes from the fishing grounds in the <strong>Free Zone</strong>, ensuring catch is processed at peak freshness.</p>
+                    
+                    <div class="row g-4 mt-4">
+                        <div class="col-md-6 factory-spec-item">
+                            <div class="d-flex align-items-start">
+                                <div class="factory-icon-box me-3"><i class="fas fa-snowflake fa-lg"></i></div>
+                                <div><h5 class="fw-bold mb-1 h6">-40°C Freezing</h5><p class="small text-muted mb-0">Blast & Plate Tunnels</p></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 factory-spec-item">
+                            <div class="d-flex align-items-start">
+                                <div class="factory-icon-box me-3"><i class="fas fa-shield-alt fa-lg"></i></div>
+                                <div><h5 class="fw-bold mb-1 h6">EU Approved</h5><p class="small text-muted mb-0">HACCP Compliant</p></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<footer class="bg-dark text-white pt-5 pb-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <h3 class="fw-bold" style="font-family: 'Playfair Display', serif;"><i class="fas fa-anchor text-warning me-2"></i>WOMAPECHE</h3>
-                <p class="text-white-50 small mt-3">
-                    Premium Mauritanian seafood exporter. Dedicated to sustainable fishing (FAO 34), strict quality control, and global logistics excellence.
-                </p>
-            </div>
-
-            <div class="col-md-2 mb-4">
-                <h6 class="text-warning text-uppercase fw-bold mb-3">Company</h6>
-                <ul class="list-unstyled text-white-50 small">
-                    <li class="mb-2"><a href="#home" class="text-white-50 text-decoration-none">Home</a></li>
-                    <li class="mb-2"><a href="#products" class="text-white-50 text-decoration-none">Our Catch</a></li>
-                    <li class="mb-2"><a href="#logistics" class="text-white-50 text-decoration-none">Logistics</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-2 mb-4">
-                <h6 class="text-warning text-uppercase fw-bold mb-3">Products</h6>
-                <ul class="list-unstyled text-white-50 small">
-                    <li class="mb-2">Octopus Vulgaris</li>
-                    <li class="mb-2">Squid & Cuttlefish</li>
-                    <li class="mb-2">Grouper & Dorade</li>
-                    <li class="mb-2">Fish Meal</li>
-                </ul>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <h6 class="text-warning text-uppercase fw-bold mb-3">Certifications</h6>
-                <div class="d-flex gap-2 flex-wrap">
-                    <span class="border border-secondary rounded px-2 py-1 small text-white-50">HACCP</span>
-                    <span class="border border-secondary rounded px-2 py-1 small text-white-50">EU Approved</span>
-                    <span class="border border-secondary rounded px-2 py-1 small text-white-50">ONISPA</span>
+    <section id="logistics" class="logistics-section">
+        <div class="container position-relative z-1">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h5 class="text-warning text-uppercase letter-spacing-2">Global Operations</h5>
+                    <h2 class="display-4 fw-bold mb-4">From Mauritania <br>to the World</h2>
+                    <p class="lead text-white-50">Seamless cold-chain logistics from FAO 34 to your port. We handle all documentation and freight booking.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-4">
+                            <div class="stat-box">
+                                <div class="stat-number">20+</div>
+                                <div class="stat-label">Years</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-box">
+                                <div class="stat-number">34</div>
+                                <div class="stat-label">FAO Zone</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-box">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Cold Chain</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <hr class="border-secondary my-4">
-        
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-start">
-                <p class="small text-white-50 mb-0">&copy; 2024 Womapeche SARL. All Rights Reserved.</p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <p class="small text-white-50 mb-0">Nouadhibou, Mauritania</p>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h5 class="text-uppercase text-warning letter-spacing-2">Get in Touch</h5>
+                    <h2 class="display-5 fw-bold mb-4">Request a <br>Commercial Quote</h2>
+                    <p class="lead text-muted mb-5">Contact our export team directly for CIF/FOB pricing.</p>
+                    
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="factory-icon-box me-3"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h5 class="fw-bold mb-0">sales@womapeche.com</h5>
+                            <small class="text-muted">Response &lt; 24h</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="factory-icon-box me-3"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <h5 class="fw-bold mb-0">+222 XX XX XX XX</h5>
+                            <small class="text-muted">Direct Line</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="bg-white p-4 p-md-5 shadow-lg">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6"><input type="text" class="form-control" placeholder="Full Name"></div>
+                                <div class="col-md-6"><input type="text" class="form-control" placeholder="Company Name"></div>
+                                <div class="col-md-6"><input type="email" class="form-control" placeholder="Email Address"></div>
+                                <div class="col-md-6"><input type="tel" class="form-control" placeholder="Phone Number"></div>
+                                <div class="col-12"><textarea class="form-control" rows="4" placeholder="Message: Species, Grading, Port..."></textarea></div>
+                                <div class="col-12"><button type="submit" class="btn btn-gold w-100">Send Request</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </section>
+
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3 class="fw-bold"><i class="fas fa-anchor text-warning me-2"></i>WOMAPECHE</h3>
+                    <p class="text-white-50 small mt-3">Premium Mauritanian seafood exporter. Dedicated to sustainable fishing (FAO 34) and quality.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="text-warning text-uppercase fw-bold mb-3">Links</h6>
+                    <ul class="list-unstyled text-white-50 small">
+                        <li class="mb-2"><a href="#home" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#products" class="text-white-50 text-decoration-none">Products</a></li>
+                        <li class="mb-2"><a href="#contact" class="text-white-50 text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 mb-4 text-md-end">
+                    <h6 class="text-warning text-uppercase fw-bold mb-3">Certifications</h6>
+                    <span class="badge border border-secondary fw-normal p-2 me-1">HACCP</span>
+                    <span class="badge border border-secondary fw-normal p-2 me-1">EU Approved</span>
+                    <span class="badge border border-secondary fw-normal p-2">FDA Registered</span>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="text-center text-white-50 small">&copy; 2024 Womapeche SARL. Nouadhibou, Mauritania.</div>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    // 1. Navbar Transition on Scroll (Transparent to Solid)
-    const nav = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.classList.add('bg-dark', 'shadow');
-            nav.classList.remove('bg-transparent');
-        } else {
-            nav.classList.remove('bg-dark', 'shadow');
-            // If you want it transparent at top, enable next line:
-            // nav.classList.add('bg-transparent'); 
-        }
-    });
-
-    // 2. Mobile Menu Auto-Close (Better UX)
-    const navLinks = document.querySelectorAll('.nav-item');
-    const menuToggle = document.getElementById('navbarNav');
-    const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
-    navLinks.forEach((l) => {
-        l.addEventListener('click', () => { if(menuToggle.classList.contains('show')) bsCollapse.hide() });
-    });
-</script>
-
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) nav.classList.add('shadow-lg');
+            else nav.classList.remove('shadow-lg');
+        });
+        
+        // Close mobile menu on click
+        document.querySelectorAll('.nav-link').forEach(l => {
+            l.addEventListener('click', () => {
+                const menu = document.querySelector('.navbar-collapse');
+                if(menu.classList.contains('show')) new bootstrap.Collapse(menu).hide();
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
