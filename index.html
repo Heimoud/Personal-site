@@ -52,9 +52,9 @@
         .nav-link { font-weight: 500; font-size: 0.95rem; cursor: pointer; }
         
         /* Language Switcher */
-        .lang-btn { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 600; padding: 5px 10px; transition: 0.3s; }
+        .lang-btn { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 0.85rem; font-weight: 600; padding: 0 5px; transition: 0.3s; }
         .lang-btn:hover, .lang-btn.active { color: var(--accent-gold); }
-        .lang-separator { color: rgba(255,255,255,0.3); }
+        .lang-separator { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
 
         /* --- 4. HERO SECTION --- */
         .hero-section {
@@ -189,12 +189,7 @@
         }
         .logistics-card:hover { transform: translateY(-5px); }
         .logistics-card img { width: 100%; height: 100%; object-fit: cover; }
-        .logistics-card-badge {
-            position: absolute; bottom: 15px; left: 15px;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
-            color: var(--accent-gold); padding: 5px 15px; border-radius: 30px;
-            font-size: 0.8rem; font-weight: 700;
-        }
+        
         .shipping-tag {
             display: inline-block; background: rgba(255,255,255,0.1); border-left: 3px solid var(--accent-gold);
             padding: 10px 20px; margin-right: 10px; margin-bottom: 10px; font-weight: 600; letter-spacing: 1px;
@@ -204,6 +199,10 @@
             color: white; text-decoration: none; border-radius: 50px; font-size: 0.9rem; transition: all 0.3s;
         }
         .partner-btn:hover { background: var(--accent-gold); border-color: var(--accent-gold); color: white; transform: translateX(5px); }
+        
+        .inspection-box {
+            background: rgba(255,255,255,0.05); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+        }
 
         /* --- 9. CONTACT SECTION --- */
         .contact-section { background-color: var(--light-gray); padding: 100px 0; }
@@ -242,6 +241,8 @@
                         <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
                         <span class="lang-separator">|</span>
                         <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+                        <span class="lang-separator">|</span>
+                        <button class="lang-btn" onclick="setLanguage('de')">DE</button>
                     </li>
 
                     <li class="nav-item ms-lg-3 mt-3 mt-lg-0"><a class="btn btn-gold" href="#contact" data-i18n="btn_quote">Request Quote</a></li>
@@ -306,13 +307,14 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold" data-i18n="prod_title">Our Premium Catch</h2>
-                <span class="product-subtitle" data-i18n="prod_subtitle">Sourced from FAO 34 | 17 Export-Grade Species</span>
+                <span class="product-subtitle" data-i18n="prod_subtitle">Sourced from FAO 34 | 19 Export-Grade Species</span>
                 <div class="supply-badge"><i class="fas fa-snowflake me-2"></i><span data-i18n="prod_badge">Available Fresh (Air) & Frozen (Sea)</span></div>
             </div>
 
             <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
-                <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-all" data-i18n="tab_all">All (17)</button></li>
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-all" data-i18n="tab_all">All (19)</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-ceph" data-i18n="tab_ceph">Cephalopods</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-crustacean" data-i18n="tab_crustacean">Crustaceans</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-pelagic" data-i18n="tab_pelagic">Pelagic</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-demersal" data-i18n="tab_demersal">Demersal</button></li>
             </ul>
@@ -323,7 +325,6 @@
                         <div class="col">
                             <div class="card product-card">
                                 <div class="card-img-wrapper">
-                                    <span class="badge-custom">T1 - T8</span>
                                     <img src="images/Octopus vulgaris.jpg" class="card-img-top" alt="Octopus">
                                     <div class="grading-overlay">
                                         <h5 class="grading-title">Octopus (kg)</h5>
@@ -331,7 +332,7 @@
                                             <tr><td>T1 (4.5+)</td><td>T2 (3-4.5)</td></tr>
                                             <tr><td>T3 (2-3)</td><td>T4 (1.5-2)</td></tr>
                                             <tr><td>T5 (1.2-1.5)</td><td>T6 (0.8-1.2)</td></tr>
-                                            <tr><td>T7 (0.5-0.8)</td></tr>
+                                            <tr><td>T7 (0.5-0.8)</td><td></td></tr>
                                         </table>
                                     </div>
                                 </div>
@@ -371,6 +372,9 @@
                             </div>
                         </div>
                         
+                        <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Panulirus regius.jpg" class="card-img-top"></div><div class="card-body"><h4 data-i18n="fish_lobster">Royal Spiny Lobster</h4><p class="sci-name">Panulirus regius</p></div></div></div>
+                        <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Penaeus notialis.jpg" class="card-img-top"></div><div class="card-body"><h4 data-i18n="fish_shrimp">Southern Pink Shrimp</h4><p class="sci-name">Penaeus notialis</p></div></div></div>
+
                         <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Sardinella aurita.jpg" class="card-img-top"></div><div class="card-body"><h4 data-i18n="fish_round">Round Sardinella</h4><p class="sci-name">Sardinella aurita</p></div></div></div>
                         <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Sardinella maderensis.jpg" class="card-img-top"></div><div class="card-body"><h4 data-i18n="fish_flat">Flat Sardinella</h4><p class="sci-name">Sardinella maderensis</p></div></div></div>
                         <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Scomber colias.jpg" class="card-img-top"></div><div class="card-body"><h4 data-i18n="fish_chub">Chub Mackerel</h4><p class="sci-name">Scomber colias</p></div></div></div>
@@ -391,9 +395,16 @@
 
                 <div class="tab-pane fade" id="pills-ceph">
                     <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
-                        <div class="col"><div class="card product-card"><div class="card-img-wrapper"><span class="badge-custom">T1-T8</span><img src="images/Octopus vulgaris.jpg" class="card-img-top"><div class="grading-overlay"><h5 class="grading-title">Grading (kg)</h5><table class="grading-table"><tr><td>T1 (4.5+)</td><td>T2 (3-4.5)</td></tr><tr><td>T3 (2-3)</td><td>T4 (1.5-2)</td></tr><tr><td>T5 (1.2-1.5)</td><td>T6 (0.8-1.2)</td></tr><tr><td>T7 (0.5-0.8)</td><td>T8 (&lt;0.5)</td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_octopus">Common Octopus</h4><p class="sci-name">Octopus vulgaris</p></div></div></div>
+                        <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Octopus vulgaris.jpg" class="card-img-top"><div class="grading-overlay"><h5 class="grading-title">Grading (kg)</h5><table class="grading-table"><tr><td>T1 (4.5+)</td><td>T2 (3-4.5)</td></tr><tr><td>T3 (2-3)</td><td>T4 (1.5-2)</td></tr><tr><td>T5 (1.2-1.5)</td><td>T6 (0.8-1.2)</td></tr><tr><td>T7 (0.5-0.8)</td><td></td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_octopus">Common Octopus</h4><p class="sci-name">Octopus vulgaris</p></div></div></div>
                         <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Loligo vulgaris.jpg" class="card-img-top"><div class="grading-overlay"><h5 class="grading-title">Grading (g)</h5><table class="grading-table"><tr><td>GG (850+)</td><td>G (550-850)</td></tr><tr><td>M (350-550)</td><td>P (250-350)</td></tr><tr><td>2P (150-250)</td><td>3P (90-150)</td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_squid">Common Squid</h4><p class="sci-name">Loligo vulgaris</p></div></div></div>
                         <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Sepia officinalis.jpg" class="card-img-top"><div class="grading-overlay"><h5 class="grading-title">Grading (g)</h5><table class="grading-table"><tr><td>G (800+)</td><td>M (500-800)</td></tr><tr><td>P (300-500)</td><td>2P (200-300)</td></tr><tr><td>3P (100-200)</td><td>4P (50-100)</td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_cuttle">Cuttlefish</h4><p class="sci-name">Sepia officinalis</p></div></div></div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-crustacean">
+                    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+                        <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Panulirus regius.jpg" class="card-img-top"></div><div class="card-body"><h4 data-i18n="fish_lobster">Royal Spiny Lobster</h4><p class="sci-name">Panulirus regius</p></div></div></div>
+                        <div class="col"><div class="card product-card"><div class="card-img-wrapper"><img src="images/Penaeus notialis.jpg" class="card-img-top"></div><div class="card-body"><h4 data-i18n="fish_shrimp">Southern Pink Shrimp</h4><p class="sci-name">Penaeus notialis</p></div></div></div>
                     </div>
                 </div>
 
@@ -466,7 +477,7 @@
                             <h6 class="fw-bold mb-0 text-dark" data-i18n="cert_name">Sanitary Approval Certificate</h6>
                             <p class="small text-muted mb-0" data-i18n="cert_detail">N° 02.114 - Valid until Oct 2026</p>
                         </div>
-                        <a href="assets/certificate.pdf" target="_blank" class="btn btn-outline-dark btn-sm ms-auto"><i class="fas fa-download me-1"></i> PDF</a>
+                        <a href="documents/certificate.pdf" target="_blank" class="btn btn-outline-dark btn-sm ms-auto"><i class="fas fa-download me-1"></i> PDF</a>
                     </div>
                 </div>
             </div>
@@ -479,8 +490,11 @@
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <h5 class="text-warning text-uppercase letter-spacing-2" data-i18n="log_subtitle">Global Operations</h5>
                     <h2 class="display-4 fw-bold mb-4" data-i18n="log_title">From Mauritania <br>to the World</h2>
-                    <p class="lead text-white-50 mb-5" data-i18n="log_desc">We are meticulous regarding shipping terms to ensure our customers receive their goods on time and in perfect condition.</p>
                     
+                    <div class="inspection-box mb-5">
+                        <p class="mb-0 text-white-50" data-i18n="log_inspection">All shipments are controlled initially by the Mauritanian competent authorities and if necessary a second inspection by a control company as SGS or Bureau Veritas, can take place. For each shipment, we deliver the necessary export documents: Health certificate, commercial invoice, bill of loading (BL), certificate of origin etc...</p>
+                    </div>
+
                     <div class="mb-5">
                         <h6 class="text-warning mb-3 fw-bold" data-i18n="log_terms_label">SHIPPING TERMS:</h6>
                         <span class="shipping-tag">FOB (Free On Board)</span>
@@ -497,16 +511,14 @@
                 
                 <div class="col-lg-6">
                     <div class="row g-4">
-                        <div class="col-6 mt-5">
+                        <div class="col-6">
                              <div class="logistics-card">
-                                <img src="https://images.unsplash.com/photo-1541454512965-0a9b0cc61148?q=80&w=800&auto=format&fit=crop" alt="Cargo Ship">
-                                <div class="logistics-card-badge"><i class="fas fa-ship me-2"></i><span data-i18n="log_sea">Sea Freight</span></div>
+                                <img src="images/sea_freight.jpg" alt="Sea Freight">
                              </div>
                         </div>
                         <div class="col-6">
                             <div class="logistics-card">
-                                <img src="https://images.unsplash.com/photo-1570183182101-72a39276d425?q=80&w=800&auto=format&fit=crop" alt="Air Freight">
-                                <div class="logistics-card-badge"><i class="fas fa-plane me-2"></i><span data-i18n="log_air">Air Freight</span></div>
+                                <img src="images/air_freight.jpg" alt="Air Freight">
                             </div>
                         </div>
                         <div class="col-12">
@@ -616,9 +628,10 @@
                 trust_1_title: "Direct Source", trust_1_text: "We operate our own fleet in Mauritanian waters (FAO 34). No middlemen.",
                 trust_2_title: "Eco-Responsible", trust_2_text: "Committed to sustainable fishing quotas to protect marine biodiversity.",
                 trust_3_title: "Global Export", trust_3_text: "Fully certified (HACCP, FDA, ISO) for export to Europe, Japan, and the USA.",
-                prod_title: "Our Premium Catch", prod_subtitle: "Sourced from FAO 34 | 17 Export-Grade Species", prod_badge: "Available Fresh (Air) & Frozen (Sea)",
-                tab_all: "All (17)", tab_ceph: "Cephalopods", tab_pelagic: "Pelagic", tab_demersal: "Demersal",
+                prod_title: "Our Premium Catch", prod_subtitle: "Sourced from FAO 34 | 19 Export-Grade Species", prod_badge: "Available Fresh (Air) & Frozen (Sea)",
+                tab_all: "All (19)", tab_ceph: "Cephalopods", tab_crustacean: "Crustaceans", tab_pelagic: "Pelagic", tab_demersal: "Demersal",
                 fish_octopus: "Common Octopus", fish_squid: "Common Squid", fish_cuttle: "Cuttlefish",
+                fish_lobster: "Royal Spiny Lobster", fish_shrimp: "Southern Pink Shrimp",
                 fish_round: "Round Sardinella", fish_flat: "Flat Sardinella", fish_chub: "Chub Mackerel", fish_horse: "Horse Mackerel",
                 fish_spotted: "Spotted Seabass", fish_wedge: "Wedge Sole", fish_leer: "Leerfish", fish_hake: "European Hake",
                 fish_grey: "Grey Mullet", fish_porgy: "Red Porgy", fish_rubber: "Rubberlip Grunt", fish_parrot: "Parrot Grunt", fish_redmullet: "Red Mullet", fish_bream: "Black Seabream",
@@ -626,8 +639,9 @@
                 fac_subtitle: "Our Facility", fac_title: "Modern Processing <br>in Nouadhibou", fac_desc: "Located minutes from the fishing grounds in the Free Zone, ensuring catch is processed at peak freshness.",
                 fac_feat_1: "-40°C Freezing", fac_feat_1_sub: "Blast & Plate Tunnels", fac_feat_2: "EU Approved", fac_feat_2_sub: "HACCP Compliant",
                 cert_name: "Sanitary Approval Certificate", cert_detail: "N° 02.114 - Valid until Oct 2026",
-                log_subtitle: "Global Operations", log_title: "From Mauritania <br>to the World", log_desc: "We are meticulous regarding shipping terms to ensure our customers receive their goods on time and in perfect condition.",
-                log_terms_label: "SHIPPING TERMS:", log_partners: "OUR PARTNERS:", log_sea: "Sea Freight", log_air: "Air Freight", log_secure: "Secure Cold Chain Integrity",
+                log_subtitle: "Global Operations", log_title: "From Mauritania <br>to the World", 
+                log_inspection: "All shipments are controlled initially by the Mauritanian competent authorities and if necessary a second inspection by a control company as SGS or Bureau Veritas, can take place. For each shipment, we deliver the necessary export documents: Health certificate, commercial invoice, bill of loading (BL), certificate of origin etc...",
+                log_terms_label: "SHIPPING TERMS:", log_partners: "OUR PARTNERS:", log_secure: "Secure Cold Chain Integrity",
                 contact_sub: "Get in Touch", contact_title: "Request a <br>Commercial Quote", contact_desc: "Contact our export team directly for CIF/FOB pricing.",
                 contact_time: "Response < 24h", contact_direct: "Direct Line", form_submit: "Send Request",
                 footer_about: "Premium Mauritanian seafood exporter. Dedicated to sustainable fishing (FAO 34) and quality.", nav_contact: "Contact", cert_eu: "EU Approved"
@@ -639,9 +653,10 @@
                 trust_1_title: "Source Directe", trust_1_text: "Nous opérons notre propre flotte dans les eaux mauritaniennes (FAO 34). Sans intermédiaire.",
                 trust_2_title: "Éco-Responsable", trust_2_text: "Engagé à respecter les quotas de pêche pour protéger la biodiversité marine.",
                 trust_3_title: "Export Global", trust_3_text: "Certifié (HACCP, FDA, ISO) pour l'export vers l'Europe, le Japon et les USA.",
-                prod_title: "Notre Pêche Premium", prod_subtitle: "Origine FAO 34 | 17 Espèces Qualité Export", prod_badge: "Disponible Frais (Avion) & Congelé (Mer)",
-                tab_all: "Tout (17)", tab_ceph: "Céphalopodes", tab_pelagic: "Pélagiques", tab_demersal: "Démersaux",
+                prod_title: "Notre Pêche Premium", prod_subtitle: "Origine FAO 34 | 19 Espèces Qualité Export", prod_badge: "Disponible Frais (Avion) & Congelé (Mer)",
+                tab_all: "Tout (19)", tab_ceph: "Céphalopodes", tab_crustacean: "Crustacés", tab_pelagic: "Pélagiques", tab_demersal: "Démersaux",
                 fish_octopus: "Poulpe Commun", fish_squid: "Calamar Commun", fish_cuttle: "Seiche",
+                fish_lobster: "Langouste Royale", fish_shrimp: "Crevette Rose du Sud",
                 fish_round: "Sardinelle Ronde", fish_flat: "Sardinelle Plate", fish_chub: "Maquereau Espagnol", fish_horse: "Chinchard",
                 fish_spotted: "Bar Moucheté", fish_wedge: "Céteau", fish_leer: "Liche", fish_hake: "Merlu Européen",
                 fish_grey: "Mulet", fish_porgy: "Pagre Commun", fish_rubber: "Diagramme", fish_parrot: "Grondeur", fish_redmullet: "Rouget", fish_bream: "Dorade Grise",
@@ -649,8 +664,9 @@
                 fac_subtitle: "Notre Usine", fac_title: "Traitement Moderne <br>à Nouadhibou", fac_desc: "Situé à quelques minutes des zones de pêche dans la Zone Franche, assurant une fraîcheur maximale.",
                 fac_feat_1: "Congélation -40°C", fac_feat_1_sub: "Tunnels Blast & Plaques", fac_feat_2: "Agréé UE", fac_feat_2_sub: "Conforme HACCP",
                 cert_name: "Agrément Sanitaire", cert_detail: "N° 02.114 - Valide jusqu'en Oct 2026",
-                log_subtitle: "Opérations Globales", log_title: "De la Mauritanie <br>au Monde", log_desc: "Nous sommes méticuleux concernant les incoterms pour garantir une livraison à temps et en parfait état.",
-                log_terms_label: "INCOTERMS :", log_partners: "NOS PARTENAIRES :", log_sea: "Fret Maritime", log_air: "Fret Aérien", log_secure: "Chaîne du Froid Sécurisée",
+                log_subtitle: "Opérations Globales", log_title: "De la Mauritanie <br>au Monde", 
+                log_inspection: "Tous les envois sont contrôlés par les autorités mauritaniennes. Si nécessaire, une seconde inspection (SGS, Bureau Veritas) peut avoir lieu. Nous fournissons tous les documents : Certificat sanitaire, Facture, BL, Certificat d'origine etc...",
+                log_terms_label: "INCOTERMS :", log_partners: "NOS PARTENAIRES :", log_secure: "Chaîne du Froid Sécurisée",
                 contact_sub: "Contactez-nous", contact_title: "Demander un <br>Devis Commercial", contact_desc: "Contactez notre équipe export pour les prix CIF/FOB.",
                 contact_time: "Réponse < 24h", contact_direct: "Ligne Directe", form_submit: "Envoyer Demande",
                 footer_about: "Exportateur de fruits de mer mauritaniens. Dédié à la pêche durable (FAO 34) et à la qualité.", nav_contact: "Contact", cert_eu: "Agréé UE"
@@ -662,9 +678,10 @@
                 trust_1_title: "Fuente Directa", trust_1_text: "Operamos nuestra propia flota en aguas de Mauritania (FAO 34). Sin intermediarios.",
                 trust_2_title: "Eco-Responsable", trust_2_text: "Comprometidos con las cuotas de pesca para proteger la biodiversidad marina.",
                 trust_3_title: "Exportación Global", trust_3_text: "Certificado (HACCP, FDA, ISO) para exportar a Europa, Japón y EE.UU.",
-                prod_title: "Nuestra Pesca Premium", prod_subtitle: "Origen FAO 34 | 17 Especies Calidad Exportación", prod_badge: "Disponible Fresco (Aéreo) y Congelado (Mar)",
-                tab_all: "Todos (17)", tab_ceph: "Cefalópodos", tab_pelagic: "Pelágicos", tab_demersal: "Demersales",
+                prod_title: "Nuestra Pesca Premium", prod_subtitle: "Origen FAO 34 | 19 Especies Calidad Exportación", prod_badge: "Disponible Fresco (Aéreo) y Congelado (Mar)",
+                tab_all: "Todos (19)", tab_ceph: "Cefalópodos", tab_crustacean: "Crustáceos", tab_pelagic: "Pelágicos", tab_demersal: "Demersales",
                 fish_octopus: "Pulpo Común", fish_squid: "Calamar Común", fish_cuttle: "Sepia",
+                fish_lobster: "Langosta Real", fish_shrimp: "Camarón Rosado Sureño",
                 fish_round: "Alacha", fish_flat: "Machuelo", fish_chub: "Estornino", fish_horse: "Jurel",
                 fish_spotted: "Baila", fish_wedge: "Acedía", fish_leer: "Palometón", fish_hake: "Merluza Europea",
                 fish_grey: "Mujol", fish_porgy: "Pargo", fish_rubber: "Burro", fish_parrot: "Ronco", fish_redmullet: "Salmonete", fish_bream: "Chopa",
@@ -672,11 +689,37 @@
                 fac_subtitle: "Instalaciones", fac_title: "Procesamiento Moderno <br>en Nouadhibou", fac_desc: "Ubicados a minutos de las zonas de pesca en la Zona Franca, asegurando máxima frescura.",
                 fac_feat_1: "Congelación -40°C", fac_feat_1_sub: "Túneles de Ráfaga", fac_feat_2: "Aprobado UE", fac_feat_2_sub: "Cumple HACCP",
                 cert_name: "Certificado Sanitario", cert_detail: "N° 02.114 - Válido hasta Oct 2026",
-                log_subtitle: "Operaciones Globales", log_title: "De Mauritania <br>al Mundo", log_desc: "Somos meticulosos con los términos de envío para garantizar entregas a tiempo y en perfecto estado.",
-                log_terms_label: "TÉRMINOS DE ENVÍO:", log_partners: "NUESTROS SOCIOS:", log_sea: "Carga Marítima", log_air: "Carga Aérea", log_secure: "Cadena de Frío Segura",
+                log_subtitle: "Operaciones Globales", log_title: "De Mauritania <br>al Mundo", 
+                log_inspection: "Todos los envíos son controlados por autoridades mauritanas. Si es necesario, una segunda inspección (SGS, Bureau Veritas) es posible. Entregamos todos los documentos: Certificado sanitario, Factura, BL, Origen, etc...",
+                log_terms_label: "TÉRMINOS DE ENVÍO:", log_partners: "NUESTROS SOCIOS:", log_secure: "Cadena de Frío Segura",
                 contact_sub: "Hablemos", contact_title: "Solicitar <br>Cotización Comercial", contact_desc: "Contacte a nuestro equipo de exportación para precios CIF/FOB.",
                 contact_time: "Respuesta < 24h", contact_direct: "Línea Directa", form_submit: "Enviar Solicitud",
                 footer_about: "Exportador de mariscos de Mauritania. Dedicado a la pesca sostenible (FAO 34) y la calidad.", nav_contact: "Contacto", cert_eu: "Aprobado UE"
+            },
+            de: {
+                nav_home: "Startseite", nav_products: "Unsere Fänge", nav_factory: "Fabrik", nav_logistics: "Logistik", btn_quote: "Angebot anfordern",
+                hero_title: "Premium Meeresfrüchte", hero_sub: "Direkt aus dem Atlantik (FAO 34) auf globale Märkte.<br>EU-zugelassen & schockgefrostet.",
+                hero_btn_catalog: "Katalog ansehen", hero_btn_contact: "Kontaktieren Sie uns",
+                trust_1_title: "Direktquelle", trust_1_text: "Eigene Flotte in mauretanischen Gewässern (FAO 34). Keine Zwischenhändler.",
+                trust_2_title: "Öko-Verantwortung", trust_2_text: "Verpflichtung zu nachhaltigen Fangquoten zum Schutz der Biodiversität.",
+                trust_3_title: "Globaler Export", trust_3_text: "Voll zertifiziert (HACCP, FDA, ISO) für den Export nach Europa, Japan und USA.",
+                prod_title: "Unser Premium-Fang", prod_subtitle: "Herkunft FAO 34 | 19 Export-Qualitätsarten", prod_badge: "Verfügbar Frisch (Luft) & Gefroren (See)",
+                tab_all: "Alle (19)", tab_ceph: "Kopffüßer", tab_crustacean: "Krebstiere", tab_pelagic: "Pelagisch", tab_demersal: "Demersal",
+                fish_octopus: "Gewöhnlicher Krake", fish_squid: "Kalmar", fish_cuttle: "Sepia",
+                fish_lobster: "Königslanguste", fish_shrimp: "Rosa Geißelgarnele",
+                fish_round: "Runder Sardinelle", fish_flat: "Flacher Sardinelle", fish_chub: "Spanische Makrele", fish_horse: "Bastardmakrele",
+                fish_spotted: "Gefleckter Wolfsbarsch", fish_wedge: "Keil-Seezunge", fish_leer: "Gabelmakrele", fish_hake: "Europäischer Seehecht",
+                fish_grey: "Großkopfmeeräsche", fish_porgy: "Sackbrasse", fish_rubber: "Süßlippe", fish_parrot: "Papageienfisch", fish_redmullet: "Streifenbarbe", fish_bream: "Streifenbrasse",
+                note_title: "Suchen Sie etwas anderes?", note_text: "Dies sind unsere Hauptexportprodukte. Dank unseres Netzwerks in Nouadhibou können wir auf Anfrage andere Arten beschaffen.",
+                fac_subtitle: "Unsere Anlage", fac_title: "Moderne Verarbeitung <br>in Nouadhibou", fac_desc: "Minuten von den Fanggründen in der Freihandelszone entfernt, für maximale Frische.",
+                fac_feat_1: "-40°C Gefrieren", fac_feat_1_sub: "Blast- & Plattentunnel", fac_feat_2: "EU-Zulassung", fac_feat_2_sub: "HACCP-konform",
+                cert_name: "Gesundheitszertifikat", cert_detail: "Nr. 02.114 - Gültig bis Okt 2026",
+                log_subtitle: "Globale Operationen", log_title: "Von Mauretanien <br>in die Welt", 
+                log_inspection: "Alle Sendungen werden von Behörden geprüft. Bei Bedarf erfolgt eine zweite Inspektion (SGS, Bureau Veritas). Wir liefern alle Dokumente: Gesundheitszeugnis, Rechnung, BL, Ursprungszeugnis usw.",
+                log_terms_label: "VERSANDBEDINGUNGEN:", log_partners: "UNSERE PARTNER:", log_secure: "Sichere Kühlkette",
+                contact_sub: "Kontakt", contact_title: "Kommerzielles <br>Angebot anfordern", contact_desc: "Kontaktieren Sie unser Exportteam für CIF/FOB-Preise.",
+                contact_time: "Antwort < 24h", contact_direct: "Direktwahl", form_submit: "Anfrage senden",
+                footer_about: "Exporteur von mauretanischen Meeresfrüchten. Nachhaltiger Fischerei (FAO 34) und Qualität verpflichtet.", nav_contact: "Kontakt", cert_eu: "EU-Zulassung"
             }
         };
 
@@ -719,4 +762,3 @@
     </script>
 </body>
 </html>
-
