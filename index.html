@@ -237,9 +237,18 @@
 
     <header id="home" class="hero-section">
         <div class="video-container">
-            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline style="background: #02182B;" poster="https://images.unsplash.com/photo-1543621980-60b73c43494e?q=80&w=2000">
-                <source src="hero.mp4" type="video/mp4">
-            </video>
+<video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    preload="auto"
+>
+    <source src="hero.mp4" type="video/mp4">
+</video>
+
         </div>
         <div class="hero-overlay"></div>
         <div class="container text-center hero-content text-white">
@@ -508,6 +517,35 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+
+        <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector(".hero-video");
+
+    if (!video) return;
+
+    // iOS Safari sometimes ignores autoplay on load
+    const tryPlay = () => {
+        video.muted = true;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // Retry on first user interaction
+                const retry = () => {
+                    video.play();
+                    document.removeEventListener("touchstart", retry);
+                    document.removeEventListener("click", retry);
+                };
+                document.addEventListener("touchstart", retry, { once: true });
+                document.addEventListener("click", retry, { once: true });
+            });
+        }
+    };
+
+    tryPlay();
+});
+</script>
+
         // Navbar scroll effect
         function checkScroll() {
             const nav = document.querySelector('.navbar');
@@ -677,3 +715,4 @@
     </script>
 </body>
 </html>
+
