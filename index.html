@@ -23,9 +23,9 @@
             --bg-ice: #F4F8FB;
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Montserrat', sans-serif;
+            --gradient-ocean: linear-gradient(180deg, #02182B 0%, #0c4a6e 100%);
         }
 
-        /* FIX: Strict document setup to prevent white flash & scrolling issues */
         html {
             width: 100%;
             overflow-x: hidden;
@@ -88,26 +88,27 @@
         .lang-btn { background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 0.7rem; font-weight: 600; padding: 0 5px; }
         .lang-btn.active { color: var(--woma-gold); }
 
-        /* --- 3. HERO SECTION (STATIC IMAGE) --- */
+        /* --- 3. HERO SECTION (OCEAN BACKGROUND) --- */
         .hero-section {
             position: relative;
-            height: 100vh; /* Fallback */
-            height: 100dvh; /* Mobile viewport fix */
+            height: 100vh;
+            height: 100dvh;
             width: 100%;
             display: flex; align-items: center; justify-content: center;
             overflow: hidden; 
-            background-color: var(--woma-navy); 
             margin: 0; padding: 0;
-            /* Static Background Image */
-            background-image: url('https://images.unsplash.com/photo-1615884330352-90c71605a3cb?q=80&w=2000'); /* High quality ocean/fishing image */
+            /* Updated "Oceany" Background */
+            background-image: url('https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=2000'); 
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
+            background-color: var(--woma-navy);
         }
 
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(2, 24, 43, 0.4) 0%, rgba(2, 24, 43, 0.9) 100%);
+            /* Lighter overlay to let the blue shine through */
+            background: radial-gradient(circle, rgba(2, 24, 43, 0.2) 0%, rgba(2, 24, 43, 0.7) 100%);
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; padding-top: 60px; }
@@ -160,22 +161,52 @@
         .factory-section { background-color: var(--bg-ice); padding: 120px 0; }
         .factory-img { width: 100%; object-fit: cover; box-shadow: var(--shadow-card); }
         
+        /* --- LOGISTICS SECTION (GLOBAL REACH) FIXED --- */
         .logistics-section { background: var(--gradient-ocean); color: white; padding: 120px 0; position: relative; }
-        .logistics-section h2, .logistics-section h6, .logistics-section h4 { color: #ffffff !important; }
+        .logistics-section h2 { color: #ffffff !important; font-size: 3.5rem; }
+        .logistics-section h6 { color: #ffffff !important; letter-spacing: 2px; }
+        .logistics-section h4 { color: var(--woma-gold) !important; }
         
-        .partner-btn { display: inline-block; padding: 0; margin: 10px 25px 10px 0; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 1.1rem; font-family: var(--font-serif); font-weight: 700; transition: 0.3s; }
-        .partner-btn:hover { color: var(--woma-gold); }
-        .logistics-card { border: 1px solid rgba(255,255,255,0.1); height: 250px; overflow: hidden; }
+        .partner-btn { 
+            display: inline-block; 
+            padding: 8px 15px; 
+            margin: 5px 10px 5px 0; 
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white; 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            font-family: var(--font-sans); 
+            font-weight: 600; 
+            transition: 0.3s;
+        }
+        .partner-btn:hover { border-color: var(--woma-gold); color: var(--woma-gold); background: rgba(255,255,255,0.05); }
+
+        .logistics-card { border: 1px solid rgba(255,255,255,0.1); height: 250px; overflow: hidden; background: #000; }
         .logistics-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
         .logistics-card:hover img { opacity: 1; transform: scale(1.05); }
 
-        /* --- CONTACT SECTION (REVERTED TO SIMPLE LIST) --- */
+        /* --- CONTACT SECTION (TRACED FIELDS) --- */
         .contact-section { background-color: var(--bg-light); padding: 120px 0; }
         .contact-container { box-shadow: var(--shadow-float); background: white; }
-        .form-control { border: none; border-bottom: 1px solid #ddd; padding: 15px 0; border-radius: 0; }
+        
+        /* Traced (Bordered) Form Fields */
+        .form-control { 
+            border: 1px solid #ced4da; /* Full border "Traced" */
+            padding: 15px; 
+            border-radius: 0; 
+            background-color: #fcfcfc;
+            transition: 0.3s;
+        }
+        .form-control:focus { 
+            box-shadow: none; 
+            border-color: var(--woma-navy); 
+            background-color: #fff;
+        }
+
         .contact-info-col { background: var(--woma-navy); color: white; padding: 60px; }
         .contact-info-col h3 { color: #ffffff !important; }
         
+        /* Simple Contact List (Original) */
         .contact-list { list-style: none; padding: 0; margin: 0; }
         .contact-list li { display: flex; align-items: flex-start; margin-bottom: 30px; }
         .contact-list i { color: var(--woma-gold); font-size: 1.2rem; margin-right: 20px; margin-top: 5px; }
