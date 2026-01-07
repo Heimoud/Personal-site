@@ -16,177 +16,140 @@
     <style>
         /* --- 1. CORE IDENTITY --- */
         :root {
-            /* Colors */
-            --woma-navy: #02182B;       /* Deep Midnight Blue (Text Color) */
-            --woma-ocean: #0a2e48;      /* Card Background Blue */
-            --woma-gold: #C8AA6E;       /* Metallic Gold */
-            --woma-gold-hover: #D4B87E;
+            --woma-navy: #02182B;
+            --woma-ocean: #0a2e48;
+            --woma-gold: #C8AA6E;
             --bg-light: #FFFFFF;
             --bg-ice: #F4F8FB;
-            
-            /* Gradients */
-            --gradient-ocean: linear-gradient(180deg, #02182B 0%, #0c4a6e 100%);
-            
-            /* Fonts */
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Montserrat', sans-serif;
-            
-            /* Shadows */
-            --shadow-card: 0 10px 30px rgba(0,0,0,0.15);
-            --shadow-float: 0 20px 50px rgba(0,0,0,0.2);
         }
 
-        /* Global Reset */
-        html { scroll-behavior: smooth; }
-        body { 
-            font-family: var(--font-sans); color: var(--woma-navy); 
-            background-color: var(--bg-light); overflow-x: hidden; line-height: 1.7;
+        /* FIX: Force Dark Background on Body to stop White Flash on Refresh */
+        html, body { 
+            background-color: var(--woma-navy); 
+            font-family: var(--font-sans); 
+            color: var(--woma-navy);
+            overflow-x: hidden; /* Stop horizontal scroll */
+            width: 100%;
         }
-        
+
+        /* Headings */
         h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); font-weight: 700; color: var(--woma-navy); }
         
         /* Utility */
         .text-gold { color: var(--woma-gold) !important; }
-        .text-navy { color: var(--woma-navy) !important; }
         .text-white { color: #ffffff !important; }
-        
         .subtitle-caps {
             font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 3px;
             font-size: 0.7rem; font-weight: 600; color: var(--woma-gold); display: block; margin-bottom: 1rem;
         }
 
-        /* --- 2. MODERN NAVBAR --- */
+        /* --- 2. NAVBAR --- */
         .navbar {
             padding: 15px 0;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             background: rgba(2, 24, 43, 0); 
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s;
             z-index: 1000;
         }
-        
         .navbar.scrolled {
             background: rgba(2, 24, 43, 0.98);
             backdrop-filter: blur(12px);
             padding: 10px 0;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
         .navbar-logo { height: 80px; width: auto; transition: 0.3s; }
         .navbar.scrolled .navbar-logo { height: 60px; }
-
         .nav-link {
             font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600;
             text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.85) !important;
-            padding: 0 15px !important; position: relative; transition: 0.3s;
+            padding: 0 15px !important;
         }
-        .nav-link:hover, .nav-link.active { color: var(--woma-gold) !important; }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: -5px; left: 50%; width: 0; height: 1px;
-            background: var(--woma-gold); transition: 0.3s; transform: translateX(-50%);
-        }
-        .nav-link:hover::after { width: 40%; }
+        .nav-link:hover { color: var(--woma-gold) !important; }
 
         @media (max-width: 991px) {
             .navbar { background: var(--woma-navy); } 
-            .navbar-collapse { background: var(--woma-navy); padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+            .navbar-collapse { background: var(--woma-navy); padding: 20px; }
             .navbar-logo { height: 50px; }
         }
 
         .btn-nav-gold {
             border: 1px solid var(--woma-gold); color: var(--woma-gold);
             font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
-            padding: 10px 25px; transition: 0.3s; font-weight: 600; border-radius: 0;
+            padding: 10px 25px; font-weight: 600; border-radius: 0;
         }
         .btn-nav-gold:hover { background: var(--woma-gold); color: var(--woma-navy); }
 
-        .lang-btn { background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 0.7rem; font-weight: 600; padding: 0 5px; transition: 0.3s; }
-        .lang-btn:hover, .lang-btn.active { color: var(--woma-gold); }
-        .lang-divider { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+        .lang-btn { background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 0.7rem; font-weight: 600; padding: 0 5px; }
+        .lang-btn.active { color: var(--woma-gold); }
 
-        /* --- 3. HERO VIDEO (MOBILE FIX) --- */
+        /* --- 3. HERO VIDEO (STABILITY FIX) --- */
         .hero-section {
-            position: relative; 
-            /* Fix jumpy scroll on mobile using dvh */
-            height: 100vh; 
+            position: relative;
+            height: 100vh;
+            /* FIX: Use dvh for mobile address bar stability */
             min-height: 100dvh; 
             display: flex; align-items: center; justify-content: center;
             overflow: hidden; 
             margin-top: -110px; padding-top: 110px;
-            /* FIX: Dark background color prevents white flash on refresh */
+            /* FIX: Dark background ensures no white flash on load */
             background-color: var(--woma-navy); 
         }
         
         .video-container {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             overflow: hidden; z-index: 0;
+            background: #02182B; /* Fallback color */
         }
         
         .hero-video {
-            position: absolute; top: 50%; left: 50%; 
-            min-width: 100%; min-height: 100%;
-            width: auto; height: auto; 
-            /* Scale 1.35 to strictly hide watermark on all mobile ratios */
-            transform: translate(-50%, -50%) scale(1.35); 
+            /* FIX: Native Object-Fit Centering (More stable than translate) */
+            width: 100%; 
+            height: 100%;
             object-fit: cover;
-            /* FIX: Disables play button overlay on mobile */
+            /* FIX: Scale 1.4 guarantees watermark removal */
+            transform: scale(1.4);
+            transform-origin: center center;
+            /* Mobile controls fix */
             pointer-events: none; 
         }
 
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(2, 24, 43, 0.3) 0%, rgba(2, 24, 43, 0.85) 100%);
+            /* Stronger gradient at bottom for readability */
+            background: radial-gradient(circle, rgba(2, 24, 43, 0.4) 0%, rgba(2, 24, 43, 0.9) 100%);
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; }
-        
-        /* Ensure Hero Title is White */
-        .hero-title { 
-            font-size: clamp(3rem, 5vw, 5.5rem); 
-            line-height: 1.1; margin-bottom: 1.5rem; 
-            color: #ffffff !important; 
-        }
+        .hero-title { font-size: clamp(3rem, 5vw, 5.5rem); line-height: 1.1; margin-bottom: 1.5rem; color: white !important; }
 
         .btn-gold {
             background: linear-gradient(135deg, var(--woma-gold) 0%, #b8951d 100%);
             color: #fff; border: none; font-family: var(--font-sans);
             font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
-            padding: 16px 40px; border-radius: 0; transition: 0.3s;
+            padding: 16px 40px; border-radius: 0;
         }
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(200, 170, 110, 0.3); color: white; }
-
         .btn-outline-white {
             border: 1px solid rgba(255,255,255,0.7); color: white;
             padding: 16px 40px; text-transform: uppercase; letter-spacing: 1px;
-            font-weight: 500; border-radius: 0; transition: 0.3s;
+            font-weight: 500; border-radius: 0;
         }
-        .btn-outline-white:hover { background: white; color: var(--woma-navy); border-color: white; }
-
 
         /* --- 4. SECTIONS --- */
         .trust-section { padding: 100px 0; background-color: var(--bg-light); }
         .feature-box { padding: 40px 30px; border: 1px solid transparent; transition: 0.4s; }
         .feature-box:hover { border-color: #eee; box-shadow: var(--shadow-card); transform: translateY(-5px); }
         .feature-icon { font-size: 2.5rem; color: var(--woma-navy); margin-bottom: 25px; }
-        .feature-box:hover .feature-icon { color: var(--woma-gold); }
 
         .product-section { background-color: var(--woma-navy); padding: 120px 0; color: white; }
         
-        /* Category Tabs: Remove Double Underline */
-        .nav-pills .nav-link {
-            color: rgba(255,255,255,0.6); margin: 0 10px; border-radius: 0; padding: 10px 0;
-            border: none; border-bottom: 2px solid transparent; background: transparent; 
-            text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
-            text-decoration: none !important; 
-        }
-        .nav-pills .nav-link:hover, .nav-pills .nav-link.active { color: white; border-bottom-color: var(--woma-gold); }
-
-        /* --- PRODUCT CARD (VISIBILITY FIX) --- */
+        /* Product Cards */
         .product-card {
-            background: var(--woma-ocean); /* Dark Blue Background */
+            background: var(--woma-ocean);
             border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 0; height: 100%; transition: 0.4s; overflow: hidden;
-            display: flex; flex-direction: column;
+            height: 100%; overflow: hidden; display: flex; flex-direction: column;
+            transition: 0.4s;
         }
         .product-card:hover { transform: translateY(-8px); border-color: var(--woma-gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         
@@ -194,92 +157,67 @@
             height: 250px; width: 100%; background: #fff; position: relative; 
             display: flex; align-items: center; justify-content: center;
         }
-        .card-img-top { 
-            max-width: 90%; max-height: 90%; object-fit: contain; padding: 10px; transition: 0.5s; 
-        }
+        .card-img-top { max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.5s; }
         .product-card:hover .card-img-top { transform: scale(1.1); }
         
-        .card-body { 
-            padding: 1.5rem; 
-            text-align: center; /* CENTERED */
-            flex-grow: 1;
-            display: flex; flex-direction: column; justify-content: center;
-        }
+        .card-body { padding: 1.5rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
         
-        /* !!! VISIBILITY FIX: Force White Title !!! */
-        .product-card h4 { 
-            color: #ffffff !important; 
-            font-family: var(--font-serif);
-            font-size: 1.3rem; 
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
-        }
-        
-        .sci-name { 
-            color: var(--woma-gold); 
-            font-family: var(--font-sans); 
-            font-style: italic; font-size: 0.85rem; 
-            opacity: 0.9; font-weight: 400;
-        }
+        /* Force White Titles in Cards */
+        .product-card h4 { color: #ffffff !important; font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 5px; }
+        .sci-name { color: var(--woma-gold); font-family: var(--font-sans); font-style: italic; font-size: 0.85rem; opacity: 0.9; }
 
+        /* Tabs */
+        .nav-pills .nav-link {
+            color: rgba(255,255,255,0.6); margin: 0 10px; border: none; 
+            text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
+            background: transparent;
+        }
+        .nav-pills .nav-link:hover, .nav-pills .nav-link.active { color: white; border-bottom: 1px solid var(--woma-gold); border-radius: 0; }
+        
+        /* Grading Overlay */
         .grading-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(2, 24, 43, 0.95); color: white; 
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            opacity: 0; transition: 0.3s; padding: 20px; text-align: center;
+            opacity: 0; transition: 0.3s; padding: 20px;
         }
         .product-card:hover .grading-overlay { opacity: 1; }
-        .grading-table { width: 100%; font-size: 0.8rem; color: #ddd; text-align: left; border-top: 1px solid rgba(255,255,255,0.2); margin-top: 10px; }
+        .grading-table { width: 100%; font-size: 0.8rem; color: #ddd; text-align: left; border-top: 1px solid rgba(255,255,255,0.2); }
         .grading-table td { padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
+        /* Factory & Logistics */
         .factory-section { background-color: var(--bg-ice); padding: 120px 0; }
         .factory-img { width: 100%; object-fit: cover; box-shadow: var(--shadow-card); }
         
-        /* --- LOGISTICS (VISIBILITY FIX) --- */
-        .logistics-section { 
-            background: var(--gradient-ocean); /* Dark Background */
-            color: white; padding: 120px 0; position: relative; 
-        }
-        /* !!! VISIBILITY FIX: Override dark heading color !!! */
-        .logistics-section h2, .logistics-section h6 { color: #ffffff !important; }
+        .logistics-section { background: var(--gradient-ocean); color: white; padding: 120px 0; position: relative; }
+        /* Force White Headers in Dark Section */
+        .logistics-section h2, .logistics-section h6, .logistics-section h4 { color: #ffffff !important; }
+        
         .partner-btn {
             display: inline-block; padding: 0; margin: 10px 25px 10px 0; 
             color: rgba(255,255,255,0.6); text-decoration: none; font-size: 1.1rem; 
-            font-family: var(--font-serif); font-weight: 700; transition: all 0.3s;
+            font-family: var(--font-serif); font-weight: 700; transition: 0.3s;
         }
-        .partner-btn:hover { color: var(--woma-gold); transform: translateX(5px); }
+        .partner-btn:hover { color: var(--woma-gold); }
 
         .logistics-card { border: 1px solid rgba(255,255,255,0.1); height: 250px; overflow: hidden; }
         .logistics-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
         .logistics-card:hover img { opacity: 1; transform: scale(1.05); }
 
+        /* Contact & Footer */
         .contact-section { background-color: var(--bg-light); padding: 120px 0; }
         .contact-container { box-shadow: var(--shadow-float); background: white; }
         .form-control { border: none; border-bottom: 1px solid #ddd; padding: 15px 0; border-radius: 0; }
-        .form-control:focus { box-shadow: none; border-color: var(--woma-navy); }
         .contact-info-col { background: var(--woma-navy); color: white; padding: 60px; }
-        /* Ensure Contact headings in dark column are white */
         .contact-info-col h3 { color: #ffffff !important; }
 
-        /* --- 5. FOOTER (VISIBILITY FIX) --- */
-        footer {
-            background: #01060a; /* Very Dark */
-            color: #8b9bb4; /* Light Grey Text */
-            padding: 80px 0 30px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.9rem;
-        }
-        
-        /* Ensure Footer Headings are readable */
-        .footer-logo-text { font-family: var(--font-serif); color: #ffffff; font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 20px; display: block; font-weight: 700; }
-        .footer-heading { color: var(--woma-gold); font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 25px; }
-        
-        .footer-link { color: #8b9bb4; text-decoration: none; transition: 0.3s; display: block; margin-bottom: 12px; }
-        .footer-link:hover { color: #ffffff; transform: translateX(5px); }
-        
+        footer { background: #01060a; color: #8b9bb4; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+        .footer-logo-text { font-family: var(--font-serif); color: #ffffff; font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; display: block; }
+        .footer-heading { color: var(--woma-gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 25px; }
+        .footer-link { color: #8b9bb4; text-decoration: none; display: block; margin-bottom: 12px; transition: 0.3s; }
+        .footer-link:hover { color: #ffffff; }
         .footer-contact-item { display: flex; align-items: flex-start; margin-bottom: 15px; }
         .footer-contact-item i { color: var(--woma-gold); margin-right: 15px; margin-top: 5px; }
-        
         .copyright { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 60px; padding-top: 30px; text-align: center; font-size: 0.8rem; opacity: 0.6; }
 
         .whatsapp-float {
@@ -289,7 +227,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-decoration: none; transition: 0.3s;
         }
         .whatsapp-float:hover { transform: scale(1.1); color: white; }
-
     </style>
 </head>
 <body>
@@ -311,7 +248,6 @@
                     <li class="nav-item"><a class="nav-link" href="#factory" data-i18n="nav_factory">Factory</a></li>
                     <li class="nav-item"><a class="nav-link" href="#logistics" data-i18n="nav_logistics">Logistics</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact">Contact</a></li>
-                    
                     <li class="nav-item ms-lg-4 d-flex align-items-center my-3 my-lg-0">
                         <button class="lang-btn active" onclick="setLanguage('en')">EN</button><span class="lang-divider">/</span>
                         <button class="lang-btn" onclick="setLanguage('fr')">FR</button><span class="lang-divider">/</span>
@@ -466,7 +402,7 @@
                         <div class="d-flex align-items-center">
                              <div class="me-3 text-gold"><i class="fas fa-file-contract fa-2x"></i></div>
                              <div><h6 class="fw-bold mb-0 text-navy" data-i18n="cert_name">Sanitary Approval Certificate</h6><p class="small text-muted mb-0" data-i18n="cert_detail">N° 02.114</p></div>
-                             <a href="assets/certificate.pdf" target="_blank" class="btn btn-outline-dark btn-sm ms-auto rounded-0 px-3"><i class="fas fa-download me-1"></i> PDF</a>
+                             <a href="certificate.pdf" target="_blank" class="btn btn-outline-dark btn-sm ms-auto rounded-0 px-3"><i class="fas fa-download me-1"></i> PDF</a>
                         </div>
                     </div>
                 </div>
@@ -562,7 +498,7 @@
                     <h6 class="footer-heading">Legal</h6>
                     <a href="#" class="footer-link">Terms of Service</a>
                     <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="assets/certificate.pdf" target="_blank" class="footer-link">Certificates</a>
+                    <a href="certificate.pdf" target="_blank" class="footer-link">Certificates</a>
                 </div>
 
                 <div class="col-md-4 col-lg-4">
@@ -667,7 +603,7 @@
                 fish_grey: "Mulet", fish_porgy: "Pagre Commun", fish_rubber: "Diagramme", fish_parrot: "Grondeur", fish_redmullet: "Rouget", fish_bream: "Dorade Grise",
                 note_title: "Vous cherchez autre chose ?", note_text: "Nous pouvons sourcer d'autres espèces sur demande.",
                 fac_title: "Traitement Moderne <br>à Nouadhibou", fac_desc: "Situé à quelques minutes des zones de pêche.",
-                fac_feat_1: "Congelación -40°C", fac_feat_1_sub: "Tunnels Blast & Plaques", fac_feat_2: "Agréé UE", fac_feat_2_sub: "Conforme HACCP",
+                fac_feat_1: "Congélation -40°C", fac_feat_1_sub: "Tunnels Blast & Plaques", fac_feat_2: "Agréé UE", fac_feat_2_sub: "Conforme HACCP",
                 cert_name: "Agrément Sanitaire", cert_detail: "N° 02.114",
                 log_title: "De la Mauritanie <br>au Monde", 
                 log_inspection: "Contrôle par les autorités mauritaniennes. Inspection SGS/Veritas possible.",
