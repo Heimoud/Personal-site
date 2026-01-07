@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Womapeche | Premium Mauritanian Seafood</title>
     
     <meta name="description" content="Premium Mauritanian Seafood Exporter. Direct from FAO 34. Octopus, Squid, Lobster, and Pelagic fish. EU Approved & Flash Frozen in Nouadhibou.">
@@ -25,21 +25,24 @@
             --font-sans: 'Montserrat', sans-serif;
         }
 
-        /* FIX: Prevent Horizontal Scroll & White Flash */
+        /* FIX: Strict document setup to prevent wobbling */
         html {
+            width: 100%;
             overflow-x: hidden;
             background-color: var(--woma-navy);
+            -webkit-text-size-adjust: 100%;
         }
         body { 
-            font-family: var(--font-sans); color: var(--woma-navy); 
+            font-family: var(--font-sans); 
+            color: var(--woma-navy); 
             background-color: var(--bg-light); 
-            overflow-x: hidden; 
             width: 100%;
-            margin: 0; padding: 0;
+            margin: 0; 
+            padding: 0;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); font-weight: 700; color: var(--woma-navy); }
-        
         .text-gold { color: var(--woma-gold) !important; }
         .text-white { color: #ffffff !important; }
         .subtitle-caps {
@@ -50,13 +53,13 @@
         /* --- 2. NAVBAR --- */
         .navbar {
             padding: 15px 0;
-            background: rgba(2, 24, 43, 0); /* Transparent by default */
+            background: rgba(2, 24, 43, 0); 
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: 0.4s;
+            transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
             z-index: 1000;
         }
         .navbar.scrolled {
-            background: rgba(2, 24, 43, 0.98); /* Solid on scroll */
+            background: rgba(2, 24, 43, 0.98); 
             backdrop-filter: blur(12px);
             padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -71,14 +74,8 @@
         }
         .nav-link:hover { color: var(--woma-gold) !important; }
 
-        /* Mobile Menu */
         @media (max-width: 991px) {
-            .navbar-collapse { 
-                background: var(--woma-navy); 
-                padding: 20px; 
-                margin-top: 10px;
-                border-radius: 4px;
-            }
+            .navbar-collapse { background: var(--woma-navy); padding: 20px; margin-top: 10px; border-radius: 4px; }
             .navbar-logo { height: 50px; }
         }
 
@@ -88,41 +85,40 @@
             padding: 10px 25px; font-weight: 600; border-radius: 0;
         }
         .btn-nav-gold:hover { background: var(--woma-gold); color: var(--woma-navy); }
-
         .lang-btn { background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 0.7rem; font-weight: 600; padding: 0 5px; }
         .lang-btn.active { color: var(--woma-gold); }
 
-        /* --- 3. HERO VIDEO (STABILITY FIX) --- */
+        /* --- 3. HERO VIDEO (GEOMETRY FIX) --- */
         .hero-section {
             position: relative;
-            /* FIX: Use 100dvh to perfectly fit mobile screen without jumpiness */
-            height: 100vh;
-            height: 100dvh; 
+            height: 100vh; /* Fallback */
+            height: 100dvh; /* Mobile viewport fix */
             width: 100%;
             display: flex; align-items: center; justify-content: center;
-            /* FIX: Strict clipping of the zoomed video */
             overflow: hidden; 
-            background-color: var(--woma-navy);
-            /* Removed negative margin hacks */
+            background-color: var(--woma-navy); /* Prevents white flash */
             margin: 0; padding: 0;
         }
         
         .video-container {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             overflow: hidden; z-index: 0;
-            /* Fallback background if video lags */
-            background: #02182B;
+            background: var(--woma-navy);
         }
         
         .hero-video {
-            width: 100%; 
-            height: 100%;
+            /* FIX: Geometry-based zoom. 
+               Instead of transform:scale (which animates), we set width > 100%.
+               This renders instantly correctly on load. */
+            position: absolute;
+            width: 140%; 
+            height: 140%;
+            /* Center the zoomed video using negative positioning */
+            top: -20%;
+            left: -20%;
             object-fit: cover;
-            /* Scale 1.4 to remove watermark */
-            transform: scale(1.4);
-            transform-origin: center center;
-            /* Stop mobile user interaction */
-            pointer-events: none;
+            pointer-events: none; /* Disables play button overlay */
+            background: var(--woma-navy); /* Self-background */
         }
 
         .hero-overlay {
@@ -130,13 +126,8 @@
             background: radial-gradient(circle, rgba(2, 24, 43, 0.4) 0%, rgba(2, 24, 43, 0.9) 100%);
             z-index: 1;
         }
-        .hero-content { position: relative; z-index: 2; padding-top: 60px; /* Offset for navbar */ }
-        
-        .hero-title { 
-            font-size: clamp(3rem, 5vw, 5.5rem); 
-            line-height: 1.1; margin-bottom: 1.5rem; 
-            color: white !important; 
-        }
+        .hero-content { position: relative; z-index: 2; padding-top: 60px; }
+        .hero-title { font-size: clamp(3rem, 5vw, 5.5rem); line-height: 1.1; margin-bottom: 1.5rem; color: white !important; }
 
         .btn-gold {
             background: linear-gradient(135deg, var(--woma-gold) 0%, #b8951d 100%);
@@ -157,38 +148,21 @@
         .feature-icon { font-size: 2.5rem; color: var(--woma-navy); margin-bottom: 25px; }
 
         .product-section { background-color: var(--woma-navy); padding: 120px 0; color: white; }
-        
-        /* Product Cards */
         .product-card {
-            background: var(--woma-ocean);
-            border: 1px solid rgba(255,255,255,0.1); 
-            height: 100%; overflow: hidden; display: flex; flex-direction: column;
-            transition: 0.4s;
+            background: var(--woma-ocean); border: 1px solid rgba(255,255,255,0.1); 
+            height: 100%; overflow: hidden; display: flex; flex-direction: column; transition: 0.4s;
         }
         .product-card:hover { transform: translateY(-8px); border-color: var(--woma-gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        
-        .card-img-wrapper {
-            height: 250px; width: 100%; background: #fff; position: relative; 
-            display: flex; align-items: center; justify-content: center;
-        }
+        .card-img-wrapper { height: 250px; width: 100%; background: #fff; position: relative; display: flex; align-items: center; justify-content: center; }
         .card-img-top { max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.5s; }
         .product-card:hover .card-img-top { transform: scale(1.1); }
-        
         .card-body { padding: 1.5rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-        
-        /* Force White Titles in Cards */
         .product-card h4 { color: #ffffff !important; font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 5px; }
         .sci-name { color: var(--woma-gold); font-family: var(--font-sans); font-style: italic; font-size: 0.85rem; opacity: 0.9; }
 
-        /* Tabs */
-        .nav-pills .nav-link {
-            color: rgba(255,255,255,0.6); margin: 0 10px; border: none; 
-            text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
-            background: transparent;
-        }
+        .nav-pills .nav-link { color: rgba(255,255,255,0.6); margin: 0 10px; border: none; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; background: transparent; }
         .nav-pills .nav-link:hover, .nav-pills .nav-link.active { color: white; border-bottom: 1px solid var(--woma-gold); border-radius: 0; }
         
-        /* Grading Overlay */
         .grading-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(2, 24, 43, 0.95); color: white; 
@@ -199,26 +173,18 @@
         .grading-table { width: 100%; font-size: 0.8rem; color: #ddd; text-align: left; border-top: 1px solid rgba(255,255,255,0.2); }
         .grading-table td { padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-        /* Factory & Logistics */
         .factory-section { background-color: var(--bg-ice); padding: 120px 0; }
         .factory-img { width: 100%; object-fit: cover; box-shadow: var(--shadow-card); }
         
         .logistics-section { background: var(--gradient-ocean); color: white; padding: 120px 0; position: relative; }
-        /* Force White Headers in Dark Section */
         .logistics-section h2, .logistics-section h6, .logistics-section h4 { color: #ffffff !important; }
         
-        .partner-btn {
-            display: inline-block; padding: 0; margin: 10px 25px 10px 0; 
-            color: rgba(255,255,255,0.6); text-decoration: none; font-size: 1.1rem; 
-            font-family: var(--font-serif); font-weight: 700; transition: 0.3s;
-        }
+        .partner-btn { display: inline-block; padding: 0; margin: 10px 25px 10px 0; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 1.1rem; font-family: var(--font-serif); font-weight: 700; transition: 0.3s; }
         .partner-btn:hover { color: var(--woma-gold); }
-
         .logistics-card { border: 1px solid rgba(255,255,255,0.1); height: 250px; overflow: hidden; }
         .logistics-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
         .logistics-card:hover img { opacity: 1; transform: scale(1.05); }
 
-        /* Contact & Footer */
         .contact-section { background-color: var(--bg-light); padding: 120px 0; }
         .contact-container { box-shadow: var(--shadow-float); background: white; }
         .form-control { border: none; border-bottom: 1px solid #ddd; padding: 15px 0; border-radius: 0; }
@@ -234,12 +200,7 @@
         .footer-contact-item i { color: var(--woma-gold); margin-right: 15px; margin-top: 5px; }
         .copyright { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 60px; padding-top: 30px; text-align: center; font-size: 0.8rem; opacity: 0.6; }
 
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-            background: #25d366; color: white; border-radius: 50%; font-size: 32px;
-            display: flex; align-items: center; justify-content: center; z-index: 100;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-decoration: none; transition: 0.3s;
-        }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; color: white; border-radius: 50%; font-size: 32px; display: flex; align-items: center; justify-content: center; z-index: 100; box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-decoration: none; transition: 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); color: white; }
     </style>
 </head>
@@ -276,7 +237,7 @@
 
     <header id="home" class="hero-section">
         <div class="video-container">
-            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline poster="https://images.unsplash.com/photo-1543621980-60b73c43494e?q=80&w=2000">
+            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline style="background: #02182B;" poster="https://images.unsplash.com/photo-1543621980-60b73c43494e?q=80&w=2000">
                 <source src="hero.mp4" type="video/mp4">
             </video>
         </div>
@@ -333,6 +294,45 @@
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Sardinella maderensis.jpg" class="card-img-top" alt="Flat Sardinella" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_flat">Flat Sardinella</h4><p class="sci-name">Sardinella maderensis</p></div></div></div>
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Scomber colias.jpg" class="card-img-top" alt="Mackerel" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_chub">Chub Mackerel</h4><p class="sci-name">Scomber colias</p></div></div></div>
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Trachurus spp.jpg" class="card-img-top" alt="Horse Mackerel" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_horse">Horse Mackerel</h4><p class="sci-name">Trachurus spp.</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Dicentrarchus punctatus.jpg" class="card-img-top" alt="Seabass" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_spotted">Spotted Seabass</h4><p class="sci-name">Dicentrarchus punctatus</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Dicologlossa cuneata.jfif" class="card-img-top" alt="Wedge Sole" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_wedge">Wedge Sole</h4><p class="sci-name">Dicologlossa cuneata</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Lichia amia.jpg" class="card-img-top" alt="Leerfish" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_leer">Leerfish</h4><p class="sci-name">Lichia amia</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Merluccius merluccius.jpg" class="card-img-top" alt="Hake" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_hake">European Hake</h4><p class="sci-name">Merluccius merluccius</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Mugil cephalus.jfif" class="card-img-top" alt="Mullet" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_grey">Grey Mullet</h4><p class="sci-name">Mugil cephalus</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Pagrus pagrus.jpg" class="card-img-top" alt="Porgy" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_porgy">Red Porgy</h4><p class="sci-name">Pagrus pagrus</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Plectorhinchus mediterraneus.jpg" class="card-img-top" alt="Grunt" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_rubber">Rubberlip Grunt</h4><p class="sci-name">Plectorhinchus mediterraneus</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Pomadasys perotaei.jpg" class="card-img-top" alt="Parrot Grunt" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_parrot">Parrot Grunt</h4><p class="sci-name">Pomadasys perotaei</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Pseudupeneus prayensis.jpg" class="card-img-top" alt="Red Mullet" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_redmullet">Red Mullet</h4><p class="sci-name">Pseudupeneus prayensis</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Spondyliosoma cantharus.jpg" class="card-img-top" alt="Bream" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_bream">Black Seabream</h4><p class="sci-name">Spondyliosoma cantharus</p></div></div></div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-ceph">
+                    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Octopus vulgaris.jpg" class="card-img-top" alt="Octopus" loading="lazy"><div class="grading-overlay"><h5 class="text-gold fw-bold mb-3">Grading (g)</h5><table class="grading-table"><tr><td>T1 (4500+)</td><td>T2 (3000-4500)</td></tr><tr><td>T3 (2000-3000)</td><td>T4 (1500-2000)</td></tr><tr><td>T5 (1200-1500)</td><td>T6 (800-1200)</td></tr><tr><td>T7 (500-800)</td><td></td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_octopus">Common Octopus</h4><p class="sci-name">Octopus vulgaris</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Loligo vulgaris.jpg" class="card-img-top" alt="Squid" loading="lazy"><div class="grading-overlay"><h5 class="text-gold fw-bold mb-3">Grading (g)</h5><table class="grading-table"><tr><td>GG (850+)</td><td>G (550-850)</td></tr><tr><td>M (350-550)</td><td>P (250-350)</td></tr><tr><td>2P (150-250)</td><td>3P (90-150)</td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_squid">Common Squid</h4><p class="sci-name">Loligo vulgaris</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Sepia officinalis.jpg" class="card-img-top" alt="Cuttlefish" loading="lazy"><div class="grading-overlay"><h5 class="text-gold fw-bold mb-3">Grading (g)</h5><table class="grading-table"><tr><td>G (800+)</td><td>M (500-800)</td></tr><tr><td>P (300-500)</td><td>2P (200-300)</td></tr><tr><td>3P (100-200)</td><td>4P (50-100)</td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_cuttle">Cuttlefish</h4><p class="sci-name">Sepia officinalis</p></div></div></div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="pills-crustacean">
+                    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Panulirus regius.jpg" class="card-img-top" alt="Lobster" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_lobster">Royal Spiny Lobster</h4><p class="sci-name">Panulirus regius</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Penaeus notialis.jpg" class="card-img-top" alt="Shrimp" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_shrimp">Southern Pink Shrimp</h4><p class="sci-name">Penaeus notialis</p></div></div></div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-pelagic">
+                     <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Sardinella aurita.jpg" class="card-img-top" alt="Round Sardinella" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_round">Round Sardinella</h4><p class="sci-name">Sardinella aurita</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Sardinella maderensis.jpg" class="card-img-top" alt="Flat Sardinella" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_flat">Flat Sardinella</h4><p class="sci-name">Sardinella maderensis</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Scomber colias.jpg" class="card-img-top" alt="Mackerel" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_chub">Chub Mackerel</h4><p class="sci-name">Scomber colias</p></div></div></div>
+                        <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Trachurus spp.jpg" class="card-img-top" alt="Horse Mackerel" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_horse">Horse Mackerel</h4><p class="sci-name">Trachurus spp.</p></div></div></div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-demersal">
+                    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Dicentrarchus punctatus.jpg" class="card-img-top" alt="Seabass" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_spotted">Spotted Seabass</h4><p class="sci-name">Dicentrarchus punctatus</p></div></div></div>
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Dicologlossa cuneata.jfif" class="card-img-top" alt="Wedge Sole" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_wedge">Wedge Sole</h4><p class="sci-name">Dicologlossa cuneata</p></div></div></div>
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Lichia amia.jpg" class="card-img-top" alt="Leerfish" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_leer">Leerfish</h4><p class="sci-name">Lichia amia</p></div></div></div>
@@ -509,11 +509,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Navbar scroll effect
-        window.addEventListener('scroll', () => {
+        function checkScroll() {
             const nav = document.querySelector('.navbar');
             if (window.scrollY > 50) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
-        });
+        }
+        window.addEventListener('scroll', checkScroll);
+        // Run immediately on refresh
+        document.addEventListener('DOMContentLoaded', checkScroll);
         
         // Form & Language Scripts
         const form = document.getElementById("contactForm");
@@ -585,7 +588,7 @@
                 log_terms_label: "INCOTERMS :", log_partners: "NOS PARTENAIRES :", log_secure: "Chaîne du Froid Sécurisée",
                 contact_heading: "Parlez-nous de vos besoins", contact_intro: "Spécifications produits, volumes, destination et délais.",
                 form_company: "Société", form_email: "Email", form_message: "Message", form_send: "Envoyer Message",
-                contact_direct: "Contact Direct", contact_email_label: "Email", contact_phone_label: "Tél", contact_address_label: "Adresse", contact_address_value: "Zone Industrielle, Nouadhibou, Mauritanie",
+                contact_direct: "Contact Direct", contact_email_label: "Email", contact_phone_label: "Tél", contact_address_label: "Adresse", contact_address_value: "Zone Industrielle, Nouadhibou, Mauritania",
                 footer_about: "Exportateur de fruits de mer mauritaniens.", cert_eu: "Agréé UE"
             },
             es: {
