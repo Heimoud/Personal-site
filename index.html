@@ -88,7 +88,7 @@
         .lang-btn { background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 0.7rem; font-weight: 600; padding: 0 5px; }
         .lang-btn.active { color: var(--woma-gold); }
 
-        /* --- 3. HERO VIDEO (GEOMETRY FIX) --- */
+        /* --- 3. HERO SECTION (STATIC IMAGE) --- */
         .hero-section {
             position: relative;
             height: 100vh; /* Fallback */
@@ -96,26 +96,13 @@
             width: 100%;
             display: flex; align-items: center; justify-content: center;
             overflow: hidden; 
-            background-color: var(--woma-navy); /* Prevents white flash */
+            background-color: var(--woma-navy); 
             margin: 0; padding: 0;
-        }
-        
-        .video-container {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            overflow: hidden; z-index: 0;
-            background: var(--woma-navy);
-        }
-        
-        .hero-video {
-            /* GEOMETRY FIX: Width > 100% and negative position removes watermark instantly */
-            position: absolute;
-            width: 140%; 
-            height: 140%;
-            top: -20%;
-            left: -20%;
-            object-fit: cover;
-            pointer-events: none; /* Disables play button overlay on mobile */
-            background: var(--woma-navy);
+            /* Static Background Image */
+            background-image: url('https://images.unsplash.com/photo-1615884330352-90c71605a3cb?q=80&w=2000'); /* High quality ocean/fishing image */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
 
         .hero-overlay {
@@ -182,53 +169,18 @@
         .logistics-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
         .logistics-card:hover img { opacity: 1; transform: scale(1.05); }
 
-        /* --- CONTACT SECTION (ENCADRÉ FIX) --- */
+        /* --- CONTACT SECTION (REVERTED TO SIMPLE LIST) --- */
         .contact-section { background-color: var(--bg-light); padding: 120px 0; }
         .contact-container { box-shadow: var(--shadow-float); background: white; }
         .form-control { border: none; border-bottom: 1px solid #ddd; padding: 15px 0; border-radius: 0; }
         .contact-info-col { background: var(--woma-navy); color: white; padding: 60px; }
         .contact-info-col h3 { color: #ffffff !important; }
         
-        /* New Encadré (Framed) Contact Styles */
-        .contact-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: flex-start;
-            transition: 0.3s;
-        }
-        .contact-box:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--woma-gold);
-            transform: translateX(5px);
-        }
-        .contact-icon-frame {
-            width: 45px;
-            height: 45px;
-            background: var(--woma-gold);
-            color: var(--woma-navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-right: 20px;
-            flex-shrink: 0; /* Prevents icon from squishing */
-        }
-        .contact-details strong {
-            display: block;
-            color: var(--woma-gold);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-        .contact-details a, .contact-details span {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-        }
+        .contact-list { list-style: none; padding: 0; margin: 0; }
+        .contact-list li { display: flex; align-items: flex-start; margin-bottom: 30px; }
+        .contact-list i { color: var(--woma-gold); font-size: 1.2rem; margin-right: 20px; margin-top: 5px; }
+        .contact-list strong { display: block; color: var(--woma-gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .contact-list a, .contact-list span { color: white; text-decoration: none; font-size: 1rem; }
 
         footer { background: #01060a; color: #8b9bb4; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
         .footer-logo-text { font-family: var(--font-serif); color: #ffffff; font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; display: block; }
@@ -275,11 +227,6 @@
     </nav>
 
     <header id="home" class="hero-section">
-        <div class="video-container">
-            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline style="background: #02182B;" poster="https://images.unsplash.com/photo-1543621980-60b73c43494e?q=80&w=2000">
-                <source src="hero.mp4" type="video/mp4">
-            </video>
-        </div>
         <div class="hero-overlay"></div>
         <div class="container text-center hero-content text-white">
             <span class="subtitle-caps text-white-50">Nouadhibou, Mauritania</span>
@@ -417,7 +364,7 @@
                         <div class="d-flex align-items-center">
                              <div class="me-3 text-gold"><i class="fas fa-file-contract fa-2x"></i></div>
                              <div><h6 class="fw-bold mb-0 text-navy" data-i18n="cert_name">Sanitary Approval Certificate</h6><p class="small text-muted mb-0" data-i18n="cert_detail">N° 02.114</p></div>
-                             <a href="assets/certificate.pdf" target="_blank" class="btn btn-outline-dark btn-sm ms-auto rounded-0 px-3"><i class="fas fa-download me-1"></i> PDF</a>
+                             <a href="certificate.pdf" target="_blank" class="btn btn-outline-dark btn-sm ms-auto rounded-0 px-3"><i class="fas fa-download me-1"></i> PDF</a>
                         </div>
                     </div>
                 </div>
@@ -479,29 +426,29 @@
                 <div class="col-lg-5 contact-info-col d-flex flex-column justify-content-center">
                     <h3 class="text-white mb-5" data-i18n="contact_direct">Direct Contact</h3>
                     
-                    <div class="contact-box">
-                        <div class="contact-icon-frame"><i class="fas fa-envelope"></i></div>
-                        <div class="contact-details">
-                            <strong data-i18n="contact_email_label">Email</strong>
-                            <a href="mailto:womapeche@gmail.com">womapeche@gmail.com</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-box">
-                        <div class="contact-icon-frame"><i class="fas fa-phone"></i></div>
-                        <div class="contact-details">
-                            <strong data-i18n="contact_phone_label">Phone</strong>
-                            <a href="tel:+22246576705">+222 46 57 67 05</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-box">
-                        <div class="contact-icon-frame"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="contact-details">
-                            <strong data-i18n="contact_address_label">Address</strong>
-                            <span data-i18n="contact_address_value">Industrial Zone, Nouadhibou, Mauritania</span>
-                        </div>
-                    </div>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong data-i18n="contact_email_label">Email</strong>
+                                <a href="mailto:womapeche@gmail.com">womapeche@gmail.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong data-i18n="contact_phone_label">Phone</strong>
+                                <a href="tel:+22246576705">+222 46 57 67 05</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong data-i18n="contact_address_label">Address</strong>
+                                <span data-i18n="contact_address_value">Industrial Zone, Nouadhibou, Mauritania</span>
+                            </div>
+                        </li>
+                    </ul>
 
                 </div>
             </div>
