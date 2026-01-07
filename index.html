@@ -25,7 +25,7 @@
             --font-sans: 'Montserrat', sans-serif;
         }
 
-        /* FIX: Strict document setup to prevent wobbling */
+        /* FIX: Strict document setup to prevent white flash & scrolling issues */
         html {
             width: 100%;
             overflow-x: hidden;
@@ -107,22 +107,15 @@
         }
         
         .hero-video {
-            /* FIX: Geometry-based zoom. 
-               Instead of transform:scale (which animates), we set width > 100%.
-               This renders instantly correctly on load. */
+            /* GEOMETRY FIX: Width > 100% and negative position removes watermark instantly */
             position: absolute;
             width: 140%; 
             height: 140%;
-            /* Center the zoomed video using negative positioning */
             top: -20%;
             left: -20%;
             object-fit: cover;
-            pointer-events: none; /* Disables play button overlay */
-            background: var(--woma-navy); /* Self-background */
-
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-
+            pointer-events: none; /* Disables play button overlay on mobile */
+            background: var(--woma-navy);
         }
 
         .hero-overlay {
@@ -189,11 +182,53 @@
         .logistics-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
         .logistics-card:hover img { opacity: 1; transform: scale(1.05); }
 
+        /* --- CONTACT SECTION (ENCADRÉ FIX) --- */
         .contact-section { background-color: var(--bg-light); padding: 120px 0; }
         .contact-container { box-shadow: var(--shadow-float); background: white; }
         .form-control { border: none; border-bottom: 1px solid #ddd; padding: 15px 0; border-radius: 0; }
         .contact-info-col { background: var(--woma-navy); color: white; padding: 60px; }
         .contact-info-col h3 { color: #ffffff !important; }
+        
+        /* New Encadré (Framed) Contact Styles */
+        .contact-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            transition: 0.3s;
+        }
+        .contact-box:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--woma-gold);
+            transform: translateX(5px);
+        }
+        .contact-icon-frame {
+            width: 45px;
+            height: 45px;
+            background: var(--woma-gold);
+            color: var(--woma-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0; /* Prevents icon from squishing */
+        }
+        .contact-details strong {
+            display: block;
+            color: var(--woma-gold);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .contact-details a, .contact-details span {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
 
         footer { background: #01060a; color: #8b9bb4; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
         .footer-logo-text { font-family: var(--font-serif); color: #ffffff; font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; display: block; }
@@ -241,18 +276,9 @@
 
     <header id="home" class="hero-section">
         <div class="video-container">
-<video
-    class="hero-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline
-    preload="auto"
->
-    <source src="hero.mp4" type="video/mp4">
-</video>
-
+            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline style="background: #02182B;" poster="https://images.unsplash.com/photo-1543621980-60b73c43494e?q=80&w=2000">
+                <source src="hero.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="hero-overlay"></div>
         <div class="container text-center hero-content text-white">
@@ -288,15 +314,16 @@
             </div>
 
             <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
-                <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-all" data-i18n="tab_all">All</button></li>
-                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-ceph" data-i18n="tab_ceph">Cephalopods</button></li>
-                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-crustacean" data-i18n="tab_crustacean">Crustaceans</button></li>
-                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-pelagic" data-i18n="tab_pelagic">Pelagic</button></li>
-                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-demersal" data-i18n="tab_demersal">Demersal</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link active" id="pill-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true" data-i18n="tab_all">All</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="pill-ceph-tab" data-bs-toggle="pill" data-bs-target="#pills-ceph" type="button" role="tab" aria-controls="pills-ceph" aria-selected="false" data-i18n="tab_ceph">Cephalopods</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="pill-crustacean-tab" data-bs-toggle="pill" data-bs-target="#pills-crustacean" type="button" role="tab" aria-controls="pills-crustacean" aria-selected="false" data-i18n="tab_crustacean">Crustaceans</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="pill-pelagic-tab" data-bs-toggle="pill" data-bs-target="#pills-pelagic" type="button" role="tab" aria-controls="pills-pelagic" aria-selected="false" data-i18n="tab_pelagic">Pelagic</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="pill-demersal-tab" data-bs-toggle="pill" data-bs-target="#pills-demersal" type="button" role="tab" aria-controls="pills-demersal" aria-selected="false" data-i18n="tab_demersal">Demersal</button></li>
             </ul>
 
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-all">
+                
+                <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pill-all-tab">
                     <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Octopus vulgaris.jpg" class="card-img-top" alt="Octopus" loading="lazy"><div class="grading-overlay"><h5 class="text-gold fw-bold mb-3">Grading (g)</h5><table class="grading-table"><tr><td>T1 (4500+)</td><td>T2 (3000-4500)</td></tr><tr><td>T3 (2000-3000)</td><td>T4 (1500-2000)</td></tr><tr><td>T5 (1200-1500)</td><td>T6 (800-1200)</td></tr><tr><td>T7 (500-800)</td><td></td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_octopus">Common Octopus</h4><p class="sci-name">Octopus vulgaris</p></div></div></div>
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Loligo vulgaris.jpg" class="card-img-top" alt="Squid" loading="lazy"><div class="grading-overlay"><h5 class="text-gold fw-bold mb-3">Grading (g)</h5><table class="grading-table"><tr><td>GG (850+)</td><td>G (550-850)</td></tr><tr><td>M (350-550)</td><td>P (250-350)</td></tr><tr><td>2P (150-250)</td><td>3P (90-150)</td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_squid">Common Squid</h4><p class="sci-name">Loligo vulgaris</p></div></div></div>
@@ -320,7 +347,7 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="pills-ceph">
+                <div class="tab-pane fade" id="pills-ceph" role="tabpanel" aria-labelledby="pill-ceph-tab">
                     <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Octopus vulgaris.jpg" class="card-img-top" alt="Octopus" loading="lazy"><div class="grading-overlay"><h5 class="text-gold fw-bold mb-3">Grading (g)</h5><table class="grading-table"><tr><td>T1 (4500+)</td><td>T2 (3000-4500)</td></tr><tr><td>T3 (2000-3000)</td><td>T4 (1500-2000)</td></tr><tr><td>T5 (1200-1500)</td><td>T6 (800-1200)</td></tr><tr><td>T7 (500-800)</td><td></td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_octopus">Common Octopus</h4><p class="sci-name">Octopus vulgaris</p></div></div></div>
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Loligo vulgaris.jpg" class="card-img-top" alt="Squid" loading="lazy"><div class="grading-overlay"><h5 class="text-gold fw-bold mb-3">Grading (g)</h5><table class="grading-table"><tr><td>GG (850+)</td><td>G (550-850)</td></tr><tr><td>M (350-550)</td><td>P (250-350)</td></tr><tr><td>2P (150-250)</td><td>3P (90-150)</td></tr></table></div></div><div class="card-body"><h4 data-i18n="fish_squid">Common Squid</h4><p class="sci-name">Loligo vulgaris</p></div></div></div>
@@ -328,14 +355,14 @@
                     </div>
                 </div>
                 
-                <div class="tab-pane fade" id="pills-crustacean">
+                <div class="tab-pane fade" id="pills-crustacean" role="tabpanel" aria-labelledby="pill-crustacean-tab">
                     <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3">
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Panulirus regius.jpg" class="card-img-top" alt="Lobster" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_lobster">Royal Spiny Lobster</h4><p class="sci-name">Panulirus regius</p></div></div></div>
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Penaeus notialis.jpg" class="card-img-top" alt="Shrimp" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_shrimp">Southern Pink Shrimp</h4><p class="sci-name">Penaeus notialis</p></div></div></div>
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="pills-pelagic">
+                <div class="tab-pane fade" id="pills-pelagic" role="tabpanel" aria-labelledby="pill-pelagic-tab">
                      <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Sardinella aurita.jpg" class="card-img-top" alt="Round Sardinella" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_round">Round Sardinella</h4><p class="sci-name">Sardinella aurita</p></div></div></div>
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Sardinella maderensis.jpg" class="card-img-top" alt="Flat Sardinella" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_flat">Flat Sardinella</h4><p class="sci-name">Sardinella maderensis</p></div></div></div>
@@ -344,7 +371,7 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="pills-demersal">
+                <div class="tab-pane fade" id="pills-demersal" role="tabpanel" aria-labelledby="pill-demersal-tab">
                     <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Dicentrarchus punctatus.jpg" class="card-img-top" alt="Seabass" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_spotted">Spotted Seabass</h4><p class="sci-name">Dicentrarchus punctatus</p></div></div></div>
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Dicologlossa cuneata.jfif" class="card-img-top" alt="Wedge Sole" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_wedge">Wedge Sole</h4><p class="sci-name">Dicologlossa cuneata</p></div></div></div>
@@ -390,7 +417,7 @@
                         <div class="d-flex align-items-center">
                              <div class="me-3 text-gold"><i class="fas fa-file-contract fa-2x"></i></div>
                              <div><h6 class="fw-bold mb-0 text-navy" data-i18n="cert_name">Sanitary Approval Certificate</h6><p class="small text-muted mb-0" data-i18n="cert_detail">N° 02.114</p></div>
-                             <a href="certificate.pdf" target="_blank" class="btn btn-outline-dark btn-sm ms-auto rounded-0 px-3"><i class="fas fa-download me-1"></i> PDF</a>
+                             <a href="assets/certificate.pdf" target="_blank" class="btn btn-outline-dark btn-sm ms-auto rounded-0 px-3"><i class="fas fa-download me-1"></i> PDF</a>
                         </div>
                     </div>
                 </div>
@@ -448,13 +475,34 @@
                         <div id="formStatus" class="mt-3"></div>
                     </form>
                 </div>
+                
                 <div class="col-lg-5 contact-info-col d-flex flex-column justify-content-center">
                     <h3 class="text-white mb-5" data-i18n="contact_direct">Direct Contact</h3>
-                    <ul class="list-unstyled">
-                        <li class="mb-4 d-flex"><i class="fas fa-envelope text-gold mt-1 me-3"></i><div><strong class="d-block text-gold small text-uppercase" data-i18n="contact_email_label">Email</strong><a href="mailto:womapeche@gmail.com" class="text-white text-decoration-none">womapeche@gmail.com</a></div></li>
-                        <li class="mb-4 d-flex"><i class="fas fa-phone text-gold mt-1 me-3"></i><div><strong class="d-block text-gold small text-uppercase" data-i18n="contact_phone_label">Phone</strong><a href="tel:+22246576705" class="text-white text-decoration-none">+222 46 57 67 05</a></div></li>
-                        <li class="d-flex"><i class="fas fa-map-marker-alt text-gold mt-1 me-3"></i><div><strong class="d-block text-gold small text-uppercase" data-i18n="contact_address_label">Address</strong><span class="text-white-50" data-i18n="contact_address_value">Industrial Zone, Nouadhibou, Mauritania</span></div></li>
-                    </ul>
+                    
+                    <div class="contact-box">
+                        <div class="contact-icon-frame"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <strong data-i18n="contact_email_label">Email</strong>
+                            <a href="mailto:womapeche@gmail.com">womapeche@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-box">
+                        <div class="contact-icon-frame"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <strong data-i18n="contact_phone_label">Phone</strong>
+                            <a href="tel:+22246576705">+222 46 57 67 05</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-box">
+                        <div class="contact-icon-frame"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <strong data-i18n="contact_address_label">Address</strong>
+                            <span data-i18n="contact_address_value">Industrial Zone, Nouadhibou, Mauritania</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -521,35 +569,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
-        <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const video = document.querySelector(".hero-video");
-
-    if (!video) return;
-
-    // iOS Safari sometimes ignores autoplay on load
-    const tryPlay = () => {
-        video.muted = true;
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                // Retry on first user interaction
-                const retry = () => {
-                    video.play();
-                    document.removeEventListener("touchstart", retry);
-                    document.removeEventListener("click", retry);
-                };
-                document.addEventListener("touchstart", retry, { once: true });
-                document.addEventListener("click", retry, { once: true });
-            });
-        }
-    };
-
-    tryPlay();
-});
-</script>
-
         // Navbar scroll effect
         function checkScroll() {
             const nav = document.querySelector('.navbar');
@@ -719,5 +738,3 @@ document.addEventListener("DOMContentLoaded", () => {
     </script>
 </body>
 </html>
-
-
