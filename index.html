@@ -161,10 +161,12 @@
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; }
-        .hero-title { 
+.hero-title { 
             font-size: clamp(3rem, 5vw, 5.5rem); 
             line-height: 1.1; margin-bottom: 1.5rem; 
             color: #ffffff !important; 
+            /* Added text-shadow for better legibility on images */
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
         }
 
         .btn-gold {
@@ -327,8 +329,9 @@
                 <span data-i18n="hero_title">Premium Mauritanian</span> 
                 <span class="text-gold" data-i18n="hero_seafood">Seafood</span>
             </h1>
-            <p class="lead mb-5 fs-5 text-white-50 mx-auto" style="max-width: 700px; font-weight: 300;" data-i18n="hero_sub">Direct from the Atlantic (FAO 34) to Global Markets.<br>EU Approved & Flash Frozen at Source.</p>
-            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+<p class="lead mb-5 fs-5 text-white mx-auto" style="max-width: 700px; font-weight: 500; text-shadow: 0 2px 5px rgba(0,0,0,0.8);" data-i18n="hero_sub">
+    Direct from the Atlantic (FAO 34) to Global Markets.<br>EU Approved & Flash Frozen at Source.
+</p>            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                 <a href="#products" class="btn btn-gold" data-i18n="hero_btn_catalog">View Catalog</a>
                 <a href="#contact" class="btn btn-outline-white" data-i18n="hero_btn_contact">Contact Us</a>
             </div>
@@ -753,3 +756,4 @@
     </script>
 </body>
 </html>
+
