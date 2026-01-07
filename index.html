@@ -43,7 +43,6 @@
             background-color: var(--bg-light); overflow-x: hidden; line-height: 1.7;
         }
         
-        /* DEFAULT HEADINGS are Dark Navy. */
         h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); font-weight: 700; color: var(--woma-navy); }
         
         /* Utility */
@@ -65,7 +64,6 @@
             z-index: 1000;
         }
         
-        /* Scrolled State */
         .navbar.scrolled {
             background: rgba(2, 24, 43, 0.98);
             backdrop-filter: blur(12px);
@@ -106,11 +104,17 @@
         .lang-btn:hover, .lang-btn.active { color: var(--woma-gold); }
         .lang-divider { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
 
-        /* --- 3. HERO VIDEO --- */
+        /* --- 3. HERO VIDEO (MOBILE FIX) --- */
         .hero-section {
-            position: relative; height: 100vh; min-height: 650px;
+            position: relative; 
+            /* Fix jumpy scroll on mobile using dvh */
+            height: 100vh; 
+            min-height: 100dvh; 
             display: flex; align-items: center; justify-content: center;
-            overflow: hidden; margin-top: -110px; padding-top: 110px;
+            overflow: hidden; 
+            margin-top: -110px; padding-top: 110px;
+            /* FIX: Dark background color prevents white flash on refresh */
+            background-color: var(--woma-navy); 
         }
         
         .video-container {
@@ -122,9 +126,11 @@
             position: absolute; top: 50%; left: 50%; 
             min-width: 100%; min-height: 100%;
             width: auto; height: auto; 
-            /* Scale 1.25 removes bottom-right watermark */
-            transform: translate(-50%, -50%) scale(1.25); 
+            /* Scale 1.35 to strictly hide watermark on all mobile ratios */
+            transform: translate(-50%, -50%) scale(1.35); 
             object-fit: cover;
+            /* FIX: Disables play button overlay on mobile */
+            pointer-events: none; 
         }
 
         .hero-overlay {
@@ -404,6 +410,7 @@
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Penaeus notialis.jpg" class="card-img-top" alt="Shrimp" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_shrimp">Southern Pink Shrimp</h4><p class="sci-name">Penaeus notialis</p></div></div></div>
                     </div>
                 </div>
+
                 <div class="tab-pane fade" id="pills-pelagic">
                      <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
                         <div class="col"><div class="product-card"><div class="card-img-wrapper"><img src="Sardinella aurita.jpg" class="card-img-top" alt="Round Sardinella" loading="lazy"></div><div class="card-body"><h4 data-i18n="fish_round">Round Sardinella</h4><p class="sci-name">Sardinella aurita</p></div></div></div>
@@ -660,7 +667,7 @@
                 fish_grey: "Mulet", fish_porgy: "Pagre Commun", fish_rubber: "Diagramme", fish_parrot: "Grondeur", fish_redmullet: "Rouget", fish_bream: "Dorade Grise",
                 note_title: "Vous cherchez autre chose ?", note_text: "Nous pouvons sourcer d'autres espèces sur demande.",
                 fac_title: "Traitement Moderne <br>à Nouadhibou", fac_desc: "Situé à quelques minutes des zones de pêche.",
-                fac_feat_1: "Congélation -40°C", fac_feat_1_sub: "Tunnels Blast & Plaques", fac_feat_2: "Agréé UE", fac_feat_2_sub: "Conforme HACCP",
+                fac_feat_1: "Congelación -40°C", fac_feat_1_sub: "Tunnels Blast & Plaques", fac_feat_2: "Agréé UE", fac_feat_2_sub: "Conforme HACCP",
                 cert_name: "Agrément Sanitaire", cert_detail: "N° 02.114",
                 log_title: "De la Mauritanie <br>au Monde", 
                 log_inspection: "Contrôle par les autorités mauritaniennes. Inspection SGS/Veritas possible.",
@@ -756,5 +763,3 @@
     </script>
 </body>
 </html>
-
-
